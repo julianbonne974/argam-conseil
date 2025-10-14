@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { Toaster } from "sonner";
 
@@ -27,6 +28,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr">
+      <head>
+        <Script
+          src="https://identity.netlify.com/v1/netlify-identity-widget.js"
+          strategy="beforeInteractive"
+        />
+      </head>
       <body className={inter.className}>
         {children}
         <Toaster position="bottom-right" richColors />
@@ -50,6 +57,21 @@ export default function RootLayout({
           <textarea name="message"></textarea>
           <input type="checkbox" name="isCogohrMember" />
         </form>
+
+        {/* Netlify Identity Widget Initialization */}
+        <Script id="netlify-identity-init" strategy="afterInteractive">
+          {`
+            if (window.netlifyIdentity) {
+              window.netlifyIdentity.on("init", user => {
+                if (!user) {
+                  window.netlifyIdentity.on("login", () => {
+                    document.location.href = "/admin/";
+                  });
+                }
+              });
+            }
+          `}
+        </Script>
       </body>
     </html>
   );
