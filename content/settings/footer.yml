@@ -1,0 +1,21 @@
+tagline: "Experts en conseil patrimonial pour les fonctionnaires hospitaliers de La Réunion. Partenaire officiel COGOHR."
+
+bordeaux:
+  adresse: "52 allées de Tourny, 33000 Bordeaux"
+  telephone: "05 33 89 14 00"
+  email: "contact@argam-conseils.fr"
+
+reunion:
+  adresse: "Trois-Bassins, 97426 La Réunion"
+
+liensLegaux:
+  - label: "Mentions légales"
+    url: "/mentions-legales"
+  - label: "Politique de confidentialité"
+    url: "/politique-confidentialite"
+  - label: "CGU"
+    url: "/cgu"
+
+reseauxSociaux:
+  - nom: "LinkedIn"
+    url: "https://linkedin.com"
