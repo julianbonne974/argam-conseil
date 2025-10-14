@@ -1,6 +1,6 @@
 'use client';
 
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, PieChart, Shield, Briefcase, CheckCircle2, MapPin } from 'lucide-react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import Link from 'next/link';
@@ -38,8 +38,8 @@ export default function Home() {
     <main className="min-h-screen bg-white">
       <Header />
 
-      {/* Hero Section - Family Office Bauhaus */}
-      <section className="relative pt-32 pb-24 min-h-[92vh] flex items-center overflow-hidden bg-white">
+      {/* SECTION 1: HERO - Layout 60/40 */}
+      <section id="accueil" className="relative pt-32 pb-20 overflow-hidden bg-white">
         {/* Geometric Background Elements */}
         <motion.div
           className="absolute inset-0 pointer-events-none"
@@ -47,84 +47,60 @@ export default function Home() {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.3 }}
         >
-          {/* Large Circle - Top Right */}
+          {/* Large Circle */}
           <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full border-[1px] border-[#b4925e] opacity-[0.08]" />
-
-          {/* Square - Bottom Left */}
+          {/* Square */}
           <div className="absolute bottom-20 left-10 w-40 h-40 border-[1px] border-[#524c5d] opacity-[0.06]" />
-
-          {/* Small Circle - Middle */}
+          {/* Small Circle */}
           <div className="absolute top-1/3 right-1/4 w-24 h-24 rounded-full bg-[#b4925e] opacity-[0.05]" />
-
           {/* Vertical Line */}
           <div className="absolute top-0 right-1/3 w-[1px] h-full bg-[#524c5d] opacity-[0.06]" />
-
           {/* Horizontal Line */}
           <div className="absolute top-1/2 left-0 w-full h-[1px] bg-[#b4925e] opacity-[0.05]" />
         </motion.div>
 
-        <div className="container mx-auto px-8 max-w-7xl relative z-10">
-          <div className="grid lg:grid-cols-[60%_40%] gap-20 items-center">
+        <div className="container mx-auto px-4 md:px-8 max-w-7xl relative z-10">
+          <div className="grid lg:grid-cols-[60%_40%] gap-16 items-center">
             {/* Left: Text Content - 60% */}
             <motion.div
-              className="space-y-12"
+              className="space-y-10"
               variants={slideInFromTop}
               initial="initial"
               animate="animate"
             >
-              {/* Surtitre */}
+              {/* Badge */}
               <div className="space-y-1">
-                <p className="text-[11px] uppercase tracking-[0.3em] text-[#524c5d]/60 font-medium">
-                  Partenaire COGOHR
+                <p className="text-[11px] uppercase tracking-[0.3em] text-muted-foreground font-medium">
+                  CONSEIL PATRIMONIAL
                 </p>
                 <div className="w-12 h-[1px] bg-[#b4925e] mt-4" />
               </div>
 
-              {/* Titre Principal - Typographie Light avec Bold */}
-              <h1 className="text-5xl lg:text-7xl text-[#524c5d] leading-[1.1] tracking-tight">
-                <span className="font-light">Conseil</span>
-                <br />
-                <span className="font-bold">Patrimonial</span>
+              {/* Titre Principal */}
+              <h1 className="text-5xl lg:text-6xl text-[#524c5d] leading-[1.1] tracking-tight font-light">
+                Votre patrimoine mérite<br />
+                une expertise dédiée
               </h1>
 
-              {/* Description */}
-              <div className="space-y-6 max-w-xl">
-                <p className="text-lg text-[#524c5d]/80 leading-relaxed font-light">
-                  Spécialistes de l'épargne retraite pour fonctionnaires hospitaliers à La Réunion.
-                </p>
-                <p className="text-base text-[#524c5d]/60 leading-relaxed font-light">
-                  Votre prime de vie chère de 53% ne sera pas comptabilisée dans votre pension de retraite. Nous vous accompagnons pour compenser cette perte.
-                </p>
-              </div>
+              {/* Sous-titre */}
+              <p className="text-lg text-gray-600 leading-relaxed font-light max-w-xl">
+                Argam Conseil accompagne les particuliers et les dirigeants dans l'optimisation globale de leur patrimoine professionnel et personnel à La Réunion et Bordeaux.
+              </p>
 
-              {/* Stats minimalistes */}
-              <div className="flex items-center gap-12 pt-4">
-                <div className="space-y-1">
-                  <p className="text-4xl font-light text-[#524c5d]">−1 600€</p>
-                  <p className="text-xs uppercase tracking-wider text-[#524c5d]/50">Perte mensuelle</p>
-                </div>
-                <div className="w-[1px] h-12 bg-[#524c5d]/10" />
-                <div className="space-y-1">
-                  <p className="text-4xl font-light text-[#524c5d]">53%</p>
-                  <p className="text-xs uppercase tracking-wider text-[#524c5d]/50">Prime non comptée</p>
-                </div>
-              </div>
-
-              {/* CTA - Bouton minimaliste */}
-              <div className="flex items-center gap-6 pt-8">
+              {/* CTA */}
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 pt-4">
                 <Link href="/contact">
                   <motion.button
-                    className="group relative px-10 py-4 bg-white border-[1px] border-[#524c5d] text-[#524c5d] text-sm uppercase tracking-wider font-medium overflow-hidden transition-all duration-300 hover:text-white"
+                    className="px-10 py-4 bg-[#b4925e] hover:bg-[#b4925e]/90 text-white text-sm uppercase tracking-wider font-medium transition-all duration-300"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    <span className="relative z-10">Demander une étude</span>
-                    <div className="absolute inset-0 bg-[#524c5d] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                    Prendre rendez-vous
                   </motion.button>
                 </Link>
 
-                <Link href="/services" className="group flex items-center gap-2 text-sm text-[#524c5d]/70 hover:text-[#b4925e] transition-colors">
-                  <span className="uppercase tracking-wider font-medium">En savoir plus</span>
+                <Link href="/services" className="group flex items-center gap-2 text-sm text-[#524c5d] hover:text-[#b4925e] transition-colors">
+                  <span className="uppercase tracking-wider font-medium">Découvrir nos services</span>
                   <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
@@ -132,30 +108,24 @@ export default function Home() {
 
             {/* Right: Geometric Visual - 40% */}
             <motion.div
-              className="relative h-[500px] hidden lg:block"
+              className="relative h-[400px] lg:h-[500px] hidden lg:block"
               variants={fadeIn}
               initial="initial"
               animate="animate"
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              {/* Composition géométrique Bauhaus */}
               <div className="absolute inset-0 flex items-center justify-center">
-                {/* Grand cercle principal */}
+                {/* Grand cercle */}
                 <div className="absolute w-80 h-80 rounded-full border-[2px] border-[#b4925e]/20" />
-
                 {/* Cercle moyen */}
-                <div className="absolute w-56 h-56 rounded-full bg-[#524c5d]/5 backdrop-blur-sm" />
-
-                {/* Petit cercle accentué */}
+                <div className="absolute w-56 h-56 rounded-full bg-[#524c5d]/5" />
+                {/* Petit cercle */}
                 <div className="absolute top-20 right-20 w-32 h-32 rounded-full bg-[#b4925e]/10" />
-
                 {/* Rectangle */}
                 <div className="absolute bottom-28 left-16 w-40 h-40 border-[1px] border-[#524c5d]/15 rotate-12" />
-
-                {/* Carré plein */}
+                {/* Carré */}
                 <div className="absolute top-32 left-24 w-20 h-20 bg-[#b4925e]/15" />
-
-                {/* Ligne diagonale */}
+                {/* Lignes */}
                 <div className="absolute inset-0">
                   <svg className="w-full h-full" viewBox="0 0 400 500">
                     <line x1="50" y1="450" x2="350" y2="50" stroke="#524c5d" strokeWidth="1" opacity="0.1" />
@@ -168,237 +138,429 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Nos Domaines d'Expertise - Bauhaus Minimaliste */}
-      <section className="py-32 bg-white">
-        <div className="container mx-auto px-8 max-w-7xl">
-          {/* Section Header */}
+      {/* SECTION 2: PRÉSENTATION - 2 colonnes */}
+      <section className="py-24 bg-gray-50">
+        <div className="container mx-auto px-4 md:px-8 max-w-5xl">
           <motion.div
-            className="text-center mb-20"
+            className="grid md:grid-cols-[60%_40%] gap-12"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-block">
-              <p className="text-[11px] uppercase tracking-[0.3em] text-[#524c5d]/50 font-medium mb-4">
-                Expertise
-              </p>
-              <h2 className="text-4xl lg:text-5xl text-[#524c5d] font-light mb-4">
-                Nos Domaines <span className="font-bold">d'Expertise</span>
-              </h2>
-              <div className="w-16 h-[1px] bg-[#b4925e] mx-auto mt-6" />
+            {/* Colonne gauche */}
+            <div className="space-y-8">
+              <div>
+                <p className="text-xs uppercase tracking-widest text-[#b4925e] font-medium mb-4">
+                  À PROPOS
+                </p>
+                <h2 className="text-3xl lg:text-4xl font-light text-[#524c5d] leading-tight">
+                  Une approche globale<br />
+                  de votre patrimoine
+                </h2>
+              </div>
+
+              <div className="space-y-4 text-[#524c5d]/70 font-light leading-relaxed">
+                <p>
+                  Argam Conseil vous accompagne dans une démarche complète d'optimisation de votre patrimoine. Notre expertise intègre les dimensions stratégiques, fiscales, sociales, financières et juridiques pour vous offrir un conseil personnalisé et optimal.
+                </p>
+                <p>
+                  Que vous soyez particulier, fonctionnaire hospitalier, ou dirigeant d'entreprise, nous construisons avec vous des solutions sur-mesure adaptées à vos objectifs et contraintes spécifiques.
+                </p>
+              </div>
+            </div>
+
+            {/* Colonne droite */}
+            <div className="space-y-4">
+              {[
+                'Conseil patrimonial global',
+                'Expertise locale (La Réunion)',
+                'Accompagnement personnalisé',
+                'Indépendance et transparence'
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  className="flex items-start gap-3"
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <CheckCircle2 className="h-5 w-5 text-[#b4925e] flex-shrink-0 mt-0.5" />
+                  <span className="text-[#524c5d] font-light">{item}</span>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
+        </div>
+      </section>
 
-          {/* Grid - 3 Cards avec Stagger */}
+      {/* SECTION 3: DOMAINES D'EXPERTISE - 3 cards */}
+      <section className="py-24 bg-white">
+        <div className="container mx-auto px-4 md:px-8 max-w-7xl">
+          {/* Titre centré */}
           <motion.div
-            className="grid md:grid-cols-3 gap-8 mb-16"
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-3xl lg:text-4xl text-[#524c5d] font-light mb-6">
+              Nos Domaines d'Expertise
+            </h2>
+            <div className="w-16 h-1 bg-[#b4925e] mx-auto" />
+          </motion.div>
+
+          {/* Grille 3 colonnes */}
+          <motion.div
+            className="grid md:grid-cols-3 gap-8"
             variants={staggerContainer}
             initial="initial"
             whileInView="animate"
             viewport={{ once: true, amount: 0.2 }}
           >
-            {/* Card 1 - Gestion de Patrimoine */}
+            {/* Card 1: Gestion de Patrimoine */}
             <motion.div
               variants={fadeInUp}
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.2 }}
-              className="group bg-white border-[1px] border-[#524c5d]/20 p-10 transition-all duration-300 hover:border-[#b4925e]"
+              className="group border-[1px] border-[#524c5d]/20 p-10 transition-all duration-300 hover:border-[#b4925e] hover:shadow-md"
             >
               <div className="space-y-6">
-                {/* Icône Géométrique - Carré */}
-                <div className="relative w-16 h-16">
-                  <div className="absolute inset-0 border-[2px] border-[#524c5d]/30 rotate-45 group-hover:border-[#b4925e] transition-colors duration-300" />
-                  <div className="absolute inset-3 bg-[#524c5d]/5 rotate-45 group-hover:bg-[#b4925e]/10 transition-colors duration-300" />
-                </div>
-
-                {/* Contenu */}
-                <div className="space-y-4">
-                  <h3 className="text-xl font-light text-[#524c5d]">
-                    Gestion de <span className="font-semibold">Patrimoine</span>
-                  </h3>
-                  <p className="text-sm text-[#524c5d]/60 leading-relaxed font-light">
-                    Accompagnement personnalisé pour optimiser et faire fructifier votre patrimoine dans le respect de vos objectifs de vie.
-                  </p>
-                </div>
+                <PieChart className="w-12 h-12 text-[#b4925e]" strokeWidth={1.5} />
+                <h3 className="text-xl font-semibold text-[#524c5d]">
+                  Gestion de Patrimoine
+                </h3>
+                <p className="text-sm text-[#524c5d]/70 leading-relaxed font-light">
+                  Placement & investissement financier, patrimoine immobilier, optimisation fiscale. Nous élaborons votre stratégie patrimoniale globale.
+                </p>
+                <ul className="space-y-2 text-sm text-[#524c5d]/60">
+                  <li>• Assurance-vie & PER</li>
+                  <li>• Investissement immobilier</li>
+                  <li>• Optimisation fiscale (Girardin, FIP, FCPI)</li>
+                </ul>
+                <Link href="/services" className="inline-flex items-center gap-2 text-sm text-[#b4925e] hover:gap-3 transition-all">
+                  En savoir plus <ArrowRight className="h-4 w-4" />
+                </Link>
               </div>
             </motion.div>
 
-            {/* Card 2 - Protection Sociale */}
+            {/* Card 2: Protection Sociale */}
             <motion.div
               variants={fadeInUp}
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.2 }}
-              className="group bg-white border-[1px] border-[#524c5d]/20 p-10 transition-all duration-300 hover:border-[#b4925e]"
+              className="group border-[1px] border-[#524c5d]/20 p-10 transition-all duration-300 hover:border-[#b4925e] hover:shadow-md"
             >
               <div className="space-y-6">
-                {/* Icône Géométrique - Cercle */}
-                <div className="relative w-16 h-16">
-                  <div className="absolute inset-0 rounded-full border-[2px] border-[#524c5d]/30 group-hover:border-[#b4925e] transition-colors duration-300" />
-                  <div className="absolute inset-3 rounded-full bg-[#524c5d]/5 group-hover:bg-[#b4925e]/10 transition-colors duration-300" />
-                </div>
-
-                {/* Contenu */}
-                <div className="space-y-4">
-                  <h3 className="text-xl font-light text-[#524c5d]">
-                    Protection <span className="font-semibold">Sociale</span>
-                  </h3>
-                  <p className="text-sm text-[#524c5d]/60 leading-relaxed font-light">
-                    Solutions sur-mesure pour sécuriser votre avenir et celui de vos proches face aux aléas de la vie.
-                  </p>
-                </div>
+                <Shield className="w-12 h-12 text-[#b4925e]" strokeWidth={1.5} />
+                <h3 className="text-xl font-semibold text-[#524c5d]">
+                  Protection Sociale
+                </h3>
+                <p className="text-sm text-[#524c5d]/70 leading-relaxed font-light">
+                  Couverture complète pour vous et votre famille. Prévoyance, santé, retraite : sécurisez votre avenir et celui de vos proches.
+                </p>
+                <ul className="space-y-2 text-sm text-[#524c5d]/60">
+                  <li>• Prévoyance (décès, invalidité)</li>
+                  <li>• Complémentaire santé</li>
+                  <li>• Épargne retraite (PER)</li>
+                </ul>
+                <Link href="/services" className="inline-flex items-center gap-2 text-sm text-[#b4925e] hover:gap-3 transition-all">
+                  En savoir plus <ArrowRight className="h-4 w-4" />
+                </Link>
               </div>
             </motion.div>
 
-            {/* Card 3 - Optimisation Fiscale */}
+            {/* Card 3: Accompagnement Dirigeants */}
             <motion.div
               variants={fadeInUp}
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.2 }}
-              className="group bg-white border-[1px] border-[#524c5d]/20 p-10 transition-all duration-300 hover:border-[#b4925e]"
+              className="group border-[1px] border-[#524c5d]/20 p-10 transition-all duration-300 hover:border-[#b4925e] hover:shadow-md"
             >
               <div className="space-y-6">
-                {/* Icône Géométrique - Triangle */}
-                <div className="relative w-16 h-16 flex items-center justify-center">
-                  <svg width="64" height="64" viewBox="0 0 64 64" className="absolute inset-0">
-                    <polygon
-                      points="32,8 56,52 8,52"
-                      fill="none"
-                      stroke="#524c5d"
-                      strokeWidth="2"
-                      opacity="0.3"
-                      className="group-hover:stroke-[#b4925e] transition-colors duration-300"
-                    />
-                    <polygon
-                      points="32,18 48,46 16,46"
-                      fill="#524c5d"
-                      opacity="0.05"
-                      className="group-hover:fill-[#b4925e] group-hover:opacity-10 transition-all duration-300"
-                    />
-                  </svg>
-                </div>
-
-                {/* Contenu */}
-                <div className="space-y-4">
-                  <h3 className="text-xl font-light text-[#524c5d]">
-                    Optimisation <span className="font-semibold">Fiscale</span>
-                  </h3>
-                  <p className="text-sm text-[#524c5d]/60 leading-relaxed font-light">
-                    Stratégies légales pour réduire votre fiscalité et maximiser votre capacité d'épargne et d'investissement.
-                  </p>
-                </div>
+                <Briefcase className="w-12 h-12 text-[#b4925e]" strokeWidth={1.5} />
+                <h3 className="text-xl font-semibold text-[#524c5d]">
+                  Pour les Dirigeants
+                </h3>
+                <p className="text-sm text-[#524c5d]/70 leading-relaxed font-light">
+                  Solutions dédiées aux entrepreneurs. Statut social, rémunération, épargne salariale, trésorerie d'entreprise.
+                </p>
+                <ul className="space-y-2 text-sm text-[#524c5d]/60">
+                  <li>• Optimisation de la rémunération</li>
+                  <li>• Épargne salariale (PEE, PERECO)</li>
+                  <li>• Protection sociale du dirigeant</li>
+                </ul>
+                <Link href="/services" className="inline-flex items-center gap-2 text-sm text-[#b4925e] hover:gap-3 transition-all">
+                  En savoir plus <ArrowRight className="h-4 w-4" />
+                </Link>
               </div>
             </motion.div>
-          </motion.div>
-
-          {/* CTA Button */}
-          <motion.div
-            className="text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <Link href="/services">
-              <motion.button
-                className="group relative px-12 py-4 bg-white border-[1px] border-[#524c5d]/30 text-[#524c5d] text-sm uppercase tracking-[0.15em] font-medium overflow-hidden transition-all duration-300 hover:border-[#b4925e] hover:text-[#b4925e]"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <span className="relative z-10 flex items-center gap-3">
-                  Découvrir nos services
-                  <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                </span>
-              </motion.button>
-            </Link>
           </motion.div>
         </div>
       </section>
 
-      {/* Argam Conseil en Chiffres - Dieter Rams Style */}
-      <section className="py-28 bg-[#f8f8f8]">
-        <div className="container mx-auto px-8 max-w-7xl">
-          {/* Section Title */}
+      {/* SECTION 4: NOTRE APPROCHE - 3 étapes */}
+      <section className="py-24 bg-gray-50">
+        <div className="container mx-auto px-4 md:px-8 max-w-4xl">
+          {/* Titre centré */}
           <motion.div
-            className="text-center mb-20"
+            className="text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6 }}
           >
-            <p className="text-[11px] uppercase tracking-[0.3em] text-[#524c5d]/50 font-medium mb-3">
-              Notre ADN
-            </p>
+            <h2 className="text-3xl lg:text-4xl text-[#524c5d] font-light mb-6">
+              Notre Approche
+            </h2>
+            <div className="w-16 h-1 bg-[#b4925e] mx-auto" />
+          </motion.div>
+
+          {/* 3 étapes horizontales */}
+          <motion.div
+            className="grid md:grid-cols-3 gap-12"
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            {/* Étape 1 */}
+            <motion.div variants={fadeInUp} className="text-center space-y-6">
+              <div className="flex justify-center">
+                <div className="w-20 h-20 border-4 border-[#b4925e] flex items-center justify-center">
+                  <span className="text-3xl font-light text-[#524c5d]">01</span>
+                </div>
+              </div>
+              <h3 className="text-lg font-semibold text-[#524c5d]">
+                Audit Patrimonial
+              </h3>
+              <p className="text-sm text-[#524c5d]/70 leading-relaxed font-light">
+                Analyse complète de votre situation actuelle pour identifier vos besoins et zones de risques.
+              </p>
+            </motion.div>
+
+            {/* Étape 2 */}
+            <motion.div variants={fadeInUp} className="text-center space-y-6">
+              <div className="flex justify-center">
+                <div className="w-20 h-20 border-4 border-[#b4925e] flex items-center justify-center">
+                  <span className="text-3xl font-light text-[#524c5d]">02</span>
+                </div>
+              </div>
+              <h3 className="text-lg font-semibold text-[#524c5d]">
+                Stratégie Personnalisée
+              </h3>
+              <p className="text-sm text-[#524c5d]/70 leading-relaxed font-light">
+                Élaboration d'une stratégie sur-mesure intégrant toutes les dimensions de votre patrimoine.
+              </p>
+            </motion.div>
+
+            {/* Étape 3 */}
+            <motion.div variants={fadeInUp} className="text-center space-y-6">
+              <div className="flex justify-center">
+                <div className="w-20 h-20 bg-[#b4925e] border-4 border-[#b4925e] flex items-center justify-center">
+                  <span className="text-3xl font-light text-white">03</span>
+                </div>
+              </div>
+              <h3 className="text-lg font-semibold text-[#524c5d]">
+                Mise en Œuvre & Suivi
+              </h3>
+              <p className="text-sm text-[#524c5d]/70 leading-relaxed font-light">
+                Accompagnement dans la réalisation et suivi régulier pour optimiser votre patrimoine.
+              </p>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* SECTION 5: CHIFFRES CLÉS - 4 stats */}
+      <section className="py-24 bg-white">
+        <div className="container mx-auto px-4 md:px-8 max-w-7xl">
+          {/* Titre */}
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+          >
             <h2 className="text-3xl lg:text-4xl text-[#524c5d] font-light">
-              Argam Conseil <span className="font-semibold">en Chiffres</span>
+              Argam Conseil en Chiffres
             </h2>
           </motion.div>
 
-          {/* Stats Grid - 4 colonnes avec Stagger */}
+          {/* Grille 4 colonnes */}
           <motion.div
-            className="grid grid-cols-2 lg:grid-cols-4 gap-0"
+            className="grid grid-cols-2 lg:grid-cols-4 gap-0 bg-[#f8f8f8]"
             variants={staggerContainer}
             initial="initial"
             whileInView="animate"
             viewport={{ once: true, amount: 0.3 }}
           >
-            {/* Stat 1 - Année de création */}
+            {/* Stat 1 */}
             <motion.div
               variants={fadeInUp}
-              className="relative flex flex-col items-center justify-center py-12 px-6"
+              className="relative flex flex-col items-center justify-center py-12 px-6 border-r border-b lg:border-b-0 border-[#524c5d]/10"
             >
-              <p className="text-7xl lg:text-8xl font-light text-[#b4925e] leading-none mb-4">
-                2021
-              </p>
-              <p className="text-[10px] uppercase tracking-[0.25em] text-[#524c5d]/60 font-medium text-center">
-                Année de création
-              </p>
-              {/* Séparateur vertical - visible uniquement sur lg */}
-              <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[1px] h-24 bg-[#524c5d]/10" />
+              <div className="text-center space-y-4">
+                <p className="text-6xl lg:text-7xl text-[#b4925e] font-light leading-none">
+                  2021
+                </p>
+                <div className="w-12 h-[1px] bg-[#524c5d]/20 mx-auto" />
+                <p className="text-xs uppercase tracking-widest text-[#524c5d]/60 font-medium">
+                  ANNÉE DE CRÉATION
+                </p>
+              </div>
             </motion.div>
 
-            {/* Stat 2 - Experts */}
+            {/* Stat 2 */}
             <motion.div
               variants={fadeInUp}
-              className="relative flex flex-col items-center justify-center py-12 px-6"
+              className="relative flex flex-col items-center justify-center py-12 px-6 border-b lg:border-b-0 lg:border-r border-[#524c5d]/10"
             >
-              <p className="text-7xl lg:text-8xl font-light text-[#b4925e] leading-none mb-4">
-                8
-              </p>
-              <p className="text-[10px] uppercase tracking-[0.25em] text-[#524c5d]/60 font-medium text-center">
-                Experts spécialisés
-              </p>
-              {/* Séparateur vertical - visible uniquement sur lg */}
-              <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[1px] h-24 bg-[#524c5d]/10" />
+              <div className="text-center space-y-4">
+                <p className="text-6xl lg:text-7xl text-[#b4925e] font-light leading-none">
+                  8
+                </p>
+                <div className="w-12 h-[1px] bg-[#524c5d]/20 mx-auto" />
+                <p className="text-xs uppercase tracking-widest text-[#524c5d]/60 font-medium">
+                  EXPERTS SPÉCIALISÉS
+                </p>
+              </div>
             </motion.div>
 
-            {/* Stat 3 - Implantations */}
+            {/* Stat 3 */}
             <motion.div
               variants={fadeInUp}
-              className="relative flex flex-col items-center justify-center py-12 px-6"
+              className="relative flex flex-col items-center justify-center py-12 px-6 border-r border-[#524c5d]/10"
             >
-              <p className="text-7xl lg:text-8xl font-light text-[#b4925e] leading-none mb-4">
-                2
-              </p>
-              <p className="text-[10px] uppercase tracking-[0.25em] text-[#524c5d]/60 font-medium text-center">
-                Implantations<br />Bordeaux • La Réunion
-              </p>
-              {/* Séparateur vertical - visible uniquement sur lg */}
-              <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[1px] h-24 bg-[#524c5d]/10" />
+              <div className="text-center space-y-4">
+                <p className="text-6xl lg:text-7xl text-[#b4925e] font-light leading-none">
+                  2
+                </p>
+                <div className="w-12 h-[1px] bg-[#524c5d]/20 mx-auto" />
+                <p className="text-xs uppercase tracking-widest text-[#524c5d]/60 font-medium">
+                  IMPLANTATIONS
+                </p>
+                <p className="text-xs text-gray-500">Bordeaux • La Réunion</p>
+              </div>
             </motion.div>
 
-            {/* Stat 4 - Taux de satisfaction */}
+            {/* Stat 4 */}
             <motion.div
               variants={fadeInUp}
               className="relative flex flex-col items-center justify-center py-12 px-6"
             >
-              <p className="text-7xl lg:text-8xl font-light text-[#b4925e] leading-none mb-4">
-                98%
-              </p>
-              <p className="text-[10px] uppercase tracking-[0.25em] text-[#524c5d]/60 font-medium text-center">
-                Clients satisfaits
-              </p>
+              <div className="text-center space-y-4">
+                <p className="text-6xl lg:text-7xl text-[#b4925e] font-light leading-none">
+                  100%
+                </p>
+                <div className="w-12 h-[1px] bg-[#524c5d]/20 mx-auto" />
+                <p className="text-xs uppercase tracking-widest text-[#524c5d]/60 font-medium">
+                  CONSEIL INDÉPENDANT
+                </p>
+              </div>
             </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* SECTION 6: NOS IMPLANTATIONS - 2 cards */}
+      <section className="py-24 bg-gray-50">
+        <div className="container mx-auto px-4 md:px-8 max-w-6xl">
+          {/* Titre */}
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-3xl lg:text-4xl text-[#524c5d] font-light mb-6">
+              Nos Implantations
+            </h2>
+            <div className="w-16 h-1 bg-[#b4925e] mx-auto" />
+          </motion.div>
+
+          {/* 2 colonnes */}
+          <motion.div
+            className="grid md:grid-cols-2 gap-8"
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            {/* Bordeaux */}
+            <motion.div
+              variants={fadeInUp}
+              className="bg-white border-[1px] border-[#524c5d]/20 p-8 space-y-6"
+            >
+              <MapPin className="h-10 w-10 text-[#b4925e]" strokeWidth={1.5} />
+              <div className="space-y-4">
+                <h3 className="text-xl font-semibold text-[#524c5d]">
+                  Bordeaux - Siège Social
+                </h3>
+                <div className="space-y-2 text-sm text-[#524c5d]/70 font-light">
+                  <p>52 allées de Tourny<br />33000 Bordeaux</p>
+                  <p className="pt-2">
+                    <span className="font-medium text-[#524c5d]">Téléphone :</span><br />
+                    05 33 89 14 00
+                  </p>
+                  <p>
+                    <span className="font-medium text-[#524c5d]">Email :</span><br />
+                    contact@argamconseils.com
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* La Réunion */}
+            <motion.div
+              variants={fadeInUp}
+              className="bg-white border-[1px] border-[#524c5d]/20 p-8 space-y-6"
+            >
+              <MapPin className="h-10 w-10 text-[#b4925e]" strokeWidth={1.5} />
+              <div className="space-y-4">
+                <h3 className="text-xl font-semibold text-[#524c5d]">
+                  La Réunion - Trois-Bassins
+                </h3>
+                <div className="space-y-2 text-sm text-[#524c5d]/70 font-light">
+                  <p>Site du COGOHR<br />Trois-Bassins</p>
+                  <p className="pt-2">
+                    Rendez-vous en présentiel ou en visioconférence
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* SECTION 7: CTA FINAL */}
+      <section className="py-24 bg-white">
+        <div className="container mx-auto px-4 md:px-8 max-w-4xl">
+          <motion.div
+            className="border-4 border-[#524c5d] p-12 md:p-16 text-center space-y-8"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-3xl lg:text-4xl text-[#524c5d] font-light">
+              Prêt à optimiser votre patrimoine ?
+            </h2>
+            <p className="text-base text-[#524c5d]/70 font-light leading-relaxed max-w-2xl mx-auto">
+              Bénéficiez d'un premier entretien gratuit et sans engagement pour analyser votre situation et définir vos objectifs.
+            </p>
+            <div className="pt-4">
+              <Link href="/contact">
+                <motion.button
+                  className="px-14 py-5 bg-[#b4925e] hover:bg-[#b4925e]/90 text-white text-sm uppercase tracking-wider font-medium transition-all duration-300"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Prendre rendez-vous
+                </motion.button>
+              </Link>
+            </div>
+            <p className="text-xs text-[#524c5d]/60 font-light">
+              Réponse sous 24h • Confidentiel • Sans engagement
+            </p>
           </motion.div>
         </div>
       </section>
