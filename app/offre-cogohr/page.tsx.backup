@@ -16,11 +16,9 @@ import {
   MapPin,
   Phone,
   Mail,
-  Star,
-  AlertCircle
+  Star
 } from 'lucide-react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -56,227 +54,160 @@ const staggerContainer = {
   }
 };
 
-// Section Graphique Comparatif Horizontal - Version 2.1 (Timeline Avant/Après)
+// Composant Graphique Comparatif Personnalisé
 const RetirementComparisonChart = () => {
   return (
-    <div className="max-w-6xl mx-auto px-4 py-16">
-      {/* Cards comparatives */}
-      <div className="grid md:grid-cols-2 gap-6 lg:gap-8 mb-12">
-        {/* CARD 1 - SANS PER */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="relative border-2 border-red-200 bg-white p-6 md:p-8 rounded-sm shadow-md"
-        >
-          {/* Badge situation actuelle */}
-          <span className="text-xs uppercase tracking-wider text-red-600 bg-red-50 px-3 py-1 inline-block mb-4 font-medium">
-            SITUATION ACTUELLE
-          </span>
-
-          {/* Titre */}
-          <h3 className="text-xl md:text-2xl font-medium text-[#524c5d] mb-6">
-            Sans Plan Épargne Retraite
-          </h3>
-
-          {/* Timeline horizontale : Activité → Retraite */}
-          <div className="grid grid-cols-2 gap-0 mt-6">
-
-            {/* COLONNE GAUCHE - EN ACTIVITÉ */}
-            <div className="border-r-2 border-dashed border-gray-300 pr-3 md:pr-4">
-              <p className="text-xs uppercase font-semibold text-gray-600 mb-4 text-center">
-                EN ACTIVITÉ
-              </p>
-              <div className="h-48 md:h-64 bg-gray-200 border-2 border-gray-400 rounded-l-sm flex items-center justify-center">
-                <p className="text-center font-medium text-gray-700 px-2">
-                  Salaire<br/>actuel<br/>
-                  <span className="text-xl md:text-2xl font-bold block mt-2">100%</span>
-                </p>
-              </div>
-            </div>
-
-            {/* COLONNE DROITE - À LA RETRAITE */}
-            <div className="pl-3 md:pl-4">
-              <p className="text-xs uppercase font-semibold text-red-600 mb-4 text-center">
-                À LA RETRAITE
-              </p>
-              <div className="h-48 md:h-64 flex flex-col gap-0">
-                {/* Segment pension 50% */}
-                <div className="flex-1 bg-blue-200 border-l-4 border-blue-500 flex items-center justify-center px-2 md:px-3 rounded-tr-sm">
-                  <div className="text-center">
-                    <p className="text-xs md:text-sm text-blue-900 leading-tight">
-                      Pension régime<br/>par répartition
-                    </p>
-                    <p className="text-base md:text-lg font-bold text-blue-700 mt-1">50%</p>
-                  </div>
-                </div>
-
-                {/* Segment perte 50% */}
-                <div className="flex-1 bg-red-100 border-l-4 border-red-500 flex items-center justify-center px-2 md:px-3 gap-2 rounded-br-sm">
-                  <TrendingDown className="text-red-600 w-5 h-5 md:w-6 md:h-6 flex-shrink-0" />
-                  <div className="text-center">
-                    <p className="text-xs md:text-sm font-medium text-red-700 leading-tight">
-                      Perte de<br/>revenus
-                    </p>
-                    <p className="text-base md:text-lg font-bold text-red-600 mt-1">50%</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          {/* Label timeline */}
-          <div className="text-center mt-4 text-xs text-gray-500 flex items-center justify-center gap-2">
-            <span>Départ en retraite</span>
-            <span className="text-base">↓</span>
-          </div>
-        </motion.div>
-
-        {/* CARD 2 - AVEC PER */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="relative border-3 border-[#b4925e] bg-gradient-to-br from-[#b4925e]/5 to-white p-6 md:p-8 rounded-sm shadow-lg"
-        >
-          {/* Badge RECOMMANDÉ */}
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ type: "spring", bounce: 0.5, delay: 0.5 }}
-            className="absolute -top-4 right-8 bg-[#b4925e] text-white px-4 md:px-6 py-2 text-xs uppercase tracking-widest font-bold shadow-lg flex items-center gap-2"
-          >
-            <Award className="w-3 h-3" />
-            RECOMMANDÉ
-          </motion.div>
-
-          {/* Badge solution optimale */}
-          <span className="text-xs uppercase tracking-wider text-[#b4925e] bg-[#b4925e]/10 px-3 py-1 inline-block mb-4 font-medium">
-            SOLUTION OPTIMALE
-          </span>
-
-          {/* Titre */}
-          <h3 className="text-xl md:text-2xl font-medium text-[#b4925e] mb-6">
-            Avec Plan Épargne Retraite (PER)
-          </h3>
-
-          {/* Timeline horizontale : Activité → Retraite */}
-          <div className="grid grid-cols-2 gap-0 mt-6">
-
-            {/* COLONNE GAUCHE - EN ACTIVITÉ */}
-            <div className="border-r-2 border-dashed border-[#b4925e]/30 pr-3 md:pr-4">
-              <p className="text-xs uppercase font-semibold text-gray-600 mb-4 text-center">
-                EN ACTIVITÉ
-              </p>
-              <div className="h-48 md:h-64 bg-gray-200 border-2 border-gray-400 rounded-l-sm flex items-center justify-center">
-                <p className="text-center font-medium text-gray-700 px-2">
-                  Salaire<br/>actuel<br/>
-                  <span className="text-xl md:text-2xl font-bold block mt-2">100%</span>
-                </p>
-              </div>
-            </div>
-
-            {/* COLONNE DROITE - À LA RETRAITE */}
-            <div className="pl-3 md:pl-4">
-              <p className="text-xs uppercase font-semibold text-[#b4925e] mb-4 text-center">
-                À LA RETRAITE
-              </p>
-              <div className="h-48 md:h-64 flex flex-col gap-0">
-                {/* Segment pension ~40% */}
-                <motion.div
-                  initial={{ scaleY: 0 }}
-                  animate={{ scaleY: 1 }}
-                  transition={{ duration: 0.5, delay: 0.8 }}
-                  style={{ transformOrigin: "top" }}
-                  className="h-[38%] bg-blue-200 border-l-4 border-blue-500 flex items-center justify-center px-2 md:px-3 rounded-tr-sm"
-                >
-                  <div className="text-center">
-                    <p className="text-xs md:text-sm text-blue-900 leading-tight">
-                      Pension régime<br/>par répartition
-                    </p>
-                    <p className="text-base md:text-lg font-bold text-blue-700 mt-1">50%</p>
-                  </div>
-                </motion.div>
-
-                {/* Segment PER ~40% - LE PLUS IMPORTANT */}
-                <motion.div
-                  initial={{ scaleY: 0 }}
-                  animate={{ scaleY: 1, scale: [1, 1.02, 1] }}
-                  transition={{
-                    scaleY: { duration: 0.5, delay: 1 },
-                    scale: { repeat: Infinity, duration: 2, delay: 1.5 }
-                  }}
-                  style={{ transformOrigin: "top" }}
-                  className="h-[42%] bg-gradient-to-r from-[#b4925e] to-[#b4925e]/90 border-l-4 border-[#b4925e] flex items-center justify-center px-2 md:px-3 gap-2 cursor-pointer hover:shadow-lg transition-shadow"
-                >
-                  <Shield className="text-white w-5 h-5 md:w-7 md:h-7 flex-shrink-0" />
-                  <div className="text-center">
-                    <p className="text-xs md:text-sm font-semibold text-white leading-tight">
-                      Plan Épargne<br/>Retraite
-                    </p>
-                    <p className="text-lg md:text-xl font-bold text-white mt-1">30%</p>
-                  </div>
-                </motion.div>
-
-                {/* Segment perte réduite ~20% */}
-                <motion.div
-                  initial={{ scaleY: 0 }}
-                  animate={{ scaleY: 1 }}
-                  transition={{ duration: 0.5, delay: 1.2 }}
-                  style={{ transformOrigin: "top" }}
-                  className="h-[20%] bg-red-50 border-l-4 border-red-200 flex items-center justify-center px-2 md:px-3 rounded-br-sm"
-                >
-                  <div className="text-center">
-                    <p className="text-xs text-red-400 leading-tight">
-                      Perte réduite
-                    </p>
-                    <p className="text-sm md:text-base font-bold text-red-400">20%</p>
-                  </div>
-                </motion.div>
-              </div>
-            </div>
-
-          </div>
-
-          {/* Label timeline */}
-          <div className="text-center mt-4 text-xs text-gray-500 flex items-center justify-center gap-2">
-            <span>Départ en retraite</span>
-            <span className="text-base">↓</span>
-          </div>
-        </motion.div>
-      </div>
-
-      {/* Zone de comparaison en bas */}
+    <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto mt-16">
+      {/* SANS PER */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 1.4 }}
-        className="bg-[#524c5d] text-white p-6 md:p-8 rounded-sm grid md:grid-cols-2 gap-6 md:gap-8"
+        variants={fadeInUp}
+        className="bg-white border border-[#524c5d]/20 p-8 shadow-sm"
       >
-        {/* Colonne gauche - Impact */}
-        <div className="flex gap-4">
-          <AlertCircle className="text-red-300 w-8 h-8 md:w-10 md:h-10 flex-shrink-0" />
-          <div>
-            <h4 className="text-lg md:text-xl font-medium mb-3">
-              Impact sur votre pouvoir d'achat
-            </h4>
-            <p className="text-sm md:text-base text-white/90 leading-relaxed">
-              Sans PER, vous perdez jusqu'à 1 590€/mois à la retraite. Le PER vous permet de maintenir jusqu'à 80% de votre salaire actuel.
+        <h3 className="text-xl font-medium text-[#524c5d] mb-8 text-center">
+          Sans Plan Épargne Retraite
+        </h3>
+
+        <div className="flex gap-8 items-end justify-center h-[400px]">
+          {/* Bar EN ACTIVITÉ */}
+          <div className="flex flex-col items-center gap-3 flex-1">
+            <div className="relative w-full h-full flex flex-col justify-end">
+              <motion.div
+                className="bg-gray-300 w-full h-full rounded-t flex items-center justify-center"
+                initial={{ height: 0 }}
+                whileInView={{ height: '100%' }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                <span className="text-sm font-medium text-gray-700 [writing-mode:vertical-lr] rotate-180">
+                  100%
+                </span>
+              </motion.div>
+            </div>
+            <p className="text-xs uppercase tracking-wide font-medium text-[#524c5d] text-center">
+              En Activité
+            </p>
+          </div>
+
+          {/* Bar RETRAITE */}
+          <div className="flex flex-col items-center gap-3 flex-1">
+            <div className="relative w-full h-full flex flex-col justify-end">
+              {/* Segment Pension (50%) */}
+              <motion.div
+                className="bg-blue-300 w-full rounded-t flex items-center justify-center relative group"
+                style={{ height: '50%' }}
+                initial={{ height: 0 }}
+                whileInView={{ height: '50%' }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                whileHover={{ opacity: 0.8 }}
+              >
+                <span className="text-xs font-medium text-blue-900 [writing-mode:vertical-lr] rotate-180 px-1">
+                  50%
+                </span>
+                <div className="absolute -right-2 top-1/2 -translate-y-1/2 translate-x-full ml-2 bg-blue-900 text-white text-xs px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10">
+                  Pension régime par répartition
+                </div>
+              </motion.div>
+            </div>
+            <p className="text-xs uppercase tracking-wide font-medium text-red-600 text-center">
+              À la Retraite
             </p>
           </div>
         </div>
 
-        {/* Colonne droite - Solution */}
-        <div className="flex gap-4">
-          <CheckCircle2 className="text-[#b4925e] w-8 h-8 md:w-10 md:h-10 flex-shrink-0" />
+        <div className="mt-8 flex items-start gap-3 bg-red-50 border border-red-200 p-4 rounded">
+          <TrendingDown className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
           <div>
-            <h4 className="text-lg md:text-xl font-medium mb-3">
-              Solution avec le PER
-            </h4>
-            <p className="text-sm md:text-base text-white/90 leading-relaxed">
-              Grâce à un complément de revenus personnalisé, vous sécurisez votre niveau de vie et compensez la perte de votre prime de vie chère.
+            <p className="text-sm font-semibold text-red-900">Perte de revenus importante</p>
+            <p className="text-xs text-red-700 mt-1">Jusqu'à 50% de perte de revenus à la retraite</p>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* AVEC PER */}
+      <motion.div
+        variants={fadeInUp}
+        className="bg-white border-2 border-[#b4925e] p-8 shadow-lg relative"
+      >
+        <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#b4925e] text-white px-4 py-1 text-xs uppercase tracking-widest font-semibold">
+          Recommandé
+        </div>
+
+        <h3 className="text-xl font-medium text-[#b4925e] mb-8 text-center">
+          Avec Plan Épargne Retraite (PER)
+        </h3>
+
+        <div className="flex gap-8 items-end justify-center h-[400px]">
+          {/* Bar EN ACTIVITÉ */}
+          <div className="flex flex-col items-center gap-3 flex-1">
+            <div className="relative w-full h-full flex flex-col justify-end">
+              <motion.div
+                className="bg-gray-300 w-full h-full rounded-t flex items-center justify-center"
+                initial={{ height: 0 }}
+                whileInView={{ height: '100%' }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                <span className="text-sm font-medium text-gray-700 [writing-mode:vertical-lr] rotate-180">
+                  100%
+                </span>
+              </motion.div>
+            </div>
+            <p className="text-xs uppercase tracking-wide font-medium text-[#524c5d] text-center">
+              En Activité
             </p>
+          </div>
+
+          {/* Bar RETRAITE avec PER */}
+          <div className="flex flex-col items-center gap-3 flex-1">
+            <div className="relative w-full h-full flex flex-col justify-end">
+              {/* Segment PER (30%) */}
+              <motion.div
+                className="bg-[#b4925e] w-full rounded-t flex items-center justify-center relative group order-2"
+                style={{ height: '30%' }}
+                initial={{ height: 0 }}
+                whileInView={{ height: '30%' }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+                whileHover={{ opacity: 0.9 }}
+              >
+                <span className="text-xs font-semibold text-white [writing-mode:vertical-lr] rotate-180 px-1">
+                  +30%
+                </span>
+                <div className="absolute -right-2 top-1/2 -translate-y-1/2 translate-x-full ml-2 bg-[#b4925e] text-white text-xs px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10">
+                  Plan Épargne Retraite
+                </div>
+              </motion.div>
+
+              {/* Segment Pension (50%) */}
+              <motion.div
+                className="bg-blue-300 w-full flex items-center justify-center relative group order-1"
+                style={{ height: '50%' }}
+                initial={{ height: 0 }}
+                whileInView={{ height: '50%' }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                whileHover={{ opacity: 0.8 }}
+              >
+                <span className="text-xs font-medium text-blue-900 [writing-mode:vertical-lr] rotate-180 px-1">
+                  50%
+                </span>
+                <div className="absolute -right-2 top-1/2 -translate-y-1/2 translate-x-full ml-2 bg-blue-900 text-white text-xs px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                  Pension régime par répartition
+                </div>
+              </motion.div>
+            </div>
+            <p className="text-xs uppercase tracking-wide font-medium text-[#b4925e] text-center">
+              À la Retraite
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-8 flex items-start gap-3 bg-[#b4925e]/10 border border-[#b4925e] p-4 rounded">
+          <CheckCircle2 className="w-5 h-5 text-[#b4925e] flex-shrink-0 mt-0.5" />
+          <div>
+            <p className="text-sm font-semibold text-[#524c5d]">Perte de revenus réduite</p>
+            <p className="text-xs text-gray-700 mt-1">Jusqu'à 80% de votre salaire actuel maintenu</p>
           </div>
         </div>
       </motion.div>
@@ -485,21 +416,21 @@ export default function OffreCOGOHRPage() {
 
             {/* COLONNE DROITE - VISUEL */}
             <motion.div
-              className="relative h-[500px] lg:h-[600px] border border-[#524c5d]/20 overflow-hidden shadow-xl"
+              className="relative h-[500px] lg:h-[600px] bg-gradient-to-br from-[#524c5d]/10 to-[#b4925e]/10 border border-[#524c5d]/20 flex items-center justify-center overflow-hidden"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <Image
-                src="/images/cogohr-site.jpg"
-                alt="Site COGOHR Trois-Bassins - Résidence en bord de mer pour les hospitaliers de La Réunion"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 45vw"
-                priority
-              />
-              {/* Overlay pour assurer la lisibilité si besoin */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#524c5d]/20 to-transparent pointer-events-none" />
+              {/* Éléments géométriques Bauhaus */}
+              <div className="absolute top-10 left-10 w-32 h-32 rounded-full border-4 border-[#b4925e]/20" />
+              <div className="absolute bottom-20 right-10 w-40 h-40 bg-[#524c5d]/10" />
+              <div className="absolute top-1/2 right-1/4 w-24 h-24 rounded-full bg-[#b4925e]/10" />
+
+              {/* Texte placeholder */}
+              <p className="text-sm text-gray-400 text-center px-8">
+                [Photo site COGOHR à venir]
+              </p>
+              {/* TODO: Remplacer par <Image src="/images/cogohr-site.jpg" alt="Site COGOHR Trois-Bassins" fill className="object-cover" /> */}
             </motion.div>
           </div>
         </div>
@@ -509,7 +440,13 @@ export default function OffreCOGOHRPage() {
       <section className="py-24 bg-gray-50">
         <div className="container mx-auto px-4 md:px-8 max-w-6xl">
           {/* Titre */}
-          <div className="text-center mb-12">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             <h2 className="text-4xl font-light text-[#524c5d]">
               La Réalité de Votre Retraite
             </h2>
@@ -517,17 +454,31 @@ export default function OffreCOGOHRPage() {
             <p className="text-lg text-gray-600 font-light max-w-3xl mx-auto mt-6">
               Voici l'impact concret de la non-prise en compte de votre prime de vie chère sur vos revenus à la retraite.
             </p>
-          </div>
+          </motion.div>
 
           {/* Graphique Comparatif */}
-          <div>
+          <motion.div
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, amount: 0.2 }}
+          >
             <RetirementComparisonChart />
-          </div>
+          </motion.div>
 
           {/* Exemples Chiffrés */}
-          <div className="grid md:grid-cols-3 gap-6 mt-16">
+          <motion.div
+            className="grid md:grid-cols-3 gap-6 mt-16"
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, amount: 0.3 }}
+          >
             {/* Card 1: Revenu actuel */}
-            <div className="bg-white border border-[#524c5d]/20 p-8 text-center shadow-sm">
+            <motion.div
+              variants={fadeInUp}
+              className="bg-white border border-[#524c5d]/20 p-8 text-center shadow-sm"
+            >
               <p className="text-4xl font-light text-[#524c5d] mb-3">3 000€</p>
               <p className="text-xs uppercase tracking-wide text-gray-500 mb-3">
                 Revenu Mensuel Actuel
@@ -535,10 +486,13 @@ export default function OffreCOGOHRPage() {
               <p className="text-sm text-gray-600">
                 Dont 1 590€ de prime de vie chère (53%)
               </p>
-            </div>
+            </motion.div>
 
             {/* Card 2: Sans PER */}
-            <div className="bg-white border border-red-200 p-8 text-center shadow-sm">
+            <motion.div
+              variants={fadeInUp}
+              className="bg-white border border-red-200 p-8 text-center shadow-sm"
+            >
               <p className="text-4xl font-light text-red-600 mb-3">1 410€</p>
               <p className="text-xs uppercase tracking-wide text-gray-500 mb-3">
                 Pension Sans PER
@@ -546,10 +500,13 @@ export default function OffreCOGOHRPage() {
               <p className="text-sm text-red-600 font-medium">
                 Soit une perte de 1 590€/mois
               </p>
-            </div>
+            </motion.div>
 
             {/* Card 3: Avec PER */}
-            <div className="bg-white border-2 border-[#b4925e] p-8 text-center shadow-lg relative">
+            <motion.div
+              variants={fadeInUp}
+              className="bg-white border-2 border-[#b4925e] p-8 text-center shadow-lg relative"
+            >
               <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#b4925e] text-white px-3 py-1 text-xs uppercase tracking-wide font-semibold">
                 Solution
               </div>
@@ -560,8 +517,8 @@ export default function OffreCOGOHRPage() {
               <p className="text-sm text-[#b4925e] font-medium">
                 Grâce à un complément de 990€/mois
               </p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Note */}
           <p className="text-sm text-center text-gray-600 mt-12 max-w-3xl mx-auto">
@@ -574,19 +531,34 @@ export default function OffreCOGOHRPage() {
       <section id="solution" className="py-24 bg-white">
         <div className="container mx-auto px-4 md:px-8 max-w-6xl">
           {/* Titre */}
-          <div className="text-center mb-16">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             <h2 className="text-4xl font-light text-[#524c5d] mb-6">
               Le Plan d'Épargne Retraite :<br />Votre Solution
             </h2>
             <p className="text-lg text-gray-600 font-light max-w-3xl mx-auto">
               Une réponse adaptée, flexible et fiscalement avantageuse pour compenser la perte de votre prime de vie chère.
             </p>
-          </div>
+          </motion.div>
 
           {/* Grid 3 cards */}
-          <div className="grid md:grid-cols-3 gap-8">
+          <motion.div
+            className="grid md:grid-cols-3 gap-8"
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, amount: 0.2 }}
+          >
             {/* Card 1: Complément Garanti */}
-            <div className="bg-white border border-[#524c5d]/20 p-10 hover:border-[#b4925e] hover:shadow-xl hover:scale-105 transition-all duration-300">
+            <motion.div
+              variants={fadeInUp}
+              className="bg-white border border-[#524c5d]/20 p-10 hover:border-[#b4925e] hover:shadow-xl hover:scale-105 transition-all duration-300"
+            >
               <Shield className="w-16 h-16 text-[#b4925e] mb-6" strokeWidth={1.5} />
               <h3 className="text-xl font-semibold text-[#524c5d] mb-4">
                 Complément de Revenu Garanti
@@ -594,10 +566,13 @@ export default function OffreCOGOHRPage() {
               <p className="text-sm text-gray-600 font-light leading-relaxed">
                 Constituez un capital qui vous permettra de compenser la non-prise en compte de votre prime de vie chère. Sécurisez votre niveau de vie à la retraite avec des revenus complémentaires stables.
               </p>
-            </div>
+            </motion.div>
 
             {/* Card 2: Avantages Fiscaux */}
-            <div className="bg-white border border-[#524c5d]/20 p-10 hover:border-[#b4925e] hover:shadow-xl hover:scale-105 transition-all duration-300">
+            <motion.div
+              variants={fadeInUp}
+              className="bg-white border border-[#524c5d]/20 p-10 hover:border-[#b4925e] hover:shadow-xl hover:scale-105 transition-all duration-300"
+            >
               <TrendingUp className="w-16 h-16 text-[#b4925e] mb-6" strokeWidth={1.5} />
               <h3 className="text-xl font-semibold text-[#524c5d] mb-4">
                 Avantages Fiscaux Immédiats
@@ -605,10 +580,13 @@ export default function OffreCOGOHRPage() {
               <p className="text-sm text-gray-600 font-light leading-relaxed">
                 Les versements sur votre PER sont déductibles de votre revenu imposable. Réduisez votre impôt dès aujourd'hui tout en préparant demain. Optimisez votre fiscalité pendant votre carrière.
               </p>
-            </div>
+            </motion.div>
 
             {/* Card 3: Flexibilité */}
-            <div className="bg-white border border-[#524c5d]/20 p-10 hover:border-[#b4925e] hover:shadow-xl hover:scale-105 transition-all duration-300">
+            <motion.div
+              variants={fadeInUp}
+              className="bg-white border border-[#524c5d]/20 p-10 hover:border-[#b4925e] hover:shadow-xl hover:scale-105 transition-all duration-300"
+            >
               <Settings className="w-16 h-16 text-[#b4925e] mb-6" strokeWidth={1.5} />
               <h3 className="text-xl font-semibold text-[#524c5d] mb-4">
                 Flexibilité Totale
@@ -616,8 +594,8 @@ export default function OffreCOGOHRPage() {
               <p className="text-sm text-gray-600 font-light leading-relaxed">
                 Versements libres ou programmés selon vos capacités. À la retraite, choisissez votre mode de sortie : capital, rente viagère, ou un mix des deux. Le PER s'adapte à votre situation.
               </p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
@@ -625,7 +603,13 @@ export default function OffreCOGOHRPage() {
       <section className="py-24 bg-[#524c5d] text-white">
         <div className="container mx-auto px-4 md:px-8 max-w-6xl">
           {/* Badge + Titre */}
-          <div className="text-center mb-16">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             <div className="inline-block bg-[#b4925e] px-6 py-2 mb-8 text-xs uppercase tracking-widest font-semibold">
               Offre Exclusive Membres COGOHR
             </div>
@@ -635,12 +619,21 @@ export default function OffreCOGOHRPage() {
             <p className="text-lg font-light opacity-90 max-w-2xl mx-auto">
               En tant que membre du COGOHR, bénéficiez d'avantages exclusifs pour la mise en place de votre Plan d'Épargne Retraite.
             </p>
-          </div>
+          </motion.div>
 
           {/* Grid 2 cards */}
-          <div className="grid md:grid-cols-2 gap-8">
+          <motion.div
+            className="grid md:grid-cols-2 gap-8"
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, amount: 0.2 }}
+          >
             {/* Card 1: Étude Gratuite */}
-            <div className="bg-white/10 border border-white/20 backdrop-blur-sm p-10">
+            <motion.div
+              variants={fadeInUp}
+              className="bg-white/10 border border-white/20 backdrop-blur-sm p-10"
+            >
               <Gift className="w-20 h-20 text-[#b4925e] mb-6" strokeWidth={1.5} />
               <h3 className="text-2xl font-semibold mb-6">
                 Étude Personnalisée Gratuite
@@ -663,10 +656,13 @@ export default function OffreCOGOHRPage() {
                   <span className="text-sm font-light">Sans engagement de votre part</span>
                 </li>
               </ul>
-            </div>
+            </motion.div>
 
             {/* Card 2: 0% Frais */}
-            <div className="bg-white/10 border-2 border-[#b4925e] backdrop-blur-sm p-10">
+            <motion.div
+              variants={fadeInUp}
+              className="bg-white/10 border-2 border-[#b4925e] backdrop-blur-sm p-10"
+            >
               <Award className="w-20 h-20 text-[#b4925e] mb-6" strokeWidth={1.5} />
               <h3 className="text-2xl font-semibold mb-6">
                 0% de Frais d'Entrée
@@ -689,17 +685,23 @@ export default function OffreCOGOHRPage() {
                   <span className="text-sm font-light">Offre réservée exclusivement aux membres COGOHR</span>
                 </li>
               </ul>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* CTA */}
-          <div className="text-center mt-16">
+          <motion.div
+            className="text-center mt-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
             <Link href="#contact">
               <Button className="bg-[#b4925e] hover:bg-[#b4925e]/90 text-white px-16 py-6 text-lg">
                 Profiter de l'offre maintenant
               </Button>
             </Link>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -707,17 +709,29 @@ export default function OffreCOGOHRPage() {
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4 md:px-8 max-w-6xl">
           {/* Titre */}
-          <div className="text-center mb-16">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             <h2 className="text-4xl font-light text-[#524c5d]">
               Comment Ça Marche ?
             </h2>
             <div className="w-20 h-1 bg-[#b4925e] mx-auto mt-6" />
-          </div>
+          </motion.div>
 
           {/* Timeline 3 étapes */}
-          <div className="grid md:grid-cols-3 gap-12">
+          <motion.div
+            className="grid md:grid-cols-3 gap-12"
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, amount: 0.2 }}
+          >
             {/* Étape 1 */}
-            <div className="text-center space-y-6">
+            <motion.div variants={fadeInUp} className="text-center space-y-6">
               <div className="flex justify-center">
                 <div className="w-24 h-24 border-4 border-[#b4925e] flex items-center justify-center text-3xl font-light text-[#524c5d]">
                   01
@@ -736,10 +750,10 @@ export default function OffreCOGOHRPage() {
                 </div>
                 <p className="text-xs text-gray-600">Visioconférence 7j/7</p>
               </div>
-            </div>
+            </motion.div>
 
             {/* Étape 2 */}
-            <div className="text-center space-y-6">
+            <motion.div variants={fadeInUp} className="text-center space-y-6">
               <div className="flex justify-center">
                 <div className="w-24 h-24 border-4 border-[#b4925e] flex items-center justify-center text-3xl font-light text-[#524c5d]">
                   02
@@ -757,10 +771,10 @@ export default function OffreCOGOHRPage() {
                   <span>Sans engagement • Durée : 1h</span>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Étape 3 */}
-            <div className="text-center space-y-6">
+            <motion.div variants={fadeInUp} className="text-center space-y-6">
               <div className="flex justify-center">
                 <div className="w-24 h-24 bg-[#b4925e] flex items-center justify-center text-3xl font-light text-white">
                   03
@@ -778,8 +792,8 @@ export default function OffreCOGOHRPage() {
                   <span className="font-medium">Suivi dédié à vie</span>
                 </div>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
@@ -787,17 +801,32 @@ export default function OffreCOGOHRPage() {
       <section className="py-24 bg-gray-50">
         <div className="container mx-auto px-4 md:px-8 max-w-6xl">
           {/* Titre */}
-          <div className="text-center mb-16">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             <h2 className="text-4xl font-light text-[#524c5d]">
               Ils Nous Font Confiance
             </h2>
             <div className="w-20 h-1 bg-[#b4925e] mx-auto mt-6" />
-          </div>
+          </motion.div>
 
           {/* Grid témoignages */}
-          <div className="grid md:grid-cols-3 gap-8">
+          <motion.div
+            className="grid md:grid-cols-3 gap-8"
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, amount: 0.2 }}
+          >
             {/* Témoignage 1 */}
-            <div className="bg-white border-l-4 border-[#b4925e] p-8 shadow-sm">
+            <motion.div
+              variants={fadeInUp}
+              className="bg-white border-l-4 border-[#b4925e] p-8 shadow-sm"
+            >
               <div className="flex gap-1 mb-4">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-4 h-4 fill-[#b4925e] text-[#b4925e]" />
@@ -810,10 +839,13 @@ export default function OffreCOGOHRPage() {
                 <p className="text-sm font-medium text-[#524c5d]">Marie L.</p>
                 <p className="text-xs text-gray-500">Infirmière - CHU de La Réunion</p>
               </div>
-            </div>
+            </motion.div>
 
             {/* Témoignage 2 */}
-            <div className="bg-white border-l-4 border-[#b4925e] p-8 shadow-sm">
+            <motion.div
+              variants={fadeInUp}
+              className="bg-white border-l-4 border-[#b4925e] p-8 shadow-sm"
+            >
               <div className="flex gap-1 mb-4">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-4 h-4 fill-[#b4925e] text-[#b4925e]" />
@@ -826,10 +858,13 @@ export default function OffreCOGOHRPage() {
                 <p className="text-sm font-medium text-[#524c5d]">Jean-Paul M.</p>
                 <p className="text-xs text-gray-500">Cadre administratif - Hôpital de Saint-Pierre</p>
               </div>
-            </div>
+            </motion.div>
 
             {/* Témoignage 3 */}
-            <div className="bg-white border-l-4 border-[#b4925e] p-8 shadow-sm">
+            <motion.div
+              variants={fadeInUp}
+              className="bg-white border-l-4 border-[#b4925e] p-8 shadow-sm"
+            >
               <div className="flex gap-1 mb-4">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-4 h-4 fill-[#b4925e] text-[#b4925e]" />
@@ -842,8 +877,8 @@ export default function OffreCOGOHRPage() {
                 <p className="text-sm font-medium text-[#524c5d]">Sophie R.</p>
                 <p className="text-xs text-gray-500">Aide-soignante - CHU de La Réunion</p>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
@@ -851,15 +886,26 @@ export default function OffreCOGOHRPage() {
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4 md:px-8 max-w-4xl">
           {/* Titre */}
-          <div className="text-center mb-16">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             <h2 className="text-4xl font-light text-[#524c5d]">
               Questions Fréquentes
             </h2>
             <div className="w-20 h-1 bg-[#b4925e] mx-auto mt-6" />
-          </div>
+          </motion.div>
 
           {/* Accordion FAQ */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             <Accordion type="single" collapsible className="space-y-4">
               <AccordionItem value="q1" className="border border-[#524c5d]/20 px-6">
                 <AccordionTrigger className="text-left hover:text-[#b4925e] py-6">
@@ -915,7 +961,7 @@ export default function OffreCOGOHRPage() {
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -924,7 +970,13 @@ export default function OffreCOGOHRPage() {
         <div className="container mx-auto px-4 md:px-8 max-w-5xl">
           <div className="grid lg:grid-cols-[40%_60%] gap-12">
             {/* COLONNE GAUCHE - INFOS */}
-            <div className="space-y-8">
+            <motion.div
+              className="space-y-8"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
               <div>
                 <h2 className="text-3xl font-light text-[#524c5d] mb-6">
                   Prêt à Sécuriser<br />Votre Retraite ?
@@ -987,12 +1039,18 @@ export default function OffreCOGOHRPage() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* COLONNE DROITE - FORMULAIRE */}
-            <div className="bg-white border-2 border-[#524c5d]/20 p-10 shadow-lg">
+            <motion.div
+              className="bg-white border-2 border-[#524c5d]/20 p-10 shadow-lg"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
               <COGOHRContactForm />
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>

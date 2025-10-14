@@ -2,541 +2,653 @@
 
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { Button } from '@/components/ui/button';
-import Link from 'next/link';
+import { motion } from 'framer-motion';
 import {
-  ArrowRight,
-  PiggyBank,
-  Shield,
-  Briefcase,
-  TrendingUp,
   Home,
-  Users,
+  TrendingUp,
   FileText,
+  Shield,
+  Award,
+  Users,
+  Briefcase,
   Heart,
-  Building2,
-  Calculator,
-  Wallet,
-  BarChart3,
-  Landmark
+  ArrowRight
 } from 'lucide-react';
+import Link from 'next/link';
+
+// Animation variants
+const fadeInUp = {
+  initial: { opacity: 0, y: 30 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.6 }
+};
+
+const staggerContainer = {
+  animate: {
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
 
 export default function ServicesPage() {
   return (
     <main className="min-h-screen bg-white">
       <Header />
 
-      {/* Hero Section - Minimal */}
+      {/* SECTION 1: HERO */}
       <section className="pt-32 pb-20 bg-white">
-        <div className="container mx-auto px-8 max-w-6xl">
-          <div className="text-center space-y-6">
-            <p className="text-[11px] uppercase tracking-[0.3em] text-[#524c5d]/50 font-medium">
-              Expertise
+        <div className="container mx-auto px-4 md:px-8 max-w-4xl">
+          <motion.div
+            className="text-center space-y-8"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <p className="text-xs uppercase tracking-widest text-[#b4925e] font-medium">
+              NOS SERVICES
             </p>
-            <h1 className="text-5xl lg:text-6xl text-[#524c5d] leading-[1.1]">
-              <span className="font-light">Nos</span> <span className="font-bold">Services</span>
+
+            <h1 className="text-4xl lg:text-5xl text-[#524c5d] font-light leading-tight">
+              Notre périmètre<br />
+              d'intervention
             </h1>
-            <div className="w-16 h-[1px] bg-[#b4925e] mx-auto mt-6" />
-            <p className="text-base text-[#524c5d]/60 max-w-2xl mx-auto leading-relaxed font-light pt-4">
-              Un accompagnement global et personnalisé pour optimiser votre patrimoine et sécuriser votre avenir.
+
+            <p className="text-lg text-gray-600 font-light leading-relaxed max-w-2xl mx-auto">
+              Argam Conseil vous accompagne dans une démarche globale d'optimisation de votre patrimoine professionnel et personnel. L'intégration complète des dimensions stratégiques, fiscales, sociales, financières et juridiques est la base d'un conseil personnalisé complet et optimal.
             </p>
-          </div>
+
+            <div className="w-16 h-1 bg-[#b4925e] mx-auto mt-8" />
+          </motion.div>
         </div>
       </section>
 
-      {/* Section 1 - Gestion de Patrimoine */}
-      <section className="py-24 bg-white border-t border-[#524c5d]/10">
-        <div className="container mx-auto px-8 max-w-6xl">
-          {/* Section Header */}
-          <div className="flex items-center gap-6 mb-16">
-            <div className="p-4 border-[1px] border-[#b4925e]/30 bg-[#b4925e]/5">
-              <PiggyBank className="h-8 w-8 text-[#b4925e]" />
+      {/* SECTION 2: GESTION DE PATRIMOINE */}
+      <section className="py-24 bg-gray-50">
+        <div className="container mx-auto px-4 md:px-8 max-w-6xl">
+          {/* Titre section */}
+          <motion.div
+            className="mb-16 space-y-6"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="inline-block bg-[#b4925e]/10 text-[#b4925e] px-4 py-1 text-xs uppercase tracking-widest font-medium">
+              POUR TOUS
             </div>
-            <div>
-              <h2 className="text-3xl lg:text-4xl text-[#524c5d] font-light">
-                Gestion de <span className="font-semibold">Patrimoine</span>
-              </h2>
-              <p className="text-sm text-[#524c5d]/50 mt-2 font-light">
-                Optimisation et développement de votre patrimoine
-              </p>
-            </div>
-          </div>
+            <h2 className="text-3xl lg:text-4xl font-light text-[#524c5d]">
+              Gestion de Patrimoine
+            </h2>
+            <p className="text-gray-600 font-light leading-relaxed max-w-2xl">
+              Une approche globale pour optimiser, sécuriser et transmettre votre patrimoine.
+            </p>
+          </motion.div>
 
-          {/* Cards Grid */}
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Card 1 - Plan Épargne Retraite */}
-            <div className="group border-[1px] border-[#524c5d]/20 bg-white p-8 transition-all duration-300 hover:border-[#b4925e]">
-              <div className="flex items-start gap-4 mb-6">
-                <div className="p-3 border-[1px] border-[#524c5d]/15 bg-[#524c5d]/5 group-hover:border-[#b4925e]/30 group-hover:bg-[#b4925e]/5 transition-colors">
-                  <TrendingUp className="h-6 w-6 text-[#524c5d] group-hover:text-[#b4925e] transition-colors" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl text-[#524c5d] mb-2">
-                    <span className="font-light">Plan Épargne</span> <span className="font-semibold">Retraite</span>
-                  </h3>
-                  <p className="text-sm text-[#524c5d]/60 font-light leading-relaxed">
-                    Solution d'épargne retraite avec avantages fiscaux immédiats
-                  </p>
+          {/* Grille 3 colonnes */}
+          <motion.div
+            className="grid md:grid-cols-3 gap-8"
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            {/* Card 1: Patrimoine Immobilier */}
+            <motion.div
+              variants={fadeInUp}
+              className="bg-white border border-[#524c5d]/20 p-8 shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div className="space-y-6">
+                <Home className="w-12 h-12 text-[#b4925e]" strokeWidth={1.5} />
+                <h3 className="text-xl font-semibold text-[#524c5d]">
+                  Patrimoine Immobilier
+                </h3>
+
+                <div className="space-y-4 text-sm">
+                  <div>
+                    <p className="font-semibold text-[#524c5d] mb-2">Identification des modes de détention</p>
+                    <ul className="space-y-1 text-gray-600 font-light">
+                      <li>• Direct</li>
+                      <li>• Indivision</li>
+                      <li>• SCI / SARL patrimoniale</li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <p className="font-semibold text-[#524c5d] mb-2">Bien d'usage</p>
+                    <ul className="space-y-1 text-gray-600 font-light">
+                      <li>• Résidence principale / secondaire</li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <p className="font-semibold text-[#524c5d] mb-2">Investissement immobilier</p>
+                    <ul className="space-y-1 text-gray-600 font-light">
+                      <li>• Neuf / Ancien</li>
+                      <li>• Location nue ou meublée</li>
+                      <li>• Avec ou sans dispositifs fiscaux</li>
+                      <li>• Nue propriété</li>
+                      <li>• Viager</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
-              <ul className="space-y-3 text-sm text-[#524c5d]/70 font-light leading-relaxed">
-                <li className="flex items-start gap-3">
-                  <span className="text-[#b4925e] mt-1">•</span>
-                  <span>Déduction fiscale des versements de votre revenu imposable</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[#b4925e] mt-1">•</span>
-                  <span>Sortie en capital ou en rente à la retraite</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[#b4925e] mt-1">•</span>
-                  <span>Transmission optimisée à vos bénéficiaires</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[#b4925e] mt-1">•</span>
-                  <span>Gestion pilotée ou libre selon votre profil</span>
-                </li>
-              </ul>
-            </div>
+            </motion.div>
 
-            {/* Card 2 - Placement & Investissement Financier */}
-            <div className="group border-[1px] border-[#524c5d]/20 bg-white p-8 transition-all duration-300 hover:border-[#b4925e]">
-              <div className="flex items-start gap-4 mb-6">
-                <div className="p-3 border-[1px] border-[#524c5d]/15 bg-[#524c5d]/5 group-hover:border-[#b4925e]/30 group-hover:bg-[#b4925e]/5 transition-colors">
-                  <BarChart3 className="h-6 w-6 text-[#524c5d] group-hover:text-[#b4925e] transition-colors" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl text-[#524c5d] mb-2">
-                    <span className="font-light">Placement &</span> <span className="font-semibold">Investissement</span>
-                  </h3>
-                  <p className="text-sm text-[#524c5d]/60 font-light leading-relaxed">
-                    Diversification et optimisation de vos placements financiers
-                  </p>
+            {/* Card 2: Placement & Investissement */}
+            <motion.div
+              variants={fadeInUp}
+              className="bg-white border border-[#524c5d]/20 p-8 shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div className="space-y-6">
+                <TrendingUp className="w-12 h-12 text-[#b4925e]" strokeWidth={1.5} />
+                <h3 className="text-xl font-semibold text-[#524c5d]">
+                  Placement & Investissement Financier
+                </h3>
+
+                <div className="space-y-4 text-sm">
+                  <div>
+                    <p className="font-semibold text-[#524c5d] mb-2">Élaboration des stratégies d'investissements</p>
+                  </div>
+
+                  <div>
+                    <p className="font-semibold text-[#524c5d] mb-2">Enveloppes</p>
+                    <ul className="space-y-1 text-gray-600 font-light">
+                      <li>• Assurance-vie</li>
+                      <li>• Contrat de capitalisation</li>
+                      <li>• Épargne Retraite (PER)</li>
+                      <li>• Compte-titres</li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <p className="font-semibold text-[#524c5d] mb-2">Supports</p>
+                    <ul className="space-y-1 text-gray-600 font-light">
+                      <li>• Fonds Euros / OPCVM / OPCI</li>
+                      <li>• SCI / FCPR / FPCI</li>
+                      <li>• Produits structurés</li>
+                      <li>• Fonds non côtés</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
-              <div className="space-y-4">
-                <div>
-                  <p className="text-xs uppercase tracking-wider text-[#b4925e] font-medium mb-2">Enveloppes</p>
-                  <ul className="space-y-2 text-sm text-[#524c5d]/70 font-light">
-                    <li className="flex items-start gap-3">
-                      <span className="text-[#b4925e] mt-1">•</span>
-                      <span>Assurance-vie (fonds euros et unités de compte)</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-[#b4925e] mt-1">•</span>
-                      <span>Plan Épargne Retraite (PER)</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-[#b4925e] mt-1">•</span>
-                      <span>Compte-titres ordinaire (CTO)</span>
-                    </li>
+            </motion.div>
+
+            {/* Card 3: Optimisation Fiscale */}
+            <motion.div
+              variants={fadeInUp}
+              className="bg-white border border-[#524c5d]/20 p-8 shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div className="space-y-6">
+                <FileText className="w-12 h-12 text-[#b4925e]" strokeWidth={1.5} />
+                <h3 className="text-xl font-semibold text-[#524c5d]">
+                  Optimisation Fiscale
+                </h3>
+
+                <div className="space-y-4 text-sm">
+                  <div>
+                    <p className="font-semibold text-[#524c5d] mb-2">Élaboration des stratégies d'optimisation</p>
+                  </div>
+
+                  <div>
+                    <p className="font-semibold text-[#524c5d] mb-2">Supports défiscalisants</p>
+                    <ul className="space-y-1 text-gray-600 font-light">
+                      <li>• Girardin</li>
+                      <li>• FIP</li>
+                      <li>• FCPI</li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <p className="font-semibold text-[#524c5d] mb-2">Dispositifs immobiliers</p>
+                    <ul className="space-y-1 text-gray-600 font-light">
+                      <li>• Denormandie</li>
+                      <li>• LMNP</li>
+                      <li>• Malraux</li>
+                      <li>• Déficit Foncier</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* SECTION 3: POUR LE PARTICULIER */}
+      <section className="py-24 bg-white">
+        <div className="container mx-auto px-4 md:px-8 max-w-6xl">
+          {/* Titre section */}
+          <motion.div
+            className="mb-16 space-y-6"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="inline-block bg-[#b4925e]/10 text-[#b4925e] px-4 py-1 text-xs uppercase tracking-widest font-medium">
+              PARTICULIERS
+            </div>
+            <h2 className="text-3xl lg:text-4xl font-light text-[#524c5d]">
+              Solutions pour les Particuliers
+            </h2>
+          </motion.div>
+
+          {/* Grille 3 colonnes */}
+          <motion.div
+            className="grid md:grid-cols-3 gap-8"
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            {/* Card 1: Régime Matrimonial */}
+            <motion.div
+              variants={fadeInUp}
+              className="bg-white border border-[#524c5d]/20 p-8 shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div className="space-y-6">
+                <Users className="w-12 h-12 text-[#b4925e]" strokeWidth={1.5} />
+                <h3 className="text-xl font-semibold text-[#524c5d]">
+                  Régime Matrimonial
+                </h3>
+                <ul className="space-y-3 text-sm text-gray-600 font-light">
+                  <li>• Aide au choix et à la compréhension du régime</li>
+                  <li>• Identification des enjeux pendant et après l'union</li>
+                  <li>• Assistance dans la mise en place des dispositions nécessaires (donation, testament, changement de régime)</li>
+                </ul>
+              </div>
+            </motion.div>
+
+            {/* Card 2: Transmission Patrimoniale */}
+            <motion.div
+              variants={fadeInUp}
+              className="bg-white border border-[#524c5d]/20 p-8 shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div className="space-y-6">
+                <FileText className="w-12 h-12 text-[#b4925e]" strokeWidth={1.5} />
+                <h3 className="text-xl font-semibold text-[#524c5d]">
+                  Transmission Patrimoniale
+                </h3>
+
+                <div className="space-y-4 text-sm">
+                  <div>
+                    <p className="font-semibold text-[#524c5d] mb-2">Audit successoral</p>
+                    <p className="text-gray-600 font-light">Accompagnement dans l'élaboration des stratégies de transmission</p>
+                  </div>
+
+                  <div>
+                    <p className="font-semibold text-[#524c5d] mb-2">De votre vivant</p>
+                    <p className="text-gray-600 font-light">• Donations</p>
+                  </div>
+
+                  <div>
+                    <p className="font-semibold text-[#524c5d] mb-2">En cas de décès</p>
+                    <ul className="space-y-1 text-gray-600 font-light">
+                      <li>• Identifier les objectifs et enjeux</li>
+                      <li>• Anticiper et organiser la transmission</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Card 3: Financement */}
+            <motion.div
+              variants={fadeInUp}
+              className="bg-white border border-[#524c5d]/20 p-8 shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div className="space-y-6">
+                <TrendingUp className="w-12 h-12 text-[#b4925e]" strokeWidth={1.5} />
+                <h3 className="text-xl font-semibold text-[#524c5d]">
+                  Financement Particulier & Professionnel
+                </h3>
+                <ul className="space-y-3 text-sm text-gray-600 font-light">
+                  <li>• Structuration du plan de financement (avec ou sans apport)</li>
+                  <li>• Type, durée et taux du crédit</li>
+                  <li>• Renégociation de crédit</li>
+                  <li>• Mise en place et renégociation des assurances emprunteurs</li>
+                  <li>• Choix des quotités et des garanties</li>
+                </ul>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* SECTION 4: PROTECTION SOCIALE */}
+      <section className="py-24 bg-gray-50">
+        <div className="container mx-auto px-4 md:px-8 max-w-6xl">
+          {/* Titre section */}
+          <motion.div
+            className="mb-16 space-y-6"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="inline-block bg-[#b4925e]/10 text-[#b4925e] px-4 py-1 text-xs uppercase tracking-widest font-medium">
+              PROTECTION
+            </div>
+            <h2 className="text-3xl lg:text-4xl font-light text-[#524c5d]">
+              Protection Sociale
+            </h2>
+            <p className="text-gray-600 font-light leading-relaxed max-w-2xl">
+              Sécurisez votre avenir et celui de vos proches avec des solutions adaptées.
+            </p>
+          </motion.div>
+
+          {/* Grille 3 colonnes */}
+          <motion.div
+            className="grid md:grid-cols-3 gap-8"
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            {/* Card 1: Prévoyance */}
+            <motion.div
+              variants={fadeInUp}
+              className="bg-white border border-[#524c5d]/20 p-8 shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div className="space-y-6">
+                <Shield className="w-12 h-12 text-[#b4925e]" strokeWidth={1.5} />
+                <h3 className="text-xl font-semibold text-[#524c5d]">
+                  Prévoyance
+                </h3>
+
+                <div className="space-y-4 text-sm">
+                  <p className="text-gray-600 font-light">Audit des risques</p>
+                  <div>
+                    <p className="font-semibold text-[#524c5d] mb-2">Analyse et mise en place des couvertures :</p>
+                    <ul className="space-y-1 text-gray-600 font-light">
+                      <li>• Décès</li>
+                      <li>• Incapacité</li>
+                      <li>• Invalidité</li>
+                      <li>• Frais généraux</li>
+                      <li>• Garantie croisée associés</li>
+                      <li>• Garantie homme clé</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Card 2: Retraite */}
+            <motion.div
+              variants={fadeInUp}
+              className="bg-white border border-[#524c5d]/20 p-8 shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div className="space-y-6">
+                <Award className="w-12 h-12 text-[#b4925e]" strokeWidth={1.5} />
+                <h3 className="text-xl font-semibold text-[#524c5d]">
+                  Épargne Retraite
+                </h3>
+
+                <div className="space-y-4 text-sm">
+                  <ul className="space-y-2 text-gray-600 font-light">
+                    <li>• Bilan retraite complet</li>
+                    <li>• Élaboration des stratégies de départ</li>
+                    <li>• Aide à la liquidation</li>
                   </ul>
-                </div>
-                <div>
-                  <p className="text-xs uppercase tracking-wider text-[#b4925e] font-medium mb-2">Supports</p>
-                  <ul className="space-y-2 text-sm text-[#524c5d]/70 font-light">
-                    <li className="flex items-start gap-3">
-                      <span className="text-[#b4925e] mt-1">•</span>
-                      <span>Fonds Euros sécurisés</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-[#b4925e] mt-1">•</span>
-                      <span>OPCVM, OPCI, ETF</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-[#b4925e] mt-1">•</span>
-                      <span>FCPR (Private Equity)</span>
-                    </li>
-                  </ul>
+                  <div>
+                    <p className="font-semibold text-[#524c5d] mb-2">Analyse et mise en place des couvertures :</p>
+                    <ul className="space-y-1 text-gray-600 font-light">
+                      <li>• PERin (individuel)</li>
+                      <li>• PERECO (collectif)</li>
+                      <li>• PERO (obligatoire)</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
-            {/* Card 3 - Investissement Immobilier */}
-            <div className="group border-[1px] border-[#524c5d]/20 bg-white p-8 transition-all duration-300 hover:border-[#b4925e]">
-              <div className="flex items-start gap-4 mb-6">
-                <div className="p-3 border-[1px] border-[#524c5d]/15 bg-[#524c5d]/5 group-hover:border-[#b4925e]/30 group-hover:bg-[#b4925e]/5 transition-colors">
-                  <Home className="h-6 w-6 text-[#524c5d] group-hover:text-[#b4925e] transition-colors" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl text-[#524c5d] mb-2">
-                    <span className="font-light">Investissement</span> <span className="font-semibold">Immobilier</span>
-                  </h3>
-                  <p className="text-sm text-[#524c5d]/60 font-light leading-relaxed">
-                    Stratégies locatives et défiscalisation immobilière
-                  </p>
-                </div>
-              </div>
-              <ul className="space-y-3 text-sm text-[#524c5d]/70 font-light leading-relaxed">
-                <li className="flex items-start gap-3">
-                  <span className="text-[#b4925e] mt-1">•</span>
-                  <span>Dispositifs Pinel, Malraux, Monuments Historiques</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[#b4925e] mt-1">•</span>
-                  <span>SCPI et OPCI pour investir sans contraintes de gestion</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[#b4925e] mt-1">•</span>
-                  <span>Démembrement de propriété (nue-propriété / usufruit)</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[#b4925e] mt-1">•</span>
-                  <span>Accompagnement dans le montage financier et l'optimisation</span>
-                </li>
-              </ul>
-            </div>
+            {/* Card 3: Santé */}
+            <motion.div
+              variants={fadeInUp}
+              className="bg-white border border-[#524c5d]/20 p-8 shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div className="space-y-6">
+                <Heart className="w-12 h-12 text-[#b4925e]" strokeWidth={1.5} />
+                <h3 className="text-xl font-semibold text-[#524c5d]">
+                  Complémentaire Santé
+                </h3>
 
-            {/* Card 4 - Transmission de Patrimoine */}
-            <div className="group border-[1px] border-[#524c5d]/20 bg-white p-8 transition-all duration-300 hover:border-[#b4925e]">
-              <div className="flex items-start gap-4 mb-6">
-                <div className="p-3 border-[1px] border-[#524c5d]/15 bg-[#524c5d]/5 group-hover:border-[#b4925e]/30 group-hover:bg-[#b4925e]/5 transition-colors">
-                  <Users className="h-6 w-6 text-[#524c5d] group-hover:text-[#b4925e] transition-colors" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl text-[#524c5d] mb-2">
-                    <span className="font-light">Transmission de</span> <span className="font-semibold">Patrimoine</span>
-                  </h3>
-                  <p className="text-sm text-[#524c5d]/60 font-light leading-relaxed">
-                    Optimisation de la transmission à vos proches
-                  </p>
-                </div>
+                <ul className="space-y-3 text-sm text-gray-600 font-light">
+                  <li>• Recueil des besoins</li>
+                  <li>• Analyse et mise en place des couvertures santé adaptées</li>
+                  <li>• Solutions individuelles et collectives</li>
+                </ul>
               </div>
-              <ul className="space-y-3 text-sm text-[#524c5d]/70 font-light leading-relaxed">
-                <li className="flex items-start gap-3">
-                  <span className="text-[#b4925e] mt-1">•</span>
-                  <span>Donation de son vivant (donation simple, donation-partage)</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[#b4925e] mt-1">•</span>
-                  <span>Pacte Dutreil pour les entreprises familiales</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[#b4925e] mt-1">•</span>
-                  <span>Optimisation des droits de succession et démembrement</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[#b4925e] mt-1">•</span>
-                  <span>Testament, mandats de protection future</span>
-                </li>
-              </ul>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Section 2 - Protection Sociale */}
-      <section className="py-24 bg-[#f8f8f8]">
-        <div className="container mx-auto px-8 max-w-6xl">
-          {/* Section Header */}
-          <div className="flex items-center gap-6 mb-16">
-            <div className="p-4 border-[1px] border-[#b4925e]/30 bg-[#b4925e]/5">
-              <Heart className="h-8 w-8 text-[#b4925e]" />
+      {/* SECTION 5: POUR LES DIRIGEANTS */}
+      <section className="py-24 bg-white">
+        <div className="container mx-auto px-4 md:px-8 max-w-6xl">
+          {/* Titre section */}
+          <motion.div
+            className="mb-16 space-y-6"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="inline-block bg-[#b4925e]/10 text-[#b4925e] px-4 py-1 text-xs uppercase tracking-widest font-medium">
+              DIRIGEANTS
             </div>
-            <div>
-              <h2 className="text-3xl lg:text-4xl text-[#524c5d] font-light">
-                Protection <span className="font-semibold">Sociale</span>
-              </h2>
-              <p className="text-sm text-[#524c5d]/50 mt-2 font-light">
-                Sécuriser votre avenir et celui de vos proches
+            <h2 className="text-3xl lg:text-4xl font-light text-[#524c5d]">
+              Solutions pour les Dirigeants
+            </h2>
+            <p className="text-gray-600 font-light leading-relaxed max-w-2xl">
+              Concentrez-vous sur votre développement, nous optimisons votre protection sociale et votre rémunération.
+            </p>
+          </motion.div>
+
+          {/* Grille 2 colonnes */}
+          <motion.div
+            className="grid md:grid-cols-2 gap-8"
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            {/* Card 1: Structure & Statut */}
+            <motion.div
+              variants={fadeInUp}
+              className="bg-white border border-[#524c5d]/20 p-8 shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div className="space-y-6">
+                <Briefcase className="w-12 h-12 text-[#b4925e]" strokeWidth={1.5} />
+                <h3 className="text-xl font-semibold text-[#524c5d]">
+                  Structure Juridique & Statut Social
+                </h3>
+
+                <div className="space-y-4 text-sm">
+                  <div>
+                    <p className="font-semibold text-[#524c5d] mb-2">Structure juridique</p>
+                    <p className="text-gray-600 font-light">• Conseils sur le choix de la structure (SARL, SAS, EURL)</p>
+                  </div>
+
+                  <div>
+                    <p className="font-semibold text-[#524c5d] mb-2">Statut social</p>
+                    <ul className="space-y-1 text-gray-600 font-light">
+                      <li>• Conseils sur le choix du statut (TNS, mandataire social, salarié)</li>
+                      <li>• Étude de changement de statut</li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <p className="font-semibold text-[#524c5d] mb-2">Optimisation de la rémunération</p>
+                    <ul className="space-y-1 text-gray-600 font-light">
+                      <li>• Arbitrage rémunération / dividendes</li>
+                      <li>• Mesure des impacts sur les droits futurs (prévoyance et retraite)</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Card 2: Pour l'Entreprise */}
+            <motion.div
+              variants={fadeInUp}
+              className="bg-white border border-[#524c5d]/20 p-8 shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div className="space-y-6">
+                <Briefcase className="w-12 h-12 text-[#b4925e]" strokeWidth={1.5} />
+                <h3 className="text-xl font-semibold text-[#524c5d]">
+                  Solutions pour l'Entreprise
+                </h3>
+
+                <div className="space-y-4 text-sm">
+                  <div>
+                    <p className="font-semibold text-[#524c5d] mb-2">Trésorerie d'entreprise</p>
+                    <ul className="space-y-1 text-gray-600 font-light">
+                      <li>• Identification de l'épargne structurelle</li>
+                      <li>• Élaboration de la stratégie d'investissements</li>
+                      <li>• Enveloppes : Contrat de capitalisation, compte-titres, CAT</li>
+                      <li>• Supports : Fonds 150-0 B ter, produits structurés</li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <p className="font-semibold text-[#524c5d] mb-2">Épargne salariale</p>
+                    <ul className="space-y-1 text-gray-600 font-light">
+                      <li>• Mise en place des accords (intéressement, participation)</li>
+                      <li>• Solutions : PEE, PEG, PERECO</li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <p className="font-semibold text-[#524c5d] mb-2">Couverture collective (+ de 20 salariés)</p>
+                    <ul className="space-y-1 text-gray-600 font-light">
+                      <li>• Mise en conformité (CCN, DUE)</li>
+                      <li>• Prévoyance, santé, retraite et IFC</li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <p className="font-semibold text-[#524c5d] mb-2">Assurances IARD</p>
+                    <ul className="space-y-1 text-gray-600 font-light">
+                      <li>• Analyse des risques</li>
+                      <li>• Multirisques et RC pro</li>
+                      <li>• Dommages ouvrages, décennale</li>
+                      <li>• Responsabilité civile du mandataire social</li>
+                      <li>• Flotte de véhicules, assurance de locaux</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* SECTION 6: NOTRE MÉTHODE */}
+      <section className="py-24 bg-[#524c5d] text-white">
+        <div className="container mx-auto px-4 md:px-8 max-w-4xl">
+          {/* Titre */}
+          <motion.div
+            className="text-center mb-16 space-y-6"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-3xl lg:text-4xl font-light">
+              Notre Méthode
+            </h2>
+            <p className="text-white/80 font-light leading-relaxed max-w-2xl mx-auto">
+              Une approche systématique pour vous garantir des solutions optimales.
+            </p>
+          </motion.div>
+
+          {/* 3 étapes horizontales */}
+          <motion.div
+            className="grid md:grid-cols-3 gap-12"
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            {/* Étape 1 */}
+            <motion.div variants={fadeInUp} className="text-center space-y-6">
+              <div className="flex justify-center">
+                <span className="text-6xl font-light text-[#b4925e]">01</span>
+              </div>
+              <h3 className="text-xl font-semibold">Audit Complet</h3>
+              <p className="text-sm text-white/70 font-light leading-relaxed">
+                La réalisation systématique d'un audit complet vous permet d'appréhender les zones de risques et d'identifier vos besoins.
               </p>
-            </div>
-          </div>
+            </motion.div>
 
-          {/* Cards Grid */}
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Card 1 - Prévoyance */}
-            <div className="group border-[1px] border-[#524c5d]/20 bg-white p-8 transition-all duration-300 hover:border-[#b4925e]">
-              <div className="flex items-start gap-4 mb-6">
-                <div className="p-3 border-[1px] border-[#524c5d]/15 bg-[#524c5d]/5 group-hover:border-[#b4925e]/30 group-hover:bg-[#b4925e]/5 transition-colors">
-                  <Shield className="h-6 w-6 text-[#524c5d] group-hover:text-[#b4925e] transition-colors" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl text-[#524c5d] mb-2">
-                    <span className="font-semibold">Prévoyance</span> <span className="font-light">et Garanties</span>
-                  </h3>
-                  <p className="text-sm text-[#524c5d]/60 font-light leading-relaxed">
-                    Protection contre les aléas de la vie
-                  </p>
-                </div>
+            {/* Étape 2 */}
+            <motion.div variants={fadeInUp} className="text-center space-y-6">
+              <div className="flex justify-center">
+                <span className="text-6xl font-light text-[#b4925e]">02</span>
               </div>
-              <ul className="space-y-3 text-sm text-[#524c5d]/70 font-light leading-relaxed">
-                <li className="flex items-start gap-3">
-                  <span className="text-[#b4925e] mt-1">•</span>
-                  <span>Garantie décès et invalidité (PTIA)</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[#b4925e] mt-1">•</span>
-                  <span>Rente éducation pour vos enfants</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[#b4925e] mt-1">•</span>
-                  <span>Maintien de revenus en cas d'arrêt de travail</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[#b4925e] mt-1">•</span>
-                  <span>Capital ou rente pour votre conjoint et vos proches</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[#b4925e] mt-1">•</span>
-                  <span>Garanties modulables selon votre situation familiale</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Card 2 - Complémentaire Santé */}
-            <div className="group border-[1px] border-[#524c5d]/20 bg-white p-8 transition-all duration-300 hover:border-[#b4925e]">
-              <div className="flex items-start gap-4 mb-6">
-                <div className="p-3 border-[1px] border-[#524c5d]/15 bg-[#524c5d]/5 group-hover:border-[#b4925e]/30 group-hover:bg-[#b4925e]/5 transition-colors">
-                  <Heart className="h-6 w-6 text-[#524c5d] group-hover:text-[#b4925e] transition-colors" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl text-[#524c5d] mb-2">
-                    <span className="font-light">Complémentaire</span> <span className="font-semibold">Santé</span>
-                  </h3>
-                  <p className="text-sm text-[#524c5d]/60 font-light leading-relaxed">
-                    Couverture adaptée à vos besoins et votre situation
-                  </p>
-                </div>
-              </div>
-              <ul className="space-y-3 text-sm text-[#524c5d]/70 font-light leading-relaxed">
-                <li className="flex items-start gap-3">
-                  <span className="text-[#b4925e] mt-1">•</span>
-                  <span>Remboursement des frais médicaux non couverts par la Sécurité Sociale</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[#b4925e] mt-1">•</span>
-                  <span>Garanties optiques, dentaires, hospitalisation</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[#b4925e] mt-1">•</span>
-                  <span>Solutions dédiées aux fonctionnaires et leurs familles</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[#b4925e] mt-1">•</span>
-                  <span>Tarifs négociés avec nos partenaires</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Card 3 - Assurance Dépendance */}
-            <div className="group border-[1px] border-[#524c5d]/20 bg-white p-8 transition-all duration-300 hover:border-[#b4925e]">
-              <div className="flex items-start gap-4 mb-6">
-                <div className="p-3 border-[1px] border-[#524c5d]/15 bg-[#524c5d]/5 group-hover:border-[#b4925e]/30 group-hover:bg-[#b4925e]/5 transition-colors">
-                  <Landmark className="h-6 w-6 text-[#524c5d] group-hover:text-[#b4925e] transition-colors" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl text-[#524c5d] mb-2">
-                    <span className="font-light">Assurance</span> <span className="font-semibold">Dépendance</span>
-                  </h3>
-                  <p className="text-sm text-[#524c5d]/60 font-light leading-relaxed">
-                    Anticipez la perte d'autonomie
-                  </p>
-                </div>
-              </div>
-              <ul className="space-y-3 text-sm text-[#524c5d]/70 font-light leading-relaxed">
-                <li className="flex items-start gap-3">
-                  <span className="text-[#b4925e] mt-1">•</span>
-                  <span>Rente mensuelle en cas de dépendance partielle ou totale</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[#b4925e] mt-1">•</span>
-                  <span>Services d'accompagnement et d'assistance à domicile</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[#b4925e] mt-1">•</span>
-                  <span>Protection de votre patrimoine familial</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[#b4925e] mt-1">•</span>
-                  <span>Cotisations déductibles fiscalement (selon conditions)</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Section 3 - Pour le Dirigeant */}
-      <section className="py-24 bg-white border-t border-[#524c5d]/10">
-        <div className="container mx-auto px-8 max-w-6xl">
-          {/* Section Header */}
-          <div className="flex items-center gap-6 mb-16">
-            <div className="p-4 border-[1px] border-[#b4925e]/30 bg-[#b4925e]/5">
-              <Briefcase className="h-8 w-8 text-[#b4925e]" />
-            </div>
-            <div>
-              <h2 className="text-3xl lg:text-4xl text-[#524c5d] font-light">
-                Pour le <span className="font-semibold">Dirigeant</span>
-              </h2>
-              <p className="text-sm text-[#524c5d]/50 mt-2 font-light">
-                Solutions dédiées aux chefs d'entreprise et professions libérales
+              <h3 className="text-xl font-semibold">Approche par le Besoin</h3>
+              <p className="text-sm text-white/70 font-light leading-relaxed">
+                Cette approche par le besoin vous garantit la mise en place de solutions sur mesure, parfaitement adaptées à votre situation.
               </p>
-            </div>
-          </div>
+            </motion.div>
 
-          {/* Cards Grid */}
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Card 1 - Retraite Dirigeant */}
-            <div className="group border-[1px] border-[#524c5d]/20 bg-white p-8 transition-all duration-300 hover:border-[#b4925e]">
-              <div className="flex items-start gap-4 mb-6">
-                <div className="p-3 border-[1px] border-[#524c5d]/15 bg-[#524c5d]/5 group-hover:border-[#b4925e]/30 group-hover:bg-[#b4925e]/5 transition-colors">
-                  <Building2 className="h-6 w-6 text-[#524c5d] group-hover:text-[#b4925e] transition-colors" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl text-[#524c5d] mb-2">
-                    <span className="font-light">Retraite</span> <span className="font-semibold">Dirigeant</span>
-                  </h3>
-                  <p className="text-sm text-[#524c5d]/60 font-light leading-relaxed">
-                    Préparez votre retraite en optimisant fiscalité
-                  </p>
-                </div>
+            {/* Étape 3 */}
+            <motion.div variants={fadeInUp} className="text-center space-y-6">
+              <div className="flex justify-center">
+                <span className="text-6xl font-light text-[#b4925e]">03</span>
               </div>
-              <ul className="space-y-3 text-sm text-[#524c5d]/70 font-light leading-relaxed">
-                <li className="flex items-start gap-3">
-                  <span className="text-[#b4925e] mt-1">•</span>
-                  <span>Article 83 : retraite supplémentaire d'entreprise</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[#b4925e] mt-1">•</span>
-                  <span>Contrat Madelin pour TNS (Travailleurs Non Salariés)</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[#b4925e] mt-1">•</span>
-                  <span>PER Entreprise Collectif (PERECO) et PER Obligatoire (PERO)</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[#b4925e] mt-1">•</span>
-                  <span>Déductibilité des cotisations de l'entreprise</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Card 2 - Épargne Salariale */}
-            <div className="group border-[1px] border-[#524c5d]/20 bg-white p-8 transition-all duration-300 hover:border-[#b4925e]">
-              <div className="flex items-start gap-4 mb-6">
-                <div className="p-3 border-[1px] border-[#524c5d]/15 bg-[#524c5d]/5 group-hover:border-[#b4925e]/30 group-hover:bg-[#b4925e]/5 transition-colors">
-                  <Users className="h-6 w-6 text-[#524c5d] group-hover:text-[#b4925e] transition-colors" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl text-[#524c5d] mb-2">
-                    <span className="font-light">Épargne</span> <span className="font-semibold">Salariale</span>
-                  </h3>
-                  <p className="text-sm text-[#524c5d]/60 font-light leading-relaxed">
-                    Dispositifs collectifs motivants pour vos équipes
-                  </p>
-                </div>
-              </div>
-              <ul className="space-y-3 text-sm text-[#524c5d]/70 font-light leading-relaxed">
-                <li className="flex items-start gap-3">
-                  <span className="text-[#b4925e] mt-1">•</span>
-                  <span>Plan d'Épargne Entreprise (PEE)</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[#b4925e] mt-1">•</span>
-                  <span>Plan d'Épargne Retraite Collectif (PERECO)</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[#b4925e] mt-1">•</span>
-                  <span>Participation et intéressement des salariés</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[#b4925e] mt-1">•</span>
-                  <span>Exonérations sociales et fiscales avantageuses</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Card 3 - Assurance Homme Clé */}
-            <div className="group border-[1px] border-[#524c5d]/20 bg-white p-8 transition-all duration-300 hover:border-[#b4925e]">
-              <div className="flex items-start gap-4 mb-6">
-                <div className="p-3 border-[1px] border-[#524c5d]/15 bg-[#524c5d]/5 group-hover:border-[#b4925e]/30 group-hover:bg-[#b4925e]/5 transition-colors">
-                  <Calculator className="h-6 w-6 text-[#524c5d] group-hover:text-[#b4925e] transition-colors" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl text-[#524c5d] mb-2">
-                    <span className="font-light">Assurance</span> <span className="font-semibold">Homme Clé</span>
-                  </h3>
-                  <p className="text-sm text-[#524c5d]/60 font-light leading-relaxed">
-                    Protégez votre entreprise contre la perte d'un collaborateur essentiel
-                  </p>
-                </div>
-              </div>
-              <ul className="space-y-3 text-sm text-[#524c5d]/70 font-light leading-relaxed">
-                <li className="flex items-start gap-3">
-                  <span className="text-[#b4925e] mt-1">•</span>
-                  <span>Indemnisation en cas de décès ou invalidité</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[#b4925e] mt-1">•</span>
-                  <span>Maintien de l'activité et de la trésorerie</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[#b4925e] mt-1">•</span>
-                  <span>Garanties modulables selon la valeur de la personne clé</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[#b4925e] mt-1">•</span>
-                  <span>Cotisations déductibles du résultat de l'entreprise</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Card 4 - Transmission d'Entreprise */}
-            <div className="group border-[1px] border-[#524c5d]/20 bg-white p-8 transition-all duration-300 hover:border-[#b4925e]">
-              <div className="flex items-start gap-4 mb-6">
-                <div className="p-3 border-[1px] border-[#524c5d]/15 bg-[#524c5d]/5 group-hover:border-[#b4925e]/30 group-hover:bg-[#b4925e]/5 transition-colors">
-                  <FileText className="h-6 w-6 text-[#524c5d] group-hover:text-[#b4925e] transition-colors" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl text-[#524c5d] mb-2">
-                    <span className="font-light">Transmission</span> <span className="font-semibold">d'Entreprise</span>
-                  </h3>
-                  <p className="text-sm text-[#524c5d]/60 font-light leading-relaxed">
-                    Accompagnement dans la cession ou transmission de votre société
-                  </p>
-                </div>
-              </div>
-              <ul className="space-y-3 text-sm text-[#524c5d]/70 font-light leading-relaxed">
-                <li className="flex items-start gap-3">
-                  <span className="text-[#b4925e] mt-1">•</span>
-                  <span>Valorisation de l'entreprise et audit préalable</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[#b4925e] mt-1">•</span>
-                  <span>Optimisation fiscale de la cession (abattement, apport-cession)</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[#b4925e] mt-1">•</span>
-                  <span>Pacte Dutreil pour transmission familiale</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[#b4925e] mt-1">•</span>
-                  <span>Stratégie patrimoniale post-cession et réinvestissement</span>
-                </li>
-              </ul>
-            </div>
-          </div>
+              <h3 className="text-xl font-semibold">Suivi Personnalisé</h3>
+              <p className="text-sm text-white/70 font-light leading-relaxed">
+                Un accompagnement continu pour ajuster et optimiser vos solutions patrimoniales dans la durée.
+              </p>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
-      {/* CTA Final */}
-      <section className="py-32 bg-[#524c5d]">
-        <div className="container mx-auto px-8 max-w-4xl text-center">
-          <h2 className="text-4xl lg:text-5xl font-light text-white mb-6">
-            Prêt à <span className="font-bold">Optimiser</span> votre Patrimoine ?
-          </h2>
-          <p className="text-white/70 text-lg font-light mb-10 max-w-2xl mx-auto">
-            Nos experts vous accompagnent dans la mise en place de solutions sur-mesure adaptées à votre situation.
-          </p>
-          <Link href="/contact">
-            <button className="group relative px-12 py-5 bg-white border-[1px] border-white text-[#524c5d] text-sm uppercase tracking-[0.15em] font-medium overflow-hidden transition-all duration-300 hover:bg-[#b4925e] hover:text-white hover:border-[#b4925e]">
-              <span className="relative z-10 flex items-center gap-3">
-                Demander une étude gratuite
-                <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </span>
-            </button>
-          </Link>
+      {/* SECTION 7: CTA FINAL */}
+      <section className="py-24 bg-white">
+        <div className="container mx-auto px-4 md:px-8 max-w-4xl">
+          <motion.div
+            className="text-center space-y-8"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-3xl lg:text-4xl text-[#524c5d] font-light">
+              Une question sur nos services ?
+            </h2>
+            <p className="text-base text-gray-600 font-light leading-relaxed max-w-2xl mx-auto">
+              Nos experts sont à votre disposition pour vous présenter nos solutions en détail et répondre à toutes vos questions.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-4">
+              <Link href="/contact">
+                <motion.button
+                  className="px-12 py-4 bg-[#b4925e] hover:bg-[#b4925e]/90 text-white text-sm uppercase tracking-wider font-medium transition-all duration-300"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Prendre rendez-vous
+                </motion.button>
+              </Link>
+
+              <Link href="/equipe">
+                <motion.button
+                  className="group px-12 py-4 bg-white border border-[#524c5d]/30 text-[#524c5d] hover:border-[#b4925e] hover:text-[#b4925e] text-sm uppercase tracking-wider font-medium transition-all duration-300 flex items-center gap-3"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Voir notre équipe
+                  <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </motion.button>
+              </Link>
+            </div>
+          </motion.div>
         </div>
       </section>
 
