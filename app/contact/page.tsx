@@ -108,7 +108,7 @@ export default function ContactPage() {
 
                   {/* Email */}
                   <a
-                    href="mailto:contact@argam-conseils.fr"
+                    href="mailto:contact@argamconseils.com"
                     className="group flex items-start gap-4 p-5 border-[1px] border-[#524c5d]/20 bg-white transition-all duration-300 hover:border-[#b4925e]"
                   >
                     <div className="p-3 border-[1px] border-[#524c5d]/15 bg-[#524c5d]/5 group-hover:border-[#b4925e]/30 group-hover:bg-[#b4925e]/5 transition-colors">
@@ -119,7 +119,7 @@ export default function ContactPage() {
                         Email
                       </p>
                       <p className="text-sm font-semibold text-[#524c5d] mb-1 break-all">
-                        contact@argam-conseils.fr
+                        contact@argamconseils.com
                       </p>
                       <p className="text-xs text-[#524c5d]/60 font-light">
                         Réponse sous 24h ouvrées

@@ -113,10 +113,10 @@ export function Footer() {
                 <li className="flex items-start gap-3">
                   <Mail className="h-4 w-4 text-[#b4925e] flex-shrink-0 mt-0.5" />
                   <a
-                    href="mailto:contact@argam-conseils.fr"
+                    href="mailto:contact@argamconseils.com"
                     className="text-sm text-white/70 hover:text-[#b4925e] transition-colors font-light break-all"
                   >
-                    contact@argam-conseils.fr
+                    contact@argamconseils.com
                   </a>
                 </li>
                 <li className="flex items-start gap-3">

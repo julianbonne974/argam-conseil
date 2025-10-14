@@ -284,7 +284,7 @@ export default function CGUPage() {
                 <p>Pour toute question concernant ces Conditions Générales d'Utilisation :</p>
                 <p><strong className="font-semibold text-[#524c5d]">Argam Conseil</strong></p>
                 <p>52 allées de Tourny<br />33000 Bordeaux</p>
-                <p><strong className="font-semibold text-[#524c5d]">Email :</strong> <a href="mailto:contact@argam-conseils.fr" className="text-[#b4925e] hover:underline">contact@argam-conseils.fr</a></p>
+                <p><strong className="font-semibold text-[#524c5d]">Email :</strong> <a href="mailto:contact@argamconseils.com" className="text-[#b4925e] hover:underline">contact@argamconseils.com</a></p>
                 <p><strong className="font-semibold text-[#524c5d]">Téléphone :</strong> 05 33 89 14 00</p>
               </div>
             </div>

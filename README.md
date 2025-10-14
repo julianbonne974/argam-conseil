@@ -124,7 +124,7 @@ Le formulaire de contact utilise Netlify Forms :
 
 ## 📞 Contact
 
-- **Email** : contact@argam-conseils.fr
+- **Email** : contact@argamconseils.com
 - **Téléphone** : 05 33 89 14 00
 - **Adresses** :
   - Bordeaux (Siège)

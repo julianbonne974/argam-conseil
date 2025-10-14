@@ -52,7 +52,7 @@ export default function MentionsLegalesPage() {
                   <p><strong className="font-semibold text-[#524c5d]">SIRET :</strong> [Numéro SIRET]</p>
                   <p><strong className="font-semibold text-[#524c5d]">TVA intracommunautaire :</strong> [Numéro TVA]</p>
                   <p><strong className="font-semibold text-[#524c5d]">Téléphone :</strong> 05 33 89 14 00</p>
-                  <p><strong className="font-semibold text-[#524c5d]">Email :</strong> contact@argam-conseils.fr</p>
+                  <p><strong className="font-semibold text-[#524c5d]">Email :</strong> contact@argamconseils.com</p>
                 </div>
               </div>
 

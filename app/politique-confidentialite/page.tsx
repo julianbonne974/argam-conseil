@@ -221,7 +221,7 @@ export default function PolitiqueConfidentialitePage() {
                   <li><strong className="font-semibold text-[#524c5d]">Droit de retrait du consentement :</strong> À tout moment</li>
                 </ul>
                 <p className="pt-4">
-                  Pour exercer ces droits, contactez-nous par email à <a href="mailto:contact@argam-conseils.fr" className="text-[#b4925e] hover:underline font-semibold">contact@argam-conseils.fr</a> ou par courrier à notre siège social.
+                  Pour exercer ces droits, contactez-nous par email à <a href="mailto:contact@argamconseils.com" className="text-[#b4925e] hover:underline font-semibold">contact@argamconseils.com</a> ou par courrier à notre siège social.
                 </p>
                 <p>
                   Vous disposez également du droit de déposer une réclamation auprès de la CNIL (<a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer" className="text-[#b4925e] hover:underline">www.cnil.fr</a>).
@@ -259,7 +259,7 @@ export default function PolitiqueConfidentialitePage() {
               </h2>
               <div className="text-sm text-[#524c5d]/70 font-light leading-relaxed space-y-2">
                 <p>Pour toute question concernant cette politique de confidentialité ou vos données personnelles :</p>
-                <p><strong className="font-semibold text-[#524c5d]">Email :</strong> <a href="mailto:contact@argam-conseils.fr" className="text-[#b4925e] hover:underline">contact@argam-conseils.fr</a></p>
+                <p><strong className="font-semibold text-[#524c5d]">Email :</strong> <a href="mailto:contact@argamconseils.com" className="text-[#b4925e] hover:underline">contact@argamconseils.com</a></p>
                 <p><strong className="font-semibold text-[#524c5d]">Téléphone :</strong> 05 33 89 14 00</p>
                 <p><strong className="font-semibold text-[#524c5d]">Courrier :</strong> Argam Conseil - 52 allées de Tourny, 33000 Bordeaux</p>
               </div>

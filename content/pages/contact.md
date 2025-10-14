@@ -2,7 +2,7 @@
 bordeaux:
   adresse: "52 allées de Tourny\n33000 Bordeaux\nFrance"
   telephone: "05 33 89 14 00"
-  email: "contact@argam-conseils.fr"
+  email: "contact@argamconseils.com"
 
 reunion:
   adresse: "Trois-Bassins\n97426 La Réunion\nFrance"

@@ -231,7 +231,7 @@ export const metadata: Metadata = {
 
 ### Contact Information
 - Phone: 05 33 89 14 00
-- Email: contact@argam-conseils.fr
+- Email: contact@argamconseils.com
 - Locations: Bordeaux (HQ) + Trois-Bassins, La Réunion
 - ORIAS: 12345678
 - Regulatory: ANACOFI-CIF, Médiateur AMF
