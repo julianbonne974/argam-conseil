@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* PRIMARY - BRUN-DORÉ #b4925e (PANTONE 465 C) */
+    /* RGB: 180, 146, 94 → HSL: 36° 36% 54% */
+    --primary: 36 36% 54%;
+    --primary-foreground: 0 0% 100%;
+
+    /* SECONDARY - GRIS-AUBERGINE #524c5d (PANTONE 7666 C) */
+    /* RGB: 82, 76, 93 → HSL: 261° 10% 33% */
+    --secondary: 261 10% 33%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* ACCENT - Brun doré plus clair (variante de primary) */
+    --accent: 36 36% 64%;
+    --accent-foreground: 261 10% 20%;
+
+    /* MUTED - Gris très clair pour backgrounds subtils */
+    --muted: 36 20% 95%;
+    --muted-foreground: 261 10% 40%;
+
+    /* BACKGROUND - Blanc pur */
+    --background: 0 0% 100%;
+    --foreground: 261 10% 10%;
+
+    /* CARD - Blanc pur */
+    --card: 0 0% 100%;
+    --card-foreground: 261 10% 10%;
+
+    /* POPOVER */
+    --popover: 0 0% 100%;
+    --popover-foreground: 261 10% 10%;
+
+    /* BORDER - Brun doré très subtil */
+    --border: 36 30% 85%;
+    --input: 36 30% 85%;
+    --ring: 36 36% 54%;
+
+    /* DESTRUCTIVE - Gris neutre (pas de rouge) */
+    --destructive: 0 0% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* RADIUS - Minimal (Bauhaus) */
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Animations personnalisées */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out;
+}
