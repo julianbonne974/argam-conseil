@@ -144,14 +144,30 @@ export function ContactFormModern() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-card border-[1px] border-border p-8 space-y-6">
-          {/* Name */}
+    <form
+      name="contact"
+      method="POST"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      onSubmit={handleSubmit}
+      className="bg-card border-[1px] border-border p-8 space-y-6"
+    >
+      {/* Hidden inputs for Netlify */}
+      <input type="hidden" name="form-name" value="contact" />
+      <div style={{ display: 'none' }}>
+        <label>
+          Don't fill this out if you're human: <input name="bot-field" />
+        </label>
+      </div>
+
+      {/* Name */}
           <div className="space-y-2">
             <Label htmlFor="name" className="text-xs uppercase tracking-wide text-muted-foreground">
               Nom <span className="text-red-500">*</span>
             </Label>
             <Input
               id="name"
+              name="name"
               type="text"
               value={formData.name}
               onChange={(e) => handleInputChange('name', e.target.value)}
@@ -172,6 +188,7 @@ export function ContactFormModern() {
             </Label>
             <Input
               id="email"
+              name="email"
               type="email"
               value={formData.email}
               onChange={(e) => handleInputChange('email', e.target.value)}
@@ -192,6 +209,7 @@ export function ContactFormModern() {
             </Label>
             <Input
               id="phone"
+              name="phone"
               type="tel"
               placeholder="0692 XX XX XX"
               value={formData.phone}
@@ -212,6 +230,7 @@ export function ContactFormModern() {
               Fonction <span className="text-red-500">*</span>
             </Label>
             <Select
+              name="fonction"
               value={formData.fonction}
               onValueChange={(value) => {
                 handleInputChange('fonction', value);
@@ -240,6 +259,7 @@ export function ContactFormModern() {
           <div className="space-y-3">
             <Label className="text-xs uppercase tracking-wide text-muted-foreground">Type de rendez-vous</Label>
             <RadioGroup
+              name="meetingType"
               value={formData.meetingType}
               onValueChange={(value: 'visio' | 'presentiel') =>
                 handleInputChange('meetingType', value)
@@ -269,6 +289,7 @@ export function ContactFormModern() {
             </Label>
             <Textarea
               id="message"
+              name="message"
               rows={4}
               placeholder="Précisez vos questions ou votre situation..."
               value={formData.message}
@@ -282,6 +303,7 @@ export function ContactFormModern() {
           <div className="flex items-start space-x-3 bg-muted/30 p-4 border-[1px] border-border">
             <Checkbox
               id="isCogohrMember"
+              name="isCogohrMember"
               checked={formData.isCogohrMember}
               onCheckedChange={(checked) =>
                 handleInputChange('isCogohrMember', checked === true)
@@ -290,10 +312,10 @@ export function ContactFormModern() {
             />
             <div className="flex-1">
               <Label htmlFor="isCogohrMember" className="text-xs cursor-pointer font-medium">
-                Je suis membre du COGOHR
+                Je suis adhérent du COGOHR
               </Label>
               <p className="text-[10px] text-muted-foreground mt-1">
-                Les membres COGOHR bénéficient d'une étude gratuite + 0% de frais d'entrée
+                Les adhérents COGOHR bénéficient d'une étude gratuite + 0% de frais d'entrée
               </p>
             </div>
           </div>

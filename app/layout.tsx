@@ -39,7 +39,8 @@ export default function RootLayout({
         <Toaster position="bottom-right" richColors />
 
         {/* Hidden Netlify Form for detection */}
-        <form name="contact" data-netlify="true" hidden>
+        <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+          <input type="hidden" name="form-name" value="contact" />
           <input type="text" name="name" />
           <input type="email" name="email" />
           <input type="tel" name="phone" />
@@ -55,7 +56,7 @@ export default function RootLayout({
           <input type="radio" name="meetingType" value="visio" />
           <input type="radio" name="meetingType" value="presentiel" />
           <textarea name="message"></textarea>
-          <input type="checkbox" name="isCogohrMember" />
+          <input type="text" name="isCogohrMember" />
         </form>
 
         {/* Netlify Identity Widget Initialization */}
