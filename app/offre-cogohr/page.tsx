@@ -442,7 +442,7 @@ export default function OffreCOGOHRPage() {
             >
               {/* Badge */}
               <div className="inline-block bg-[#b4925e]/10 text-[#b4925e] px-4 py-2 text-xs uppercase tracking-widest font-semibold">
-                Offre Exclusive Membres COGOHR
+                Offre Exclusive Adhérents COGOHR
               </div>
 
               {/* Titre */}
@@ -627,13 +627,13 @@ export default function OffreCOGOHRPage() {
           {/* Badge + Titre */}
           <div className="text-center mb-16">
             <div className="inline-block bg-[#b4925e] px-6 py-2 mb-8 text-xs uppercase tracking-widest font-semibold">
-              Offre Exclusive Membres COGOHR
+              Offre Exclusive Adhérents COGOHR
             </div>
             <h2 className="text-4xl font-light mb-6">
               Votre Accompagnement Privilégié
             </h2>
             <p className="text-lg font-light opacity-90 max-w-2xl mx-auto">
-              En tant que membre du COGOHR, bénéficiez d'avantages exclusifs pour la mise en place de votre Plan d'Épargne Retraite.
+              En tant que adhérent du COGOHR, bénéficiez d'avantages exclusifs pour la mise en place de votre Plan d'Épargne Retraite.
             </p>
           </div>
 
@@ -686,7 +686,7 @@ export default function OffreCOGOHRPage() {
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="w-5 h-5 text-[#b4925e] flex-shrink-0 mt-0.5" />
-                  <span className="text-sm font-light">Offre réservée exclusivement aux membres COGOHR</span>
+                  <span className="text-sm font-light">Offre réservée exclusivement aux adhérents COGOHR</span>
                 </li>
               </ul>
             </div>
@@ -911,7 +911,7 @@ export default function OffreCOGOHRPage() {
                   Pourquoi l'offre COGOHR est-elle avantageuse ?
                 </AccordionTrigger>
                 <AccordionContent className="text-sm text-gray-600 leading-relaxed pb-6">
-                  L'offre exclusive réservée aux membres COGOHR vous fait bénéficier d'une étude personnalisée gratuite (valeur : 300€) et surtout de 0% de frais d'entrée (économie jusqu'à 3% de vos versements, soit plusieurs milliers d'euros). C'est une opportunité unique pour optimiser votre préparation retraite.
+                  L'offre exclusive réservée aux adhérents COGOHR vous fait bénéficier d'une étude personnalisée gratuite (valeur : 300€) et surtout de 0% de frais d'entrée (économie jusqu'à 3% de vos versements, soit plusieurs milliers d'euros). C'est une opportunité unique pour optimiser votre préparation retraite.
                 </AccordionContent>
               </AccordionItem>
             </Accordion>

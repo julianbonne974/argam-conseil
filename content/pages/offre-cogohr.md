@@ -1,7 +1,7 @@
 ---
 hero:
   badge: "PARTENARIAT EXCLUSIF"
-  titre: "Offre réservée aux membres COGOHR"
+  titre: "Offre réservée aux adhérents COGOHR"
   soustitre: "Bénéficiez d'avantages exclusifs pour préparer votre retraite : étude gratuite et 0% de frais d'entrée sur votre Plan Épargne Retraite."
   chiffrePrincipal: "53%"
   labelChiffre: "PRIME DE VIE CHÈRE"

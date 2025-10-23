@@ -39,7 +39,7 @@ export function AvantagesCards() {
         </CardHeader>
         <CardContent className="text-center">
           <p className="text-sm text-muted-foreground leading-relaxed">
-            Exonération totale pour les membres COGOHR. Économie significative sur le long terme
+            Exonération totale pour les adhérents COGOHR. Économie significative sur le long terme
           </p>
         </CardContent>
       </Card>

@@ -62,7 +62,7 @@ export default function ContactPage() {
                   <div className="w-2 h-2 rounded-full bg-[#b4925e] mt-2" />
                   <div>
                     <p className="text-sm font-semibold text-[#524c5d] mb-2">
-                      Membre COGOHR ?
+                      Adhérent COGOHR ?
                     </p>
                     <p className="text-xs text-[#524c5d]/60 font-light leading-relaxed">
                       Cochez la case correspondante dans le formulaire pour bénéficier de votre étude gratuite et de 0% de frais d'entrée sur votre Plan Épargne Retraite.

@@ -61,7 +61,7 @@ export function AvantagesCards() {
             <CardContent>
               <p className="text-muted-foreground">
                 Bénéficiez d'une exonération totale des frais d'entrée (jusqu'à 3%) sur votre Plan Épargne
-                Retraite. Réservé aux membres COGOHR.
+                Retraite. Réservé aux adhérents COGOHR.
               </p>
             </CardContent>
           </Card>

@@ -219,7 +219,7 @@ export default function EquipeClient({ members }: EquipeClientProps) {
 
       {/* SECTION 4: ASSISTANTES */}
       <section className="py-24 bg-gray-50">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h2
             initial="hidden"
             whileInView="visible"
@@ -241,38 +241,40 @@ export default function EquipeClient({ members }: EquipeClientProps) {
               <motion.div
                 key={membre.nom}
                 variants={fadeInUp}
-                className="bg-white border border-[#524c5d]/20 p-6 shadow-sm transition-all"
+                className="bg-white border border-[#524c5d]/20 p-8 shadow-sm hover:shadow-md transition-all"
               >
-                <div className="grid grid-cols-1 sm:grid-cols-[30%_70%] gap-6 items-center">
-                  {/* Photo */}
-                  <motion.div whileHover={{ scale: 1.05 }}>
-                    <div className="aspect-square max-w-[120px] mx-auto sm:mx-0 bg-gradient-to-br from-[#b4925e]/20 to-[#524c5d]/10 border-2 border-[#b4925e]/30 rounded-sm flex items-center justify-center">
-                      {membre.photo ? (
-                        <img
-                          src={membre.photo}
-                          alt={membre.nom}
-                          className="w-full h-full object-cover rounded-sm"
-                        />
-                      ) : (
-                        <span className="text-3xl font-light text-[#b4925e]">
+                {/* Photo */}
+                <motion.div whileHover={{ scale: 1.05 }} className="mb-6">
+                  <div className="aspect-square w-full max-w-xs mx-auto bg-gradient-to-br from-[#b4925e]/20 to-[#524c5d]/10 border-2 border-[#b4925e]/30 rounded-sm flex flex-col items-center justify-center">
+                    {membre.photo ? (
+                      <img
+                        src={membre.photo}
+                        alt={membre.nom}
+                        className="w-full h-full object-cover rounded-sm"
+                      />
+                    ) : (
+                      <>
+                        <span className="text-5xl font-light text-[#b4925e]">
                           {getInitials(membre.nom)}
                         </span>
-                      )}
-                    </div>
-                  </motion.div>
-
-                  {/* Contenu */}
-                  <div className="text-center sm:text-left">
-                    <h3 className="text-lg font-medium text-[#524c5d] mb-1">
-                      {membre.nom || 'Nom inconnu'}
-                    </h3>
-                    <p className="text-xs uppercase tracking-wider text-[#b4925e] mb-3">
-                      {membre.poste || 'Poste'}
-                    </p>
-                    <p className="text-sm text-gray-600 font-light">
-                      {membre.bio || ''}
-                    </p>
+                        <span className="text-xs text-gray-400 mt-2">[Photo à venir]</span>
+                      </>
+                    )}
                   </div>
+                </motion.div>
+
+                {/* Contenu */}
+                <div className="text-center">
+                  <h3 className="text-xl font-medium text-[#524c5d] mb-2">
+                    {membre.nom || 'Nom inconnu'}
+                  </h3>
+                  <p className="text-xs uppercase tracking-wider text-[#b4925e] mb-4">
+                    {membre.poste || 'Poste'}
+                  </p>
+                  <div className="h-px bg-[#524c5d]/20 mb-4" />
+                  <p className="text-sm text-gray-600 font-light leading-relaxed">
+                    {membre.bio || ''}
+                  </p>
                 </div>
               </motion.div>
             ))}

@@ -30,7 +30,7 @@ export function FAQSection() {
     {
       question: "Pourquoi choisir Argam Conseil ?",
       answer:
-        "Nous sommes spécialisés dans l'accompagnement des fonctionnaires hospitaliers de La Réunion. Partenaire officiel du COGOHR, nous proposons une étude gratuite, 0% de frais d'entrée pour les membres, et un suivi personnalisé par des experts qui connaissent votre statut et vos enjeux.",
+        "Nous sommes spécialisés dans l'accompagnement des fonctionnaires hospitaliers de La Réunion. Partenaire officiel du COGOHR, nous proposons une étude gratuite, 0% de frais d'entrée pour les adhérents, et un suivi personnalisé par des experts qui connaissent votre statut et vos enjeux.",
     },
     {
       question: "Combien dois-je épargner par mois ?",
