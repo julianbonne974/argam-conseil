@@ -2,7 +2,7 @@
 nom: "Clémence DALLA VECCHIA"
 poste: "Chargée de Clientèle Gestion de Patrimoine"
 bio: "Experte en stratégie patrimoniale, Clémence vous aide à bâtir, valoriser et transmettre votre patrimoine en toute sérénité, avec une approche claire et personnalisée."
-photo: ""
+photo: "/equipe/clemence-dalla-vecchia.jpg"
 ordre: 5
 type: "conseiller"
 ---
