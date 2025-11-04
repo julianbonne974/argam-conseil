@@ -132,7 +132,7 @@ images: { unoptimized: true }
 Use real-time validation with error states:
 - **Name**: min 2 characters
 - **Email**: valid email format
-- **Phone**: French Réunion format (0692 XX XX XX or +262...)
+- **Phone**: French format (06 XX XX XX XX or +262...)
 - **Fonction**: required select dropdown
 
 ### Toast Notifications
@@ -233,8 +233,12 @@ export const metadata: Metadata = {
 - Phone: 05 33 89 14 00
 - Email: contact@argamconseils.com
 - Locations: Bordeaux (HQ) + Trois-Bassins, La Réunion
-- ORIAS: 12345678
-- Regulatory: ANACOFI-CIF, Médiateur AMF
+- ORIAS: 20194827
+- SIRET: 800 527 824
+- Capital social: 217 600 €
+- Carte professionnelle: CPI 3301 2021 000 004 612
+- Garant financier: GALIAN Assurances
+- Regulatory: ANCACOFI-CIF, Médiateur AMF
 
 ## Testing Checklist
 

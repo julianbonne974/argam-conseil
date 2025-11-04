@@ -84,9 +84,15 @@ export default function MentionsLegalesPage() {
                   Enregistrements professionnels
                 </h2>
                 <div className="text-sm text-[#524c5d]/70 font-light leading-relaxed space-y-2">
-                  <p><strong className="font-semibold text-[#524c5d]">ORIAS :</strong> 12345678</p>
-                  <p>Conseiller en Investissements Financiers (CIF) et Courtier en Assurance</p>
-                  <p><strong className="font-semibold text-[#524c5d]">Association professionnelle :</strong> ANACOFI-CIF</p>
+                  <p><strong className="font-semibold text-[#524c5d]">Forme juridique :</strong> SAS ARGAM CONSEILS</p>
+                  <p><strong className="font-semibold text-[#524c5d]">Capital social :</strong> 217 600 €</p>
+                  <p><strong className="font-semibold text-[#524c5d]">SIRET :</strong> 800 527 824</p>
+                  <p><strong className="font-semibold text-[#524c5d]">Siège social :</strong> 30 avenue Thiers - 33100 Bordeaux</p>
+                  <p><strong className="font-semibold text-[#524c5d]">ORIAS :</strong> 20194827 - <a href="https://www.orias.fr" target="_blank" rel="noopener noreferrer" className="text-[#b4925e] hover:underline">www.orias.fr</a></p>
+                  <p>Conseiller en Investissements Financiers (CIF), Intermédiaire en opérations de banque et en services de paiement, Activité de transactions sur immeubles et fonds de commerce, Courtage en assurance</p>
+                  <p><strong className="font-semibold text-[#524c5d]">Carte professionnelle :</strong> CPI 3301 2021 000 004 612</p>
+                  <p><strong className="font-semibold text-[#524c5d]">Garant financier :</strong> GALIAN Assurances - 89 rue de la Boétie, 75008 Paris</p>
+                  <p><strong className="font-semibold text-[#524c5d]">Association professionnelle :</strong> ANCACOFI-CIF</p>
                   <p><strong className="font-semibold text-[#524c5d]">Médiateur :</strong> Autorité des Marchés Financiers (AMF)</p>
                   <p><strong className="font-semibold text-[#524c5d]">Autorité de contrôle :</strong> Autorité de Contrôle Prudentiel et de Résolution (ACPR)</p>
                 </div>

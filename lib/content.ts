@@ -38,6 +38,7 @@ export interface Service {
 export interface FAQ {
   question: string;
   reponse: string;
+  categorie?: 'général' | 'COGOHR';
   ordre: number;
 }
 
@@ -182,6 +183,14 @@ export function getAllServices(): Service[] {
 }
 
 /**
+ * Récupère les FAQ par catégorie
+ */
+export function getFAQByCategory(category: 'général' | 'COGOHR'): FAQ[] {
+  const allFAQ = getAllFAQ();
+  return allFAQ.filter(faq => faq.categorie === category);
+}
+
+/**
  * Récupère toutes les questions FAQ triées par ordre
  */
 export function getAllFAQ(): FAQ[] {
@@ -200,6 +209,7 @@ export function getAllFAQ(): FAQ[] {
         return {
           question: data.question || '',
           reponse: data.reponse || '',
+          categorie: data.categorie || 'général',
           ordre: data.ordre || 999,
         } as FAQ;
       })
@@ -254,4 +264,74 @@ export function getFooterSettings(): FooterSettings {
     };
   }
   return settings as FooterSettings;
+}
+
+// Type pour les horaires et disponibilités
+export interface HorairesSettings {
+  horaires: {
+    jours: string
+    joursCOGOHR: string
+    ouverture: string
+    fermeture: string
+    format: string
+    formatContact: string
+  }
+  visio: {
+    disponibilite: string
+    disponibiliteCOGOHR: string
+    joursComplets: string
+    note: string
+  }
+  delaiReponse: {
+    delai: string
+    precision: string
+    messageToast: string
+    cta: string
+  }
+  processus: {
+    dureeEtude: string
+    formatDuree: string
+  }
+}
+
+/**
+ * Récupère les paramètres horaires et disponibilités
+ */
+export function getHoraires(): HorairesSettings {
+  const fullPath = path.join(contentDirectory, 'settings', 'horaires.yml');
+
+  try {
+    const fileContents = fs.readFileSync(fullPath, 'utf8');
+    const data = yaml.load(fileContents) as HorairesSettings;
+    return data;
+  } catch (error) {
+    console.error('Erreur lecture horaires:', error);
+    // Valeurs par défaut si le fichier n'existe pas
+    return {
+      horaires: {
+        jours: "Lundi - Vendredi",
+        joursCOGOHR: "Mercredi - Samedi",
+        ouverture: "11h00",
+        fermeture: "19h00",
+        format: "11h - 19h",
+        formatContact: "11h00 - 19h00"
+      },
+      visio: {
+        disponibilite: "5j/7",
+        disponibiliteCOGOHR: "4j/7",
+        joursComplets: "Lundi au Vendredi",
+        note: "sur rendez-vous"
+      },
+      delaiReponse: {
+        delai: "48h",
+        precision: "48h ouvrées",
+        messageToast: "Nous vous recontacterons sous 48h. Vérifiez vos emails.",
+        cta: "Réponse sous 48h"
+      },
+      processus: {
+        dureeEtude: "45mn",
+        formatDuree: "Durée : 45mn"
+      }
+    };
+  }
 }

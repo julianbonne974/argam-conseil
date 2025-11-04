@@ -81,7 +81,7 @@ export default function ServicesPage() {
               Gestion de Patrimoine
             </h2>
             <p className="text-gray-600 font-light leading-relaxed max-w-2xl">
-              Une approche globale pour optimiser, sécuriser et transmettre votre patrimoine.
+              Une approche personnalisée pour vous garantir des solutions optimales.
             </p>
           </motion.div>
 

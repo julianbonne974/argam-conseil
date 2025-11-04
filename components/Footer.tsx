@@ -1,4 +1,4 @@
-import { Phone, Mail, MapPin, Linkedin, Facebook, Instagram } from 'lucide-react';
+import { Phone, Mail, MapPin } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -22,7 +22,7 @@ export function Footer() {
               </Link>
             </div>
             <p className="text-sm text-white/70 font-light leading-relaxed max-w-sm">
-              Experts en conseil patrimonial et épargne retraite pour les fonctionnaires hospitaliers de La Réunion.
+              Conseil en gestion de patrimoine et expert en protection sociale.
             </p>
             <div className="pt-4">
               <p className="text-xs uppercase tracking-wider text-white/50 font-medium mb-3">
@@ -129,47 +129,12 @@ export function Footer() {
             </div>
 
             <div>
-              <h3 className="text-xs uppercase tracking-[0.2em] text-white font-semibold mb-4">
-                Suivez-nous
-              </h3>
-              <div className="flex items-center gap-3">
-                <a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 border-[1px] border-white/20 hover:border-[#b4925e] bg-white/5 hover:bg-[#b4925e]/10 transition-all duration-300 group"
-                  aria-label="LinkedIn"
-                >
-                  <Linkedin className="h-4 w-4 text-white/70 group-hover:text-[#b4925e] transition-colors" />
-                </a>
-                <a
-                  href="https://facebook.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 border-[1px] border-white/20 hover:border-[#b4925e] bg-white/5 hover:bg-[#b4925e]/10 transition-all duration-300 group"
-                  aria-label="Facebook"
-                >
-                  <Facebook className="h-4 w-4 text-white/70 group-hover:text-[#b4925e] transition-colors" />
-                </a>
-                <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 border-[1px] border-white/20 hover:border-[#b4925e] bg-white/5 hover:bg-[#b4925e]/10 transition-all duration-300 group"
-                  aria-label="Instagram"
-                >
-                  <Instagram className="h-4 w-4 text-white/70 group-hover:text-[#b4925e] transition-colors" />
-                </a>
-              </div>
-            </div>
-
-            <div>
               <h3 className="text-xs uppercase tracking-[0.2em] text-white font-semibold mb-3">
                 Certifications
               </h3>
               <div className="space-y-1 text-xs text-white/50 font-light">
-                <p>ORIAS : 12345678</p>
-                <p>Membre ANACOFI-CIF</p>
+                <p>ORIAS : 20194827</p>
+                <p>Membre ANCACOFI-CIF</p>
                 <p>Médiateur : AMF</p>
               </div>
             </div>

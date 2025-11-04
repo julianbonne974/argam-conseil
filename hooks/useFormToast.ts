@@ -3,9 +3,9 @@ import { CheckCircle, AlertCircle, Loader } from "lucide-react";
 import { createElement } from "react";
 
 export function useFormToast() {
-  const showSuccess = () => {
+  const showSuccess = (message?: string) => {
     toast.success("Message envoyé !", {
-      description: "Nous vous recontacterons sous 24h. Vérifiez vos emails.",
+      description: message || "Nous vous recontacterons sous 48h. Vérifiez vos emails.",
       icon: createElement(CheckCircle, { className: "h-5 w-5 text-green-600" }),
       duration: 5000,
     });

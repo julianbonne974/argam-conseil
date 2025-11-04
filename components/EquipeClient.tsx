@@ -170,46 +170,51 @@ export default function EquipeClient({ members }: EquipeClientProps) {
             whileInView="visible"
             viewport={{ once: true }}
             variants={staggerContainer}
-            className="grid grid-cols-1 md:grid-cols-2 gap-8"
+            className="grid grid-cols-1 lg:grid-cols-2 gap-12"
           >
             {conseillers.map((membre) => (
               <motion.div
                 key={membre.nom}
                 variants={fadeInUp}
-                className="bg-white border border-[#524c5d]/20 p-8 shadow-sm hover:shadow-md transition-all"
+                className="bg-white border border-[#524c5d]/20 p-10 shadow-sm hover:shadow-lg transition-all"
               >
-                {/* Photo */}
-                <motion.div whileHover={{ scale: 1.05 }} className="mb-6">
-                  <div className="aspect-square w-full max-w-xs mx-auto bg-gradient-to-br from-[#b4925e]/20 to-[#524c5d]/10 border-2 border-[#b4925e]/30 rounded-sm flex flex-col items-center justify-center">
-                    {membre.photo ? (
-                      <img
-                        src={membre.photo}
-                        alt={membre.nom}
-                        className="w-full h-full object-cover rounded-sm"
-                      />
-                    ) : (
-                      <>
-                        <span className="text-5xl font-light text-[#b4925e]">
-                          {getInitials(membre.nom)}
-                        </span>
-                        <span className="text-xs text-gray-400 mt-2">[Photo à venir]</span>
-                      </>
-                    )}
-                  </div>
-                </motion.div>
+                <div className="grid grid-cols-1 md:grid-cols-[40%_60%] gap-8">
+                  {/* Photo */}
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    className="relative"
+                  >
+                    <div className="aspect-square bg-gradient-to-br from-[#b4925e]/20 to-[#524c5d]/10 border-4 border-[#b4925e]/30 rounded-sm flex flex-col items-center justify-center">
+                      {membre.photo ? (
+                        <img
+                          src={membre.photo}
+                          alt={membre.nom}
+                          className="w-full h-full object-cover rounded-sm"
+                        />
+                      ) : (
+                        <>
+                          <span className="text-6xl font-light text-[#b4925e]">
+                            {getInitials(membre.nom)}
+                          </span>
+                          <span className="text-xs text-gray-400 mt-2">[Photo à venir]</span>
+                        </>
+                      )}
+                    </div>
+                  </motion.div>
 
-                {/* Contenu */}
-                <div className="text-center">
-                  <h3 className="text-xl font-medium text-[#524c5d] mb-2">
-                    {membre.nom || 'Nom inconnu'}
-                  </h3>
-                  <p className="text-xs uppercase tracking-wider text-[#b4925e] mb-4">
-                    {membre.poste || 'Poste'}
-                  </p>
-                  <div className="h-px bg-[#524c5d]/20 mb-4" />
-                  <p className="text-sm text-gray-600 font-light leading-relaxed">
-                    {membre.bio || ''}
-                  </p>
+                  {/* Contenu */}
+                  <div className="flex flex-col justify-center">
+                    <h3 className="text-2xl font-medium text-[#524c5d] mb-2">
+                      {membre.nom || 'Nom inconnu'}
+                    </h3>
+                    <p className="text-sm uppercase tracking-wider text-[#b4925e] mb-6">
+                      {membre.poste || 'Poste'}
+                    </p>
+                    <div className="h-px bg-[#524c5d]/20 mb-6" />
+                    <p className="text-base text-gray-600 font-light leading-relaxed">
+                      {membre.bio || ''}
+                    </p>
+                  </div>
                 </div>
               </motion.div>
             ))}
@@ -235,46 +240,51 @@ export default function EquipeClient({ members }: EquipeClientProps) {
             whileInView="visible"
             viewport={{ once: true }}
             variants={staggerContainer}
-            className="grid grid-cols-1 md:grid-cols-2 gap-8"
+            className="grid grid-cols-1 lg:grid-cols-2 gap-12"
           >
             {assistants.map((membre) => (
               <motion.div
                 key={membre.nom}
                 variants={fadeInUp}
-                className="bg-white border border-[#524c5d]/20 p-8 shadow-sm hover:shadow-md transition-all"
+                className="bg-white border border-[#524c5d]/20 p-10 shadow-sm hover:shadow-lg transition-all"
               >
-                {/* Photo */}
-                <motion.div whileHover={{ scale: 1.05 }} className="mb-6">
-                  <div className="aspect-square w-full max-w-xs mx-auto bg-gradient-to-br from-[#b4925e]/20 to-[#524c5d]/10 border-2 border-[#b4925e]/30 rounded-sm flex flex-col items-center justify-center">
-                    {membre.photo ? (
-                      <img
-                        src={membre.photo}
-                        alt={membre.nom}
-                        className="w-full h-full object-cover rounded-sm"
-                      />
-                    ) : (
-                      <>
-                        <span className="text-5xl font-light text-[#b4925e]">
-                          {getInitials(membre.nom)}
-                        </span>
-                        <span className="text-xs text-gray-400 mt-2">[Photo à venir]</span>
-                      </>
-                    )}
-                  </div>
-                </motion.div>
+                <div className="grid grid-cols-1 md:grid-cols-[40%_60%] gap-8">
+                  {/* Photo */}
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    className="relative"
+                  >
+                    <div className="aspect-square bg-gradient-to-br from-[#b4925e]/20 to-[#524c5d]/10 border-4 border-[#b4925e]/30 rounded-sm flex flex-col items-center justify-center">
+                      {membre.photo ? (
+                        <img
+                          src={membre.photo}
+                          alt={membre.nom}
+                          className="w-full h-full object-cover rounded-sm"
+                        />
+                      ) : (
+                        <>
+                          <span className="text-6xl font-light text-[#b4925e]">
+                            {getInitials(membre.nom)}
+                          </span>
+                          <span className="text-xs text-gray-400 mt-2">[Photo à venir]</span>
+                        </>
+                      )}
+                    </div>
+                  </motion.div>
 
-                {/* Contenu */}
-                <div className="text-center">
-                  <h3 className="text-xl font-medium text-[#524c5d] mb-2">
-                    {membre.nom || 'Nom inconnu'}
-                  </h3>
-                  <p className="text-xs uppercase tracking-wider text-[#b4925e] mb-4">
-                    {membre.poste || 'Poste'}
-                  </p>
-                  <div className="h-px bg-[#524c5d]/20 mb-4" />
-                  <p className="text-sm text-gray-600 font-light leading-relaxed">
-                    {membre.bio || ''}
-                  </p>
+                  {/* Contenu */}
+                  <div className="flex flex-col justify-center">
+                    <h3 className="text-2xl font-medium text-[#524c5d] mb-2">
+                      {membre.nom || 'Nom inconnu'}
+                    </h3>
+                    <p className="text-sm uppercase tracking-wider text-[#b4925e] mb-6">
+                      {membre.poste || 'Poste'}
+                    </p>
+                    <div className="h-px bg-[#524c5d]/20 mb-6" />
+                    <p className="text-base text-gray-600 font-light leading-relaxed">
+                      {membre.bio || ''}
+                    </p>
+                  </div>
                 </div>
               </motion.div>
             ))}

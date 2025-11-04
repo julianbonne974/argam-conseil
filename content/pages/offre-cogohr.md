@@ -43,14 +43,71 @@ processus:
     titre: "Diagnostic gratuit"
     description: "Nous analysons votre situation actuelle et vos objectifs de retraite."
     info: "Rendez-vous en visio ou présentiel"
+    details:
+      - "Analyse complète de votre situation patrimoniale"
+      - "Calcul précis de votre future pension"
+      - "Identification des leviers d'optimisation"
+      - "Sans engagement • Durée : 45mn"
   - numero: "02"
     titre: "Solution sur-mesure"
     description: "Nous vous proposons un Plan Épargne Retraite adapté à votre profil."
     info: "Simulation détaillée et chiffrée"
+    details:
+      - "Recommandations personnalisées"
+      - "Simulation de votre effort d'épargne"
+      - "Projection de vos revenus futurs"
+      - "Optimisation fiscale immédiate"
   - numero: "03"
     titre: "Suivi personnalisé"
     description: "Nous vous accompagnons tout au long de votre vie professionnelle."
     info: "Point annuel sur votre stratégie"
+    details:
+      - "Ajustement selon vos évolutions"
+      - "Opportunités d'optimisation"
+      - "Accompagnement jusqu'à la retraite"
+      - "Conseiller dédié et joignable"
+comparaison:
+  sansPer:
+    titre: "Sans Plan Épargne Retraite"
+    situation: "SITUATION ACTUELLE"
+    montantRetenu: "jusqu'à 53%"
+    labelRetenu: "Retenue non compensée"
+    details:
+      revenuActuel: "3 000€/mois"
+      retraite: "1 400€/mois"
+      perte: "1 600€/mois"
+      impact: "Jusqu'à -53% de revenus à la retraite sans solution adaptée"
+  avecPer:
+    titre: "Avec Plan Épargne Retraite"
+    situation: "AVEC NOTRE SOLUTION"
+    montantComplement: "jusqu'à 30%"
+    labelComplement: "PER (complément)"
+    details:
+      epargne: "Effort d'épargne régulier"
+      optimisation: "Réduction d'impôt immédiate"
+      complement: "Complément de revenus à la retraite"
+      impact: "Le PER vous permet de reconstituer jusqu'à 30% de vos revenus actuels"
+
+cta:
+  principal:
+    titre: "Prendre rendez-vous"
+    sousTitre: "Réservez votre consultation gratuite"
+    bouton: "Prendre rendez-vous"
+    disponibilite: "Visioconférence disponible"
+  secondaire:
+    titre: "Demander une Étude Gratuite"
+    description: "Sans engagement • 100% Confidentiel"
+    bouton: "Je demande mon étude"
+
+statistiques:
+  - chiffre: "53%"
+    label: "Prime non prise en compte"
+  - chiffre: "0€"
+    label: "Frais d'entrée"
+  - chiffre: "45mn"
+    label: "Consultation gratuite"
+  - chiffre: "100%"
+    label: "Offre exclusive COGOHR"
 ---
 
 # Offre COGOHR - Argam Conseil

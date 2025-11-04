@@ -1,10 +1,9 @@
-'use client';
-
 import { ArrowRight, PieChart, Shield, Briefcase, CheckCircle2, MapPin } from 'lucide-react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { getPageContent } from '@/lib/content';
+import HomePageClient from './HomePageClient';
 
 // Animation variants
 const fadeInUp = {
@@ -34,6 +33,8 @@ const staggerContainer = {
 };
 
 export default function Home() {
+  const pageData = getPageContent('accueil');
+
   return (
     <main className="min-h-screen bg-white">
       <Header />
@@ -41,11 +42,8 @@ export default function Home() {
       {/* SECTION 1: HERO - Layout 60/40 */}
       <section id="accueil" className="relative pt-32 pb-20 overflow-hidden bg-white">
         {/* Geometric Background Elements */}
-        <motion.div
+        <div
           className="absolute inset-0 pointer-events-none"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.3 }}
         >
           {/* Large Circle */}
           <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full border-[1px] border-[#b4925e] opacity-[0.08]" />
@@ -57,16 +55,13 @@ export default function Home() {
           <div className="absolute top-0 right-1/3 w-[1px] h-full bg-[#524c5d] opacity-[0.06]" />
           {/* Horizontal Line */}
           <div className="absolute top-1/2 left-0 w-full h-[1px] bg-[#b4925e] opacity-[0.05]" />
-        </motion.div>
+        </div>
 
         <div className="container mx-auto px-4 md:px-8 max-w-7xl relative z-10">
           <div className="grid lg:grid-cols-[60%_40%] gap-16 items-center">
             {/* Left: Text Content - 60% */}
-            <motion.div
+            <div
               className="space-y-10"
-              variants={slideInFromTop}
-              initial="initial"
-              animate="animate"
             >
               {/* Badge */}
               <div className="space-y-1">
@@ -90,13 +85,11 @@ export default function Home() {
               {/* CTA */}
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 pt-4">
                 <Link href="/contact">
-                  <motion.button
+                  <button
                     className="px-10 py-4 bg-[#b4925e] hover:bg-[#b4925e]/90 text-white text-sm uppercase tracking-wider font-medium transition-all duration-300"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
                   >
                     Prendre rendez-vous
-                  </motion.button>
+                  </button>
                 </Link>
 
                 <Link href="/services" className="group flex items-center gap-2 text-sm text-[#524c5d] hover:text-[#b4925e] transition-colors">
@@ -104,15 +97,11 @@ export default function Home() {
                   <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
-            </motion.div>
+            </div>
 
             {/* Right: Geometric Visual - 40% */}
-            <motion.div
+            <div
               className="relative h-[400px] lg:h-[500px] hidden lg:block"
-              variants={fadeIn}
-              initial="initial"
-              animate="animate"
-              transition={{ duration: 0.8, delay: 0.4 }}
             >
               <div className="absolute inset-0 flex items-center justify-center">
                 {/* Grand cercle */}
@@ -133,7 +122,7 @@ export default function Home() {
                   </svg>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -141,12 +130,8 @@ export default function Home() {
       {/* SECTION 2: PRÉSENTATION - 2 colonnes */}
       <section className="py-24 bg-gray-50">
         <div className="container mx-auto px-4 md:px-8 max-w-5xl">
-          <motion.div
+          <div
             className="grid md:grid-cols-[60%_40%] gap-12"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
           >
             {/* Colonne gauche */}
             <div className="space-y-8">
@@ -178,20 +163,16 @@ export default function Home() {
                 'Accompagnement personnalisé',
                 'Indépendance et transparence'
               ].map((item, index) => (
-                <motion.div
+                <div
                   key={index}
                   className="flex items-start gap-3"
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
                   <CheckCircle2 className="h-5 w-5 text-[#b4925e] flex-shrink-0 mt-0.5" />
                   <span className="text-[#524c5d] font-light">{item}</span>
-                </motion.div>
+                </div>
               ))}
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -199,30 +180,21 @@ export default function Home() {
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4 md:px-8 max-w-7xl">
           {/* Titre centré */}
-          <motion.div
+          <div
             className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl lg:text-4xl text-[#524c5d] font-light mb-6">
               Nos Domaines d'Expertise
             </h2>
             <div className="w-16 h-1 bg-[#b4925e] mx-auto" />
-          </motion.div>
+          </div>
 
           {/* Grille 3 colonnes */}
-          <motion.div
+          <div
             className="grid md:grid-cols-3 gap-8"
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, amount: 0.2 }}
           >
             {/* Card 1: Gestion de Patrimoine */}
-            <motion.div
-              variants={fadeInUp}
+            <div
               className="group border-[1px] border-[#524c5d]/20 p-10 transition-all duration-300 hover:border-[#b4925e] hover:shadow-md"
             >
               <div className="space-y-6">
@@ -242,11 +214,10 @@ export default function Home() {
                   En savoir plus <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
-            </motion.div>
+            </div>
 
             {/* Card 2: Protection Sociale */}
-            <motion.div
-              variants={fadeInUp}
+            <div
               className="group border-[1px] border-[#524c5d]/20 p-10 transition-all duration-300 hover:border-[#b4925e] hover:shadow-md"
             >
               <div className="space-y-6">
@@ -266,11 +237,10 @@ export default function Home() {
                   En savoir plus <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
-            </motion.div>
+            </div>
 
             {/* Card 3: Accompagnement Dirigeants */}
-            <motion.div
-              variants={fadeInUp}
+            <div
               className="group border-[1px] border-[#524c5d]/20 p-10 transition-all duration-300 hover:border-[#b4925e] hover:shadow-md"
             >
               <div className="space-y-6">
@@ -290,8 +260,8 @@ export default function Home() {
                   En savoir plus <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -299,29 +269,19 @@ export default function Home() {
       <section className="py-24 bg-gray-50">
         <div className="container mx-auto px-4 md:px-8 max-w-4xl">
           {/* Titre centré */}
-          <motion.div
+          <div
             className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl lg:text-4xl text-[#524c5d] font-light mb-6">
               Notre Approche
             </h2>
             <div className="w-16 h-1 bg-[#b4925e] mx-auto" />
-          </motion.div>
+          </div>
 
           {/* 3 étapes horizontales */}
-          <motion.div
-            className="grid md:grid-cols-3 gap-12"
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, amount: 0.2 }}
-          >
+          <div className="grid md:grid-cols-3 gap-12">
             {/* Étape 1 */}
-            <motion.div variants={fadeInUp} className="text-center space-y-6">
+            <div className="text-center space-y-6">
               <div className="flex justify-center">
                 <div className="w-20 h-20 border-4 border-[#b4925e] flex items-center justify-center">
                   <span className="text-3xl font-light text-[#524c5d]">01</span>
@@ -333,10 +293,10 @@ export default function Home() {
               <p className="text-sm text-[#524c5d]/70 leading-relaxed font-light">
                 Analyse complète de votre situation actuelle pour identifier vos besoins et zones de risques.
               </p>
-            </motion.div>
+            </div>
 
             {/* Étape 2 */}
-            <motion.div variants={fadeInUp} className="text-center space-y-6">
+            <div className="text-center space-y-6">
               <div className="flex justify-center">
                 <div className="w-20 h-20 border-4 border-[#b4925e] flex items-center justify-center">
                   <span className="text-3xl font-light text-[#524c5d]">02</span>
@@ -348,10 +308,10 @@ export default function Home() {
               <p className="text-sm text-[#524c5d]/70 leading-relaxed font-light">
                 Élaboration d'une stratégie sur-mesure intégrant toutes les dimensions de votre patrimoine.
               </p>
-            </motion.div>
+            </div>
 
             {/* Étape 3 */}
-            <motion.div variants={fadeInUp} className="text-center space-y-6">
+            <div className="text-center space-y-6">
               <div className="flex justify-center">
                 <div className="w-20 h-20 bg-[#b4925e] border-4 border-[#b4925e] flex items-center justify-center">
                   <span className="text-3xl font-light text-white">03</span>
@@ -363,8 +323,8 @@ export default function Home() {
               <p className="text-sm text-[#524c5d]/70 leading-relaxed font-light">
                 Accompagnement dans la réalisation et suivi régulier pour optimiser votre patrimoine.
               </p>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -372,91 +332,41 @@ export default function Home() {
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4 md:px-8 max-w-7xl">
           {/* Titre */}
-          <motion.div
+          <div
             className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl lg:text-4xl text-[#524c5d] font-light">
               Argam Conseil en Chiffres
             </h2>
-          </motion.div>
+          </div>
 
-          {/* Grille 4 colonnes */}
-          <motion.div
-            className="grid grid-cols-2 lg:grid-cols-4 gap-0 bg-[#f8f8f8]"
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, amount: 0.3 }}
+          {/* Grille 3 colonnes */}
+          <div
+            className="grid md:grid-cols-3 gap-0 bg-[#f8f8f8]"
           >
-            {/* Stat 1 */}
-            <motion.div
-              variants={fadeInUp}
-              className="relative flex flex-col items-center justify-center py-12 px-6 border-r border-b lg:border-b-0 border-[#524c5d]/10"
-            >
-              <div className="text-center space-y-4">
-                <p className="text-6xl lg:text-7xl text-[#b4925e] font-light leading-none">
-                  2021
-                </p>
-                <div className="w-12 h-[1px] bg-[#524c5d]/20 mx-auto" />
-                <p className="text-xs uppercase tracking-widest text-[#524c5d]/60 font-medium">
-                  ANNÉE DE CRÉATION
-                </p>
+            {/* Statistiques dynamiques du CMS */}
+            {pageData.statistiques?.map((stat: any, index: number) => (
+              <div
+                key={index}
+                className={`relative flex flex-col items-center justify-center py-12 px-6 ${
+                  index < (pageData.statistiques?.length || 0) - 1 ? 'md:border-r border-[#524c5d]/10' : ''
+                }`}
+              >
+                <div className="text-center space-y-4">
+                  <p className="text-6xl lg:text-7xl text-[#b4925e] font-light leading-none">
+                    {stat.valeur}
+                  </p>
+                  <div className="w-12 h-[1px] bg-[#524c5d]/20 mx-auto" />
+                  <p className="text-xs uppercase tracking-widest text-[#524c5d]/60 font-medium">
+                    {stat.label}
+                  </p>
+                  {stat.sousTitre && (
+                    <p className="text-xs text-gray-500">{stat.sousTitre}</p>
+                  )}
+                </div>
               </div>
-            </motion.div>
-
-            {/* Stat 2 */}
-            <motion.div
-              variants={fadeInUp}
-              className="relative flex flex-col items-center justify-center py-12 px-6 border-b lg:border-b-0 lg:border-r border-[#524c5d]/10"
-            >
-              <div className="text-center space-y-4">
-                <p className="text-6xl lg:text-7xl text-[#b4925e] font-light leading-none">
-                  8
-                </p>
-                <div className="w-12 h-[1px] bg-[#524c5d]/20 mx-auto" />
-                <p className="text-xs uppercase tracking-widest text-[#524c5d]/60 font-medium">
-                  EXPERTS SPÉCIALISÉS
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Stat 3 */}
-            <motion.div
-              variants={fadeInUp}
-              className="relative flex flex-col items-center justify-center py-12 px-6 border-r border-[#524c5d]/10"
-            >
-              <div className="text-center space-y-4">
-                <p className="text-6xl lg:text-7xl text-[#b4925e] font-light leading-none">
-                  2
-                </p>
-                <div className="w-12 h-[1px] bg-[#524c5d]/20 mx-auto" />
-                <p className="text-xs uppercase tracking-widest text-[#524c5d]/60 font-medium">
-                  IMPLANTATIONS
-                </p>
-                <p className="text-xs text-gray-500">Bordeaux • La Réunion</p>
-              </div>
-            </motion.div>
-
-            {/* Stat 4 */}
-            <motion.div
-              variants={fadeInUp}
-              className="relative flex flex-col items-center justify-center py-12 px-6"
-            >
-              <div className="text-center space-y-4">
-                <p className="text-6xl lg:text-7xl text-[#b4925e] font-light leading-none">
-                  100%
-                </p>
-                <div className="w-12 h-[1px] bg-[#524c5d]/20 mx-auto" />
-                <p className="text-xs uppercase tracking-widest text-[#524c5d]/60 font-medium">
-                  CONSEIL INDÉPENDANT
-                </p>
-              </div>
-            </motion.div>
-          </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -464,30 +374,21 @@ export default function Home() {
       <section className="py-24 bg-gray-50">
         <div className="container mx-auto px-4 md:px-8 max-w-6xl">
           {/* Titre */}
-          <motion.div
+          <div
             className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl lg:text-4xl text-[#524c5d] font-light mb-6">
               Nos Implantations
             </h2>
             <div className="w-16 h-1 bg-[#b4925e] mx-auto" />
-          </motion.div>
+          </div>
 
           {/* 2 colonnes */}
-          <motion.div
+          <div
             className="grid md:grid-cols-2 gap-8"
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, amount: 0.2 }}
           >
             {/* Bordeaux */}
-            <motion.div
-              variants={fadeInUp}
+            <div
               className="bg-white border-[1px] border-[#524c5d]/20 p-8 space-y-6"
             >
               <MapPin className="h-10 w-10 text-[#b4925e]" strokeWidth={1.5} />
@@ -507,11 +408,10 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* La Réunion */}
-            <motion.div
-              variants={fadeInUp}
+            <div
               className="bg-white border-[1px] border-[#524c5d]/20 p-8 space-y-6"
             >
               <MapPin className="h-10 w-10 text-[#b4925e]" strokeWidth={1.5} />
@@ -526,20 +426,16 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* SECTION 7: CTA FINAL */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4 md:px-8 max-w-4xl">
-          <motion.div
+          <div
             className="border-4 border-[#524c5d] p-12 md:p-16 text-center space-y-8"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl lg:text-4xl text-[#524c5d] font-light">
               Prêt à optimiser votre patrimoine ?
@@ -549,19 +445,15 @@ export default function Home() {
             </p>
             <div className="pt-4">
               <Link href="/contact">
-                <motion.button
-                  className="px-14 py-5 bg-[#b4925e] hover:bg-[#b4925e]/90 text-white text-sm uppercase tracking-wider font-medium transition-all duration-300"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
+                <button className="px-14 py-5 bg-[#b4925e] hover:bg-[#b4925e]/90 text-white text-sm uppercase tracking-wider font-medium transition-all duration-300">
                   Prendre rendez-vous
-                </motion.button>
+                </button>
               </Link>
             </div>
             <p className="text-xs text-[#524c5d]/60 font-light">
-              Réponse sous 24h • Confidentiel • Sans engagement
+              Réponse sous 48h • Confidentiel • Sans engagement
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 

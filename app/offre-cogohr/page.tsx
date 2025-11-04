@@ -1,8 +1,5 @@
-'use client';
-
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { motion } from 'framer-motion';
 import {
   TrendingDown,
   TrendingUp,
@@ -21,40 +18,15 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
-import { Checkbox } from '@/components/ui/checkbox';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
-
-// Animation variants
-const fadeInUp = {
-  initial: { opacity: 0, y: 30 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6 }
-};
-
-const staggerContainer = {
-  animate: {
-    transition: {
-      staggerChildren: 0.15
-    }
-  }
-};
+import { Button } from '@/components/ui/button';
+import { getHoraires, getFAQByCategory } from '@/lib/content';
+import { COGOHRContactForm } from './OffreCOGOHRClient';
 
 // Section Graphique Comparatif Horizontal - Version 2.1 (Timeline Avant/Après)
 const RetirementComparisonChart = () => {
@@ -63,10 +35,7 @@ const RetirementComparisonChart = () => {
       {/* Cards comparatives */}
       <div className="grid md:grid-cols-2 gap-6 lg:gap-8 mb-12">
         {/* CARD 1 - SANS PER */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+        <div
           className="relative border-2 border-red-200 bg-white p-6 md:p-8 rounded-sm shadow-md"
         >
           {/* Badge situation actuelle */}
@@ -101,24 +70,23 @@ const RetirementComparisonChart = () => {
                 À LA RETRAITE
               </p>
               <div className="h-48 md:h-64 flex flex-col gap-0">
-                {/* Segment pension 50% */}
+                {/* Segment pension */}
                 <div className="flex-1 bg-blue-200 border-l-4 border-blue-500 flex items-center justify-center px-2 md:px-3 rounded-tr-sm">
                   <div className="text-center">
                     <p className="text-xs md:text-sm text-blue-900 leading-tight">
                       Pension régime<br/>par répartition
                     </p>
-                    <p className="text-base md:text-lg font-bold text-blue-700 mt-1">50%</p>
                   </div>
                 </div>
 
-                {/* Segment perte 50% */}
+                {/* Segment perte jusqu'à 53% */}
                 <div className="flex-1 bg-red-100 border-l-4 border-red-500 flex items-center justify-center px-2 md:px-3 gap-2 rounded-br-sm">
                   <TrendingDown className="text-red-600 w-5 h-5 md:w-6 md:h-6 flex-shrink-0" />
                   <div className="text-center">
                     <p className="text-xs md:text-sm font-medium text-red-700 leading-tight">
                       Perte de<br/>revenus
                     </p>
-                    <p className="text-base md:text-lg font-bold text-red-600 mt-1">50%</p>
+                    <p className="text-base md:text-lg font-bold text-red-600 mt-1">jusqu'à 53%</p>
                   </div>
                 </div>
               </div>
@@ -131,25 +99,19 @@ const RetirementComparisonChart = () => {
             <span>Départ en retraite</span>
             <span className="text-base">↓</span>
           </div>
-        </motion.div>
+        </div>
 
         {/* CARD 2 - AVEC PER */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+        <div
           className="relative border-3 border-[#b4925e] bg-gradient-to-br from-[#b4925e]/5 to-white p-6 md:p-8 rounded-sm shadow-lg"
         >
           {/* Badge RECOMMANDÉ */}
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ type: "spring", bounce: 0.5, delay: 0.5 }}
+          <div
             className="absolute -top-4 right-8 bg-[#b4925e] text-white px-4 md:px-6 py-2 text-xs uppercase tracking-widest font-bold shadow-lg flex items-center gap-2"
           >
             <Award className="w-3 h-3" />
             RECOMMANDÉ
-          </motion.div>
+          </div>
 
           {/* Badge solution optimale */}
           <span className="text-xs uppercase tracking-wider text-[#b4925e] bg-[#b4925e]/10 px-3 py-1 inline-block mb-4 font-medium">
@@ -183,11 +145,8 @@ const RetirementComparisonChart = () => {
                 À LA RETRAITE
               </p>
               <div className="h-48 md:h-64 flex flex-col gap-0">
-                {/* Segment pension ~40% */}
-                <motion.div
-                  initial={{ scaleY: 0 }}
-                  animate={{ scaleY: 1 }}
-                  transition={{ duration: 0.5, delay: 0.8 }}
+                {/* Segment pension */}
+                <div
                   style={{ transformOrigin: "top" }}
                   className="h-[38%] bg-blue-200 border-l-4 border-blue-500 flex items-center justify-center px-2 md:px-3 rounded-tr-sm"
                 >
@@ -195,18 +154,11 @@ const RetirementComparisonChart = () => {
                     <p className="text-xs md:text-sm text-blue-900 leading-tight">
                       Pension régime<br/>par répartition
                     </p>
-                    <p className="text-base md:text-lg font-bold text-blue-700 mt-1">50%</p>
                   </div>
-                </motion.div>
+                </div>
 
-                {/* Segment PER ~40% - LE PLUS IMPORTANT */}
-                <motion.div
-                  initial={{ scaleY: 0 }}
-                  animate={{ scaleY: 1, scale: [1, 1.02, 1] }}
-                  transition={{
-                    scaleY: { duration: 0.5, delay: 1 },
-                    scale: { repeat: Infinity, duration: 2, delay: 1.5 }
-                  }}
+                {/* Segment PER - LE PLUS IMPORTANT */}
+                <div
                   style={{ transformOrigin: "top" }}
                   className="h-[42%] bg-gradient-to-r from-[#b4925e] to-[#b4925e]/90 border-l-4 border-[#b4925e] flex items-center justify-center px-2 md:px-3 gap-2 cursor-pointer hover:shadow-lg transition-shadow"
                 >
@@ -215,15 +167,12 @@ const RetirementComparisonChart = () => {
                     <p className="text-xs md:text-sm font-semibold text-white leading-tight">
                       Plan Épargne<br/>Retraite
                     </p>
-                    <p className="text-lg md:text-xl font-bold text-white mt-1">30%</p>
+                    <p className="text-lg md:text-xl font-bold text-white mt-1">jusqu'à 30%</p>
                   </div>
-                </motion.div>
+                </div>
 
-                {/* Segment perte réduite ~20% */}
-                <motion.div
-                  initial={{ scaleY: 0 }}
-                  animate={{ scaleY: 1 }}
-                  transition={{ duration: 0.5, delay: 1.2 }}
+                {/* Segment perte réduite */}
+                <div
                   style={{ transformOrigin: "top" }}
                   className="h-[20%] bg-red-50 border-l-4 border-red-200 flex items-center justify-center px-2 md:px-3 rounded-br-sm"
                 >
@@ -231,9 +180,8 @@ const RetirementComparisonChart = () => {
                     <p className="text-xs text-red-400 leading-tight">
                       Perte réduite
                     </p>
-                    <p className="text-sm md:text-base font-bold text-red-400">20%</p>
                   </div>
-                </motion.div>
+                </div>
               </div>
             </div>
 
@@ -244,14 +192,11 @@ const RetirementComparisonChart = () => {
             <span>Départ en retraite</span>
             <span className="text-base">↓</span>
           </div>
-        </motion.div>
+        </div>
       </div>
 
       {/* Zone de comparaison en bas */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 1.4 }}
+      <div
         className="bg-[#524c5d] text-white p-6 md:p-8 rounded-sm grid md:grid-cols-2 gap-6 md:gap-8"
       >
         {/* Colonne gauche - Impact */}
@@ -262,7 +207,7 @@ const RetirementComparisonChart = () => {
               Impact sur votre pouvoir d'achat
             </h4>
             <p className="text-sm md:text-base text-white/90 leading-relaxed">
-              Sans PER, vous perdez jusqu'à 1 590€/mois à la retraite. Le PER vous permet de maintenir jusqu'à 80% de votre salaire actuel.
+              Le PER vous permet de reconstituer jusqu'à 30% de vos revenus actuels.
             </p>
           </div>
         </div>
@@ -279,152 +224,16 @@ const RetirementComparisonChart = () => {
             </p>
           </div>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 };
 
-// Composant Formulaire Contact
-const COGOHRContactForm = () => {
-  const [formData, setFormData] = useState({
-    prenom: '',
-    nom: '',
-    email: '',
-    telephone: '',
-    hopital: '',
-    statut: '',
-    message: '',
-    acceptContact: false
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    // TODO: Intégrer avec Netlify Forms ou API route
-    setTimeout(() => {
-      setIsSubmitting(false);
-      alert('Merci ! Nous vous recontacterons sous 24h.');
-    }, 1500);
-  };
-
-  return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="grid md:grid-cols-2 gap-4">
-        <div className="space-y-2">
-          <Label htmlFor="prenom">Prénom *</Label>
-          <Input
-            id="prenom"
-            required
-            value={formData.prenom}
-            onChange={(e) => setFormData({ ...formData, prenom: e.target.value })}
-          />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="nom">Nom *</Label>
-          <Input
-            id="nom"
-            required
-            value={formData.nom}
-            onChange={(e) => setFormData({ ...formData, nom: e.target.value })}
-          />
-        </div>
-      </div>
-
-      <div className="space-y-2">
-        <Label htmlFor="email">Email *</Label>
-        <Input
-          id="email"
-          type="email"
-          required
-          value={formData.email}
-          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-        />
-      </div>
-
-      <div className="space-y-2">
-        <Label htmlFor="telephone">Téléphone *</Label>
-        <Input
-          id="telephone"
-          type="tel"
-          required
-          placeholder="0692 XX XX XX"
-          value={formData.telephone}
-          onChange={(e) => setFormData({ ...formData, telephone: e.target.value })}
-        />
-      </div>
-
-      <div className="space-y-2">
-        <Label htmlFor="hopital">Hôpital d'affectation</Label>
-        <Select value={formData.hopital} onValueChange={(value) => setFormData({ ...formData, hopital: value })}>
-          <SelectTrigger>
-            <SelectValue placeholder="Sélectionnez votre hôpital" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="chu-reunion">CHU La Réunion</SelectItem>
-            <SelectItem value="hopital-saint-pierre">Hôpital Saint-Pierre</SelectItem>
-            <SelectItem value="hopital-saint-denis">Hôpital Saint-Denis</SelectItem>
-            <SelectItem value="autre">Autre</SelectItem>
-          </SelectContent>
-        </Select>
-      </div>
-
-      <div className="space-y-2">
-        <Label htmlFor="statut">Statut</Label>
-        <Select value={formData.statut} onValueChange={(value) => setFormData({ ...formData, statut: value })}>
-          <SelectTrigger>
-            <SelectValue placeholder="Sélectionnez votre statut" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="infirmier">Infirmier(e)</SelectItem>
-            <SelectItem value="aide-soignant">Aide-soignant(e)</SelectItem>
-            <SelectItem value="cadre">Cadre</SelectItem>
-            <SelectItem value="medecin">Médecin</SelectItem>
-            <SelectItem value="administratif">Administratif</SelectItem>
-            <SelectItem value="autre">Autre</SelectItem>
-          </SelectContent>
-        </Select>
-      </div>
-
-      <div className="space-y-2">
-        <Label htmlFor="message">Votre demande</Label>
-        <Textarea
-          id="message"
-          rows={4}
-          placeholder="Décrivez brièvement votre situation et vos objectifs..."
-          value={formData.message}
-          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-        />
-      </div>
-
-      <div className="flex items-start gap-3">
-        <Checkbox
-          id="acceptContact"
-          required
-          checked={formData.acceptContact}
-          onCheckedChange={(checked) => setFormData({ ...formData, acceptContact: checked as boolean })}
-        />
-        <Label htmlFor="acceptContact" className="text-sm font-normal leading-relaxed cursor-pointer">
-          J'accepte d'être contacté par Argam Conseil dans le cadre de ma demande *
-        </Label>
-      </div>
-
-      <Button
-        type="submit"
-        disabled={isSubmitting}
-        className="w-full bg-[#b4925e] hover:bg-[#b4925e]/90 text-white py-6 text-base"
-      >
-        {isSubmitting ? 'Envoi en cours...' : 'Demander mon étude gratuite'}
-      </Button>
-
-      <p className="text-xs text-gray-500 text-center">
-        Vos données sont sécurisées et ne seront jamais partagées.
-      </p>
-    </form>
-  );
-};
 
 export default function OffreCOGOHRPage() {
+  const horaires = getHoraires();
+  const cogohrFAQ = getFAQByCategory('COGOHR');
+
   return (
     <main className="min-h-screen bg-white">
       <Header />
@@ -434,11 +243,8 @@ export default function OffreCOGOHRPage() {
         <div className="container mx-auto px-4 md:px-8 max-w-7xl">
           <div className="grid lg:grid-cols-[55%_45%] gap-12 items-center">
             {/* COLONNE GAUCHE - CONTENU TEXTE */}
-            <motion.div
+            <div
               className="space-y-8"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
             >
               {/* Badge */}
               <div className="inline-block bg-[#b4925e]/10 text-[#b4925e] px-4 py-2 text-xs uppercase tracking-widest font-semibold">
@@ -457,7 +263,7 @@ export default function OffreCOGOHRPage() {
 
               {/* Paragraphe explicatif */}
               <p className="text-lg text-gray-600 font-light leading-relaxed">
-                Votre pension de retraite est calculée uniquement sur votre traitement indiciaire. La prime de vie chère, qui représente pourtant une part importante de votre rémunération actuelle, est totalement exclue. Cette situation peut entraîner une perte de revenus significative au moment de la retraite.
+                Votre pension de retraite est calculée uniquement sur votre traitement indiciaire. La prime de vie chère, bien qu'elle constitue une part importante de votre rémunération, n'est pas prise en compte pour le calcul de vos droits. Cela peut donc entraîner une baisse significative de vos revenus une fois à la retraite.
               </p>
 
               {/* Stat choc */}
@@ -481,14 +287,11 @@ export default function OffreCOGOHRPage() {
                   </Button>
                 </Link>
               </div>
-            </motion.div>
+            </div>
 
             {/* COLONNE DROITE - VISUEL */}
-            <motion.div
+            <div
               className="relative h-[500px] lg:h-[600px] border border-[#524c5d]/20 overflow-hidden shadow-xl"
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
             >
               <Image
                 src="/images/cogohr-site.jpg"
@@ -500,7 +303,7 @@ export default function OffreCOGOHRPage() {
               />
               {/* Overlay pour assurer la lisibilité si besoin */}
               <div className="absolute inset-0 bg-gradient-to-t from-[#524c5d]/20 to-transparent pointer-events-none" />
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -515,7 +318,7 @@ export default function OffreCOGOHRPage() {
             </h2>
             <div className="w-20 h-1 bg-[#b4925e] mx-auto mt-6" />
             <p className="text-lg text-gray-600 font-light max-w-3xl mx-auto mt-6">
-              Voici l'impact concret de la non-prise en compte de votre prime de vie chère sur vos revenus à la retraite.
+              Voici l'impact concret de la non-prise en compte de votre prime de vie chère sur le calcul de vos droits à la retraite.
             </p>
           </div>
 
@@ -523,50 +326,6 @@ export default function OffreCOGOHRPage() {
           <div>
             <RetirementComparisonChart />
           </div>
-
-          {/* Exemples Chiffrés */}
-          <div className="grid md:grid-cols-3 gap-6 mt-16">
-            {/* Card 1: Revenu actuel */}
-            <div className="bg-white border border-[#524c5d]/20 p-8 text-center shadow-sm">
-              <p className="text-4xl font-light text-[#524c5d] mb-3">3 000€</p>
-              <p className="text-xs uppercase tracking-wide text-gray-500 mb-3">
-                Revenu Mensuel Actuel
-              </p>
-              <p className="text-sm text-gray-600">
-                Dont 1 590€ de prime de vie chère (53%)
-              </p>
-            </div>
-
-            {/* Card 2: Sans PER */}
-            <div className="bg-white border border-red-200 p-8 text-center shadow-sm">
-              <p className="text-4xl font-light text-red-600 mb-3">1 410€</p>
-              <p className="text-xs uppercase tracking-wide text-gray-500 mb-3">
-                Pension Sans PER
-              </p>
-              <p className="text-sm text-red-600 font-medium">
-                Soit une perte de 1 590€/mois
-              </p>
-            </div>
-
-            {/* Card 3: Avec PER */}
-            <div className="bg-white border-2 border-[#b4925e] p-8 text-center shadow-lg relative">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#b4925e] text-white px-3 py-1 text-xs uppercase tracking-wide font-semibold">
-                Solution
-              </div>
-              <p className="text-4xl font-light text-[#b4925e] mb-3">2 400€</p>
-              <p className="text-xs uppercase tracking-wide text-gray-500 mb-3">
-                Pension Avec PER
-              </p>
-              <p className="text-sm text-[#b4925e] font-medium">
-                Grâce à un complément de 990€/mois
-              </p>
-            </div>
-          </div>
-
-          {/* Note */}
-          <p className="text-sm text-center text-gray-600 mt-12 max-w-3xl mx-auto">
-            Le PER vous permet de compenser jusqu'à 80% de votre salaire actuel à la retraite.
-          </p>
         </div>
       </section>
 
@@ -579,7 +338,7 @@ export default function OffreCOGOHRPage() {
               Le Plan d'Épargne Retraite :<br />Votre Solution
             </h2>
             <p className="text-lg text-gray-600 font-light max-w-3xl mx-auto">
-              Une réponse adaptée, flexible et fiscalement avantageuse pour compenser la perte de votre prime de vie chère.
+              Une réponse adaptée, flexible et fiscalement avantageuse pour compenser la perte liée à votre prime de vie chère.
             </p>
           </div>
 
@@ -589,10 +348,10 @@ export default function OffreCOGOHRPage() {
             <div className="bg-white border border-[#524c5d]/20 p-10 hover:border-[#b4925e] hover:shadow-xl hover:scale-105 transition-all duration-300">
               <Shield className="w-16 h-16 text-[#b4925e] mb-6" strokeWidth={1.5} />
               <h3 className="text-xl font-semibold text-[#524c5d] mb-4">
-                Complément de Revenu Garanti
+                Complément de revenus
               </h3>
               <p className="text-sm text-gray-600 font-light leading-relaxed">
-                Constituez un capital qui vous permettra de compenser la non-prise en compte de votre prime de vie chère. Sécurisez votre niveau de vie à la retraite avec des revenus complémentaires stables.
+                Constituez un capital qui vous permettra de compenser en grande partie la non-prise en compte de votre prime de vie chère dans le calcul de vos droits. Sécurisez votre niveau de vie à la retraite avec des revenus complémentaires stables.
               </p>
             </div>
 
@@ -732,9 +491,9 @@ export default function OffreCOGOHRPage() {
               <div className="space-y-2 pt-4">
                 <div className="flex items-center justify-center gap-2 text-sm text-[#b4925e]">
                   <Calendar className="w-4 h-4" />
-                  <span>9h - 18h • Mercredi au Samedi</span>
+                  <span>{horaires.horaires.format} • {horaires.horaires.joursCOGOHR}</span>
                 </div>
-                <p className="text-xs text-gray-600">Visioconférence 7j/7</p>
+                <p className="text-xs text-gray-600">Visioconférence {horaires.visio.disponibiliteCOGOHR}</p>
               </div>
             </div>
 
@@ -754,7 +513,7 @@ export default function OffreCOGOHRPage() {
               <div className="space-y-2 pt-4">
                 <div className="flex items-center justify-center gap-2 text-sm text-[#524c5d]">
                   <FileText className="w-4 h-4" />
-                  <span>Sans engagement • Durée : 1h</span>
+                  <span>Sans engagement • {horaires.processus.formatDuree}</span>
                 </div>
               </div>
             </div>
@@ -783,70 +542,6 @@ export default function OffreCOGOHRPage() {
         </div>
       </section>
 
-      {/* SECTION 6: TÉMOIGNAGES */}
-      <section className="py-24 bg-gray-50">
-        <div className="container mx-auto px-4 md:px-8 max-w-6xl">
-          {/* Titre */}
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-light text-[#524c5d]">
-              Ils Nous Font Confiance
-            </h2>
-            <div className="w-20 h-1 bg-[#b4925e] mx-auto mt-6" />
-          </div>
-
-          {/* Grid témoignages */}
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Témoignage 1 */}
-            <div className="bg-white border-l-4 border-[#b4925e] p-8 shadow-sm">
-              <div className="flex gap-1 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-[#b4925e] text-[#b4925e]" />
-                ))}
-              </div>
-              <p className="text-sm text-gray-700 italic leading-relaxed mb-6">
-                "J'ai pu anticiper ma retraite sereinement grâce à l'accompagnement d'Argam Conseil. L'étude personnalisée m'a permis de comprendre l'impact réel de la perte de ma prime de vie chère."
-              </p>
-              <div>
-                <p className="text-sm font-medium text-[#524c5d]">Marie L.</p>
-                <p className="text-xs text-gray-500">Infirmière - CHU de La Réunion</p>
-              </div>
-            </div>
-
-            {/* Témoignage 2 */}
-            <div className="bg-white border-l-4 border-[#b4925e] p-8 shadow-sm">
-              <div className="flex gap-1 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-[#b4925e] text-[#b4925e]" />
-                ))}
-              </div>
-              <p className="text-sm text-gray-700 italic leading-relaxed mb-6">
-                "L'offre exclusive COGOHR m'a convaincu. Pas de frais d'entrée et une simulation claire de mes besoins. Je recommande à tous mes collègues fonctionnaires."
-              </p>
-              <div>
-                <p className="text-sm font-medium text-[#524c5d]">Jean-Paul M.</p>
-                <p className="text-xs text-gray-500">Cadre administratif - Hôpital de Saint-Pierre</p>
-              </div>
-            </div>
-
-            {/* Témoignage 3 */}
-            <div className="bg-white border-l-4 border-[#b4925e] p-8 shadow-sm">
-              <div className="flex gap-1 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-[#b4925e] text-[#b4925e]" />
-                ))}
-              </div>
-              <p className="text-sm text-gray-700 italic leading-relaxed mb-6">
-                "Un suivi régulier et des conseils adaptés à ma situation. Argam Conseil a su m'expliquer simplement les avantages du PER et optimiser ma fiscalité."
-              </p>
-              <div>
-                <p className="text-sm font-medium text-[#524c5d]">Sophie R.</p>
-                <p className="text-xs text-gray-500">Aide-soignante - CHU de La Réunion</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* SECTION 7: FAQ PER */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4 md:px-8 max-w-4xl">
@@ -861,59 +556,29 @@ export default function OffreCOGOHRPage() {
           {/* Accordion FAQ */}
           <div>
             <Accordion type="single" collapsible className="space-y-4">
-              <AccordionItem value="q1" className="border border-[#524c5d]/20 px-6">
-                <AccordionTrigger className="text-left hover:text-[#b4925e] py-6">
-                  Qu'est-ce qu'un Plan d'Épargne Retraite (PER) ?
-                </AccordionTrigger>
-                <AccordionContent className="text-sm text-gray-600 leading-relaxed pb-6">
-                  Le PER est un produit d'épargne à long terme qui vous permet de vous constituer un complément de revenus pour la retraite. Il remplace les anciens dispositifs (PERP, Madelin, etc.) et offre plus de flexibilité. Les sommes versées sont déductibles de votre revenu imposable, ce qui réduit votre impôt immédiatement.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="q2" className="border border-[#524c5d]/20 px-6">
-                <AccordionTrigger className="text-left hover:text-[#b4925e] py-6">
-                  Comment le PER compense-t-il la perte de ma prime de vie chère ?
-                </AccordionTrigger>
-                <AccordionContent className="text-sm text-gray-600 leading-relaxed pb-6">
-                  Votre prime de 53% n'est pas prise en compte dans le calcul de votre pension. Le PER vous permet d'épargner pendant votre carrière pour vous constituer un capital. À la retraite, ce capital génère un complément de revenus (en rente ou capital) qui compense cette perte et maintient votre niveau de vie.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="q3" className="border border-[#524c5d]/20 px-6">
-                <AccordionTrigger className="text-left hover:text-[#b4925e] py-6">
-                  Quels sont les avantages fiscaux du PER ?
-                </AccordionTrigger>
-                <AccordionContent className="text-sm text-gray-600 leading-relaxed pb-6">
-                  Les versements que vous effectuez sur votre PER sont déductibles de votre revenu imposable, dans la limite de plafonds légaux. Concrètement, si vous êtes imposé à 30%, un versement de 1 000€ ne vous coûte réellement que 700€. C'est un double avantage : vous préparez votre retraite tout en réduisant votre impôt actuel.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="q4" className="border border-[#524c5d]/20 px-6">
-                <AccordionTrigger className="text-left hover:text-[#b4925e] py-6">
-                  Puis-je récupérer mon argent avant la retraite ?
-                </AccordionTrigger>
-                <AccordionContent className="text-sm text-gray-600 leading-relaxed pb-6">
-                  Le PER est bloqué jusqu'à la retraite, sauf cas de déblocage anticipé prévus par la loi : achat de résidence principale, accident de la vie (décès du conjoint, invalidité, surendettement, fin de droits au chômage). Cette contrainte est compensée par les avantages fiscaux importants.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="q5" className="border border-[#524c5d]/20 px-6">
-                <AccordionTrigger className="text-left hover:text-[#b4925e] py-6">
-                  Comment récupérer mon épargne à la retraite ?
-                </AccordionTrigger>
-                <AccordionContent className="text-sm text-gray-600 leading-relaxed pb-6">
-                  À la retraite, vous choisissez librement votre mode de sortie : en capital (récupération en une ou plusieurs fois), en rente viagère (revenus réguliers à vie), ou un mix des deux. Vous décidez en fonction de vos besoins et de votre situation au moment du départ en retraite.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="q6" className="border border-[#524c5d]/20 px-6">
-                <AccordionTrigger className="text-left hover:text-[#b4925e] py-6">
-                  Pourquoi l'offre COGOHR est-elle avantageuse ?
-                </AccordionTrigger>
-                <AccordionContent className="text-sm text-gray-600 leading-relaxed pb-6">
-                  L'offre exclusive réservée aux adhérents COGOHR vous fait bénéficier d'une étude personnalisée gratuite (valeur : 300€) et surtout de 0% de frais d'entrée (économie jusqu'à 3% de vos versements, soit plusieurs milliers d'euros). C'est une opportunité unique pour optimiser votre préparation retraite.
-                </AccordionContent>
-              </AccordionItem>
+              {cogohrFAQ.map((faq, index) => (
+                <AccordionItem
+                  key={`faq-${index}`}
+                  value={`q${index + 1}`}
+                  className="border border-[#524c5d]/20 px-6"
+                >
+                  <AccordionTrigger className="text-left hover:text-[#b4925e] py-6">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-sm text-gray-600 leading-relaxed pb-6">
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: faq.reponse
+                          .replace(/\n\n/g, '</p><p class="mb-3">')
+                          .replace(/^\*\*(.*?)\*\*/gm, '<strong>$1</strong>')
+                          .replace(/^- (.*?)$/gm, '<li>$1</li>')
+                          .replace(/(<li>[\s\S]*<\/li>)/, '<ul class="list-disc pl-5 space-y-1">$1</ul>')
+                      }}
+                      className="[&>p]:mb-3 [&>p:last-child]:mb-0 [&_strong]:font-medium [&>ul]:list-disc [&>ul]:pl-5 [&>ul]:space-y-1"
+                    />
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
             </Accordion>
           </div>
         </div>
@@ -938,7 +603,7 @@ export default function OffreCOGOHRPage() {
               <ul className="space-y-3">
                 <li className="flex items-center gap-3 text-sm text-gray-700">
                   <CheckCircle2 className="w-5 h-5 text-[#b4925e] flex-shrink-0" />
-                  <span>Réponse sous 24h</span>
+                  <span>{horaires.delaiReponse.cta}</span>
                 </li>
                 <li className="flex items-center gap-3 text-sm text-gray-700">
                   <CheckCircle2 className="w-5 h-5 text-[#b4925e] flex-shrink-0" />
@@ -947,10 +612,6 @@ export default function OffreCOGOHRPage() {
                 <li className="flex items-center gap-3 text-sm text-gray-700">
                   <CheckCircle2 className="w-5 h-5 text-[#b4925e] flex-shrink-0" />
                   <span>Sans engagement</span>
-                </li>
-                <li className="flex items-center gap-3 text-sm text-gray-700">
-                  <CheckCircle2 className="w-5 h-5 text-[#b4925e] flex-shrink-0" />
-                  <span>Étude gratuite (valeur : 300€)</span>
                 </li>
               </ul>
 
@@ -973,8 +634,8 @@ export default function OffreCOGOHRPage() {
                   <div className="flex items-start gap-3">
                     <Calendar className="w-4 h-4 text-[#b4925e] flex-shrink-0 mt-1" />
                     <div>
-                      <p>Mercredi - Samedi : 9h - 18h</p>
-                      <p className="text-xs text-gray-500">Visio disponible 7j/7 sur rendez-vous</p>
+                      <p>{horaires.horaires.joursCOGOHR} : {horaires.horaires.format}</p>
+                      <p className="text-xs text-gray-500">Visio disponible {horaires.visio.disponibilite} sur rendez-vous</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
@@ -991,7 +652,17 @@ export default function OffreCOGOHRPage() {
 
             {/* COLONNE DROITE - FORMULAIRE */}
             <div className="bg-white border-2 border-[#524c5d]/20 p-10 shadow-lg">
-              <COGOHRContactForm />
+              {/* Bandeau titre */}
+              <div className="mb-8 pb-6 border-b border-[#524c5d]/10">
+                <h2 className="text-2xl font-light text-[#524c5d] mb-3">
+                  Demander une Étude Gratuite
+                </h2>
+                <p className="text-sm text-gray-600 font-light leading-relaxed">
+                  Remplissez ce formulaire. Un de nos experts vous recontactera sous {horaires.delaiReponse.delai} pour échanger sur votre projet patrimonial et votre situation retraite.
+                </p>
+              </div>
+
+              <COGOHRContactForm delai={horaires.delaiReponse.delai} />
             </div>
           </div>
         </div>

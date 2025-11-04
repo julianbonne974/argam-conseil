@@ -1,12 +1,11 @@
-'use client';
-
 import { Phone, Mail, MapPin, Clock, Calendar, ArrowRight } from 'lucide-react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { ContactFormModern } from '@/components/ContactFormModern';
-import { motion } from 'framer-motion';
+import { getHoraires } from '@/lib/content';
 
 export default function ContactPage() {
+  const horaires = getHoraires();
   return (
     <main className="min-h-screen bg-white">
       <Header />
@@ -14,12 +13,7 @@ export default function ContactPage() {
       {/* Hero Section - Bauhaus Minimal */}
       <section className="pt-32 pb-20 bg-white">
         <div className="container mx-auto px-8 max-w-6xl">
-          <motion.div
-            className="text-center space-y-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
+          <div className="text-center space-y-6">
             <p className="text-[11px] uppercase tracking-[0.3em] text-[#524c5d]/50 font-medium">
               Contact
             </p>
@@ -28,9 +22,10 @@ export default function ContactPage() {
             </h1>
             <div className="w-16 h-[1px] bg-[#b4925e] mx-auto mt-6" />
             <p className="text-base text-[#524c5d]/60 max-w-2xl mx-auto leading-relaxed font-light pt-4">
-              Demandez votre étude patrimoniale gratuite. Nos experts vous accompagnent dans votre projet retraite.
+              Une question ? Notre équipe se tient à votre disposition !<br />
+              Remplissez ce formulaire. Un de nos conseillers vous recontactera sous 48 heures pour échanger sur votre projet.
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -39,22 +34,18 @@ export default function ContactPage() {
         <div className="container mx-auto px-8 max-w-7xl">
           <div className="grid lg:grid-cols-[60%_40%] gap-16">
             {/* LEFT COLUMN - Formulaire de Contact */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-            >
+            <div>
               <div className="space-y-6 mb-10">
                 <h2 className="text-3xl text-[#524c5d] font-light">
                   Demander une <span className="font-semibold">Étude Gratuite</span>
                 </h2>
                 <p className="text-sm text-[#524c5d]/60 font-light leading-relaxed max-w-xl">
-                  Remplissez ce formulaire. Un de nos experts vous recontactera sous 24 heures pour échanger sur votre projet patrimonial et votre situation retraite.
+                  Remplissez ce formulaire. Un de nos experts vous recontactera sous {horaires.delaiReponse.delai} pour échanger sur votre projet patrimonial et votre situation retraite.
                 </p>
               </div>
 
               {/* Formulaire Netlify */}
-              <ContactFormModern />
+              <ContactFormModern toastMessage={horaires.delaiReponse.messageToast} />
 
               {/* Encart COGOHR */}
               <div className="mt-8 p-6 border-[1px] border-[#b4925e]/30 bg-[#b4925e]/5">
@@ -70,15 +61,31 @@ export default function ContactPage() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* RIGHT COLUMN - Coordonnées & Infos */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="space-y-8"
-            >
+            <div className="space-y-8">
+              {/* Bouton Prendre Rendez-vous */}
+              <div className="pt-0">
+                <a
+                  href="https://calendly.com/argam-conseil"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block"
+                >
+                  <button className="w-full relative px-8 py-5 bg-[#524c5d] border-[1px] border-[#524c5d] text-white text-sm uppercase tracking-[0.15em] font-medium transition-all duration-300 hover:bg-[#b4925e] hover:border-[#b4925e]">
+                    <span className="relative z-10 flex items-center justify-center gap-3">
+                      <Calendar className="h-4 w-4" />
+                      Prendre rendez-vous
+                      <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    </span>
+                  </button>
+                </a>
+                <p className="text-xs text-[#524c5d]/50 text-center mt-3 font-light">
+                  Réservez un créneau avec nos experts
+                </p>
+              </div>
+
               {/* Contact Direct */}
               <div>
                 <h3 className="text-xl text-[#524c5d] font-semibold mb-6">
@@ -122,7 +129,7 @@ export default function ContactPage() {
                         contact@argamconseils.com
                       </p>
                       <p className="text-xs text-[#524c5d]/60 font-light">
-                        Réponse sous 24h ouvrées
+                        Réponse sous {horaires.delaiReponse.precision}
                       </p>
                     </div>
                   </a>
@@ -142,9 +149,6 @@ export default function ContactPage() {
                         <MapPin className="h-5 w-5 text-[#524c5d]" />
                       </div>
                       <div className="flex-1">
-                        <p className="text-xs uppercase tracking-wider text-[#b4925e] font-medium mb-2">
-                          Siège Social
-                        </p>
                         <p className="text-base font-semibold text-[#524c5d] mb-2">
                           Bordeaux
                         </p>
@@ -164,9 +168,6 @@ export default function ContactPage() {
                         <MapPin className="h-5 w-5 text-[#524c5d]" />
                       </div>
                       <div className="flex-1">
-                        <p className="text-xs uppercase tracking-wider text-[#b4925e] font-medium mb-2">
-                          Bureau Local
-                        </p>
                         <p className="text-base font-semibold text-[#524c5d] mb-2">
                           La Réunion
                         </p>
@@ -193,8 +194,8 @@ export default function ContactPage() {
                     </div>
                     <div className="flex-1 space-y-3">
                       <div className="flex justify-between items-center">
-                        <span className="text-sm text-[#524c5d]/70 font-light">Lundi - Vendredi</span>
-                        <span className="text-sm font-semibold text-[#524c5d]">9h00 - 18h00</span>
+                        <span className="text-sm text-[#524c5d]/70 font-light">{horaires.horaires.jours}</span>
+                        <span className="text-sm font-semibold text-[#524c5d]">{horaires.horaires.formatContact}</span>
                       </div>
                       <div className="h-[1px] bg-[#524c5d]/10" />
                       <div className="flex justify-between items-center">
@@ -206,39 +207,18 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* Bouton Prendre Rendez-vous */}
-              <div className="pt-4">
-                <a
-                  href="https://calendly.com/argam-conseil"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group block"
-                >
-                  <button className="w-full relative px-8 py-5 bg-[#524c5d] border-[1px] border-[#524c5d] text-white text-sm uppercase tracking-[0.15em] font-medium transition-all duration-300 hover:bg-[#b4925e] hover:border-[#b4925e]">
-                    <span className="relative z-10 flex items-center justify-center gap-3">
-                      <Calendar className="h-4 w-4" />
-                      Prendre rendez-vous
-                      <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                    </span>
-                  </button>
-                </a>
-                <p className="text-xs text-[#524c5d]/50 text-center mt-3 font-light">
-                  Réservez un créneau avec nos experts
-                </p>
-              </div>
-
               {/* Informations légales */}
               <div className="pt-6 border-t border-[#524c5d]/10">
                 <p className="text-xs uppercase tracking-wider text-[#524c5d]/50 font-medium mb-3">
                   Informations Légales
                 </p>
                 <div className="space-y-2 text-xs text-[#524c5d]/60 font-light">
-                  <p>ORIAS : 12345678</p>
-                  <p>Membre ANACOFI-CIF</p>
+                  <p>ORIAS : 20194827</p>
+                  <p>Membre ANCACOFI-CIF</p>
                   <p>Médiateur : AMF</p>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>

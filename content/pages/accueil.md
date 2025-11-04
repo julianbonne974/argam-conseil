@@ -29,6 +29,63 @@ chiffres:
   - valeur: "53%"
     label: "Prime vie chère"
     description: "Non comptée à la retraite"
+
+statistiques:
+  - valeur: "2"
+    label: "IMPLANTATIONS"
+    sousTitre: "Bordeaux et La Réunion"
+  - valeur: "8"
+    label: "PERSONNES"
+    sousTitre: "À votre service"
+  - valeur: "900+"
+    label: "CLIENTS"
+    sousTitre: "Nous font confiance"
+
+processus:
+  titre: "Notre processus simple et efficace"
+  etapes:
+    - numero: "1"
+      titre: "Diagnostic"
+      description: "Analyse complète de votre situation"
+      icone: "FileText"
+    - numero: "2"
+      titre: "Solution"
+      description: "Proposition personnalisée"
+      icone: "Settings"
+    - numero: "3"
+      titre: "Suivi"
+      description: "Accompagnement dans la durée"
+      icone: "Shield"
+
+avantages:
+  titre: "Pourquoi choisir Argam Conseil ?"
+  liste:
+    - titre: "Expertise locale"
+      description: "Connaissance approfondie des spécificités de La Réunion"
+      icone: "MapPin"
+    - titre: "Conseil indépendant"
+      description: "Solutions adaptées sans conflit d'intérêt"
+      icone: "Shield"
+    - titre: "Accompagnement complet"
+      description: "De l'analyse à la mise en œuvre"
+      icone: "Users"
+
+cta:
+  titre: "Prêt à sécuriser votre retraite ?"
+  description: "Bénéficiez d'une étude gratuite et personnalisée"
+  texteBouton: "Demander mon étude gratuite"
+  avantages:
+    - "Sans engagement"
+    - "100% confidentiel"
+    - "Réponse sous 48h"
+
+partenariat:
+  titre: "Partenariat exclusif COGOHR"
+  description: "En tant qu'adhérent COGOHR, bénéficiez de conditions privilégiées"
+  avantages:
+    - "Étude patrimoniale gratuite"
+    - "0% de frais d'entrée"
+    - "Conseiller dédié"
 ---
 
 # Page Accueil - Argam Conseil

@@ -187,6 +187,7 @@ collections:
     fields:
       - {label: "Question", name: "question", widget: "string"}
       - {label: "Réponse", name: "reponse", widget: "markdown"}
+      - {label: "Catégorie", name: "categorie", widget: "select", options: ["général", "COGOHR"], default: "général"}
       - {label: "Ordre", name: "ordre", widget: "number", default: 1, value_type: "int"}
 
   # 5. COLLECTION SETTINGS
@@ -235,3 +236,43 @@ collections:
             fields:
               - {label: "Nom", name: "nom", widget: "select", options: ["LinkedIn", "Facebook", "Twitter", "Instagram"]}
               - {label: "URL", name: "url", widget: "string"}
+
+      - label: "Horaires & Disponibilités"
+        name: "horaires"
+        file: "content/settings/horaires.yml"
+        fields:
+          - label: "Horaires Bureaux"
+            name: "horaires"
+            widget: "object"
+            fields:
+              - {label: "Jours (général)", name: "jours", widget: "string", default: "Lundi - Vendredi"}
+              - {label: "Jours COGOHR", name: "joursCOGOHR", widget: "string", default: "Mercredi - Samedi"}
+              - {label: "Heure Ouverture", name: "ouverture", widget: "string", default: "11h00"}
+              - {label: "Heure Fermeture", name: "fermeture", widget: "string", default: "19h00"}
+              - {label: "Format Affichage", name: "format", widget: "string", default: "11h - 19h"}
+              - {label: "Format Contact", name: "formatContact", widget: "string", default: "11h00 - 19h00"}
+
+          - label: "Visioconférence"
+            name: "visio"
+            widget: "object"
+            fields:
+              - {label: "Disponibilité", name: "disponibilite", widget: "string", default: "5j/7"}
+              - {label: "Disponibilité COGOHR", name: "disponibiliteCOGOHR", widget: "string", default: "4j/7"}
+              - {label: "Jours Complets", name: "joursComplets", widget: "string", default: "Lundi au Vendredi"}
+              - {label: "Note", name: "note", widget: "string", default: "sur rendez-vous"}
+
+          - label: "Délai de Réponse"
+            name: "delaiReponse"
+            widget: "object"
+            fields:
+              - {label: "Délai", name: "delai", widget: "string", default: "48h"}
+              - {label: "Précision", name: "precision", widget: "string", default: "48h ouvrées"}
+              - {label: "Message Toast", name: "messageToast", widget: "string", default: "Nous vous recontacterons sous 48h. Vérifiez vos emails."}
+              - {label: "CTA", name: "cta", widget: "string", default: "Réponse sous 48h"}
+
+          - label: "Processus"
+            name: "processus"
+            widget: "object"
+            fields:
+              - {label: "Durée Étude", name: "dureeEtude", widget: "string", default: "45mn"}
+              - {label: "Format Durée", name: "formatDuree", widget: "string", default: "Durée : 45mn"}

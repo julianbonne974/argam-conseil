@@ -1,0 +1,23 @@
+horaires:
+  jours: "Lundi - Vendredi"
+  joursCOGOHR: "Mercredi - Samedi"
+  ouverture: "11h00"
+  fermeture: "19h00"
+  format: "11h - 19h"
+  formatContact: "11h00 - 19h00"
+
+visio:
+  disponibilite: "5j/7"
+  disponibiliteCOGOHR: "4j/7"
+  joursComplets: "Lundi au Vendredi"
+  note: "sur rendez-vous"
+
+delaiReponse:
+  delai: "48h"
+  precision: "48h ouvrées"
+  messageToast: "Nous vous recontacterons sous 48h. Vérifiez vos emails."
+  cta: "Réponse sous 48h"
+
+processus:
+  dureeEtude: "45mn"
+  formatDuree: "Durée : 45mn"

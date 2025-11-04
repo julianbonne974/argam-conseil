@@ -316,7 +316,7 @@ const COGOHRContactForm = () => {
     // TODO: Intégrer avec Netlify Forms ou API route
     setTimeout(() => {
       setIsSubmitting(false);
-      alert('Merci ! Nous vous recontacterons sous 24h.');
+      alert('Merci ! Nous vous recontacterons sous 48h.');
     }, 1500);
   };
 
@@ -360,7 +360,7 @@ const COGOHRContactForm = () => {
           id="telephone"
           type="tel"
           required
-          placeholder="0692 XX XX XX"
+          placeholder="06 XX XX XX XX"
           value={formData.telephone}
           onChange={(e) => setFormData({ ...formData, telephone: e.target.value })}
         />

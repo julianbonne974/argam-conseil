@@ -471,7 +471,7 @@ export default function AccueilClient({ content }: AccueilClientProps) {
               </Link>
             </div>
             <p className="text-xs text-[#524c5d]/60 font-light">
-              {content.cta?.soustitre || 'Réponse sous 24h • Confidentiel • Sans engagement'}
+              {content.cta?.soustitre || 'Réponse sous 48h • Confidentiel • Sans engagement'}
             </p>
           </motion.div>
         </div>

@@ -202,14 +202,22 @@ export default function CGUPage() {
               </h2>
               <div className="text-sm text-[#524c5d]/70 font-light leading-relaxed space-y-3">
                 <p>
-                  Argam Conseil est enregistré auprès de l'ORIAS (Organisme pour le Registre des Intermédiaires en Assurance) sous le numéro 12345678 en qualité de :
+                  Argam Conseil est enregistré auprès de l'ORIAS (Organisme pour le Registre des Intermédiaires en Assurance) sous le numéro 20194827 en qualité de :
                 </p>
                 <ul className="space-y-1 ml-6 list-disc">
                   <li>Conseiller en Investissements Financiers (CIF)</li>
+                  <li>Intermédiaire en opérations de banque et en services de paiement</li>
+                  <li>Activité de transactions sur immeubles et fonds de commerce</li>
                   <li>Courtier en Assurance</li>
                 </ul>
                 <p className="mt-3">
-                  Argam Conseil est membre de l'association professionnelle ANACOFI-CIF et respecte sa charte de déontologie.
+                  <strong className="font-semibold text-[#524c5d]">Carte professionnelle :</strong> CPI 3301 2021 000 004 612
+                </p>
+                <p className="mt-3">
+                  <strong className="font-semibold text-[#524c5d]">Garant financier :</strong> GALIAN Assurances - 89 rue de la Boétie, 75008 Paris
+                </p>
+                <p className="mt-3">
+                  Argam Conseil est membre de l'association professionnelle ANCACOFI-CIF et respecte sa charte de déontologie.
                 </p>
                 <p>
                   <strong className="font-semibold text-[#524c5d]">Autorités de contrôle :</strong>

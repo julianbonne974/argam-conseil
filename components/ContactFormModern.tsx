@@ -34,7 +34,11 @@ interface FormErrors {
   fonction?: string;
 }
 
-export function ContactFormModern() {
+interface ContactFormProps {
+  toastMessage?: string;
+}
+
+export function ContactFormModern({ toastMessage }: ContactFormProps = {}) {
   const { showSuccess, showError, showInfo, dismiss } = useFormToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
@@ -46,7 +50,7 @@ export function ContactFormModern() {
     fonction: '',
     meetingType: 'visio',
     message: '',
-    isCogohrMember: true,
+    isCogohrMember: false,
   });
 
   const validateField = (name: keyof FormData, value: string): string | undefined => {
@@ -62,21 +66,32 @@ export function ContactFormModern() {
       case 'phone':
         if (!value.trim()) return 'Le téléphone est requis';
         if (!/^(\+262|0)[6-7]\d{8}$/.test(value.replace(/\s/g, '')))
-          return 'Format de téléphone invalide (ex: 0692 XX XX XX ou +262...)';
+          return 'Format de téléphone invalide (ex: 06 XX XX XX XX ou +262...)';
         break;
       case 'fonction':
-        if (!value) return 'Veuillez sélectionner votre fonction';
+        // Fonction is only required if user is COGOHR member
         break;
     }
     return undefined;
   };
 
   const handleInputChange = (field: keyof FormData, value: string | boolean) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
+    setFormData((prev) => {
+      // If unchecking COGOHR member, reset fonction field
+      if (field === 'isCogohrMember' && value === false) {
+        return { ...prev, [field]: value, fonction: '' };
+      }
+      return { ...prev, [field]: value };
+    });
 
     if (typeof value === 'string' && errors[field as keyof FormErrors]) {
       const error = validateField(field as keyof FormData, value);
       setErrors((prev) => ({ ...prev, [field]: error }));
+    }
+
+    // Clear fonction error when unchecking COGOHR
+    if (field === 'isCogohrMember' && value === false) {
+      setErrors((prev) => ({ ...prev, fonction: undefined }));
     }
   };
 
@@ -86,7 +101,13 @@ export function ContactFormModern() {
     newErrors.name = validateField('name', formData.name);
     newErrors.email = validateField('email', formData.email);
     newErrors.phone = validateField('phone', formData.phone);
-    newErrors.fonction = validateField('fonction', formData.fonction);
+
+    // Validate fonction only if user is COGOHR member
+    if (formData.isCogohrMember) {
+      if (!formData.fonction) {
+        newErrors.fonction = 'Veuillez sélectionner votre fonction';
+      }
+    }
 
     setErrors(newErrors);
     return !Object.values(newErrors).some((error) => error !== undefined);
@@ -108,7 +129,7 @@ export function ContactFormModern() {
       formDataToSend.append('name', formData.name);
       formDataToSend.append('email', formData.email);
       formDataToSend.append('phone', formData.phone);
-      formDataToSend.append('fonction', formData.fonction);
+      formDataToSend.append('fonction', formData.isCogohrMember ? formData.fonction : 'Non applicable');
       formDataToSend.append('meetingType', formData.meetingType);
       formDataToSend.append('message', formData.message);
       formDataToSend.append('isCogohrMember', formData.isCogohrMember ? 'Oui' : 'Non');
@@ -121,7 +142,7 @@ export function ContactFormModern() {
       dismiss(toastId);
 
       if (response.ok) {
-        showSuccess();
+        showSuccess(toastMessage);
         setFormData({
           name: '',
           email: '',
@@ -129,7 +150,7 @@ export function ContactFormModern() {
           fonction: '',
           meetingType: 'visio',
           message: '',
-          isCogohrMember: true,
+          isCogohrMember: false,
         });
         setErrors({});
       } else {
@@ -211,7 +232,7 @@ export function ContactFormModern() {
               id="phone"
               name="phone"
               type="tel"
-              placeholder="0692 XX XX XX"
+              placeholder="06 XX XX XX XX"
               value={formData.phone}
               onChange={(e) => handleInputChange('phone', e.target.value)}
               onBlur={(e) => {
@@ -224,36 +245,59 @@ export function ContactFormModern() {
             {errors.phone && <p className="text-xs text-red-500">{errors.phone}</p>}
           </div>
 
-          {/* Fonction */}
-          <div className="space-y-2">
-            <Label htmlFor="fonction" className="text-xs uppercase tracking-wide text-muted-foreground">
-              Fonction <span className="text-red-500">*</span>
-            </Label>
-            <Select
-              name="fonction"
-              value={formData.fonction}
-              onValueChange={(value) => {
-                handleInputChange('fonction', value);
-                const error = validateField('fonction', value);
-                setErrors((prev) => ({ ...prev, fonction: error }));
-              }}
+          {/* COGOHR Member */}
+          <div className="flex items-start space-x-3 bg-muted/30 p-4 border-[1px] border-border">
+            <Checkbox
+              id="isCogohrMember"
+              name="isCogohrMember"
+              checked={formData.isCogohrMember}
+              onCheckedChange={(checked) =>
+                handleInputChange('isCogohrMember', checked === true)
+              }
               disabled={isSubmitting}
-            >
-              <SelectTrigger className={errors.fonction ? 'border-red-500' : 'border-[1px]'}>
-                <SelectValue placeholder="Sélectionnez votre fonction" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="infirmier">Infirmier(ère)</SelectItem>
-                <SelectItem value="aide-soignant">Aide-soignant(e)</SelectItem>
-                <SelectItem value="medecin">Médecin</SelectItem>
-                <SelectItem value="cadre-sante">Cadre de santé</SelectItem>
-                <SelectItem value="technicien">Technicien(ne)</SelectItem>
-                <SelectItem value="administratif">Personnel administratif</SelectItem>
-                <SelectItem value="autre">Autre</SelectItem>
-              </SelectContent>
-            </Select>
-            {errors.fonction && <p className="text-xs text-red-500">{errors.fonction}</p>}
+            />
+            <div className="flex-1">
+              <Label htmlFor="isCogohrMember" className="text-xs cursor-pointer font-medium">
+                Je suis adhérent du COGOHR
+              </Label>
+              <p className="text-[10px] text-muted-foreground mt-1">
+                Les adhérents COGOHR bénéficient d'une étude gratuite + 0% de frais d'entrée
+              </p>
+            </div>
           </div>
+
+          {/* Fonction - Only shown if COGOHR member */}
+          {formData.isCogohrMember && (
+            <div className="space-y-2">
+              <Label htmlFor="fonction" className="text-xs uppercase tracking-wide text-muted-foreground">
+                Fonction <span className="text-red-500">*</span>
+              </Label>
+              <Select
+                name="fonction"
+                value={formData.fonction}
+                onValueChange={(value) => {
+                  handleInputChange('fonction', value);
+                  const error = validateField('fonction', value);
+                  setErrors((prev) => ({ ...prev, fonction: error }));
+                }}
+                disabled={isSubmitting}
+              >
+                <SelectTrigger className={errors.fonction ? 'border-red-500' : 'border-[1px]'}>
+                  <SelectValue placeholder="Sélectionnez votre fonction" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="infirmier">Infirmier(ère)</SelectItem>
+                  <SelectItem value="aide-soignant">Aide-soignant(e)</SelectItem>
+                  <SelectItem value="medecin">Médecin</SelectItem>
+                  <SelectItem value="cadre-sante">Cadre de santé</SelectItem>
+                  <SelectItem value="technicien">Technicien(ne)</SelectItem>
+                  <SelectItem value="administratif">Personnel administratif</SelectItem>
+                  <SelectItem value="autre">Autre</SelectItem>
+                </SelectContent>
+              </Select>
+              {errors.fonction && <p className="text-xs text-red-500">{errors.fonction}</p>}
+            </div>
+          )}
 
           {/* Meeting Type */}
           <div className="space-y-3">
@@ -297,27 +341,6 @@ export function ContactFormModern() {
               disabled={isSubmitting}
               className="border-[1px]"
             />
-          </div>
-
-          {/* COGOHR Member */}
-          <div className="flex items-start space-x-3 bg-muted/30 p-4 border-[1px] border-border">
-            <Checkbox
-              id="isCogohrMember"
-              name="isCogohrMember"
-              checked={formData.isCogohrMember}
-              onCheckedChange={(checked) =>
-                handleInputChange('isCogohrMember', checked === true)
-              }
-              disabled={isSubmitting}
-            />
-            <div className="flex-1">
-              <Label htmlFor="isCogohrMember" className="text-xs cursor-pointer font-medium">
-                Je suis adhérent du COGOHR
-              </Label>
-              <p className="text-[10px] text-muted-foreground mt-1">
-                Les adhérents COGOHR bénéficient d'une étude gratuite + 0% de frais d'entrée
-              </p>
-            </div>
           </div>
 
           {/* Submit Button */}
