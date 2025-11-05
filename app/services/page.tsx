@@ -55,7 +55,7 @@ export default function ServicesPage() {
             </h1>
 
             <p className="text-lg text-gray-600 font-light leading-relaxed max-w-2xl mx-auto">
-              Argam Conseil vous accompagne dans une démarche globale d'optimisation de votre patrimoine professionnel et personnel. L'intégration complète des dimensions stratégiques, fiscales, sociales, financières et juridiques est la base d'un conseil personnalisé complet et optimal.
+              Argam Conseils vous accompagne dans une démarche globale d'optimisation de votre patrimoine professionnel et personnel. L'intégration complète des dimensions stratégiques, fiscales, sociales, financières et juridiques est la base d'un conseil personnalisé complet et optimal.
             </p>
 
             <div className="w-16 h-1 bg-[#b4925e] mx-auto mt-8" />

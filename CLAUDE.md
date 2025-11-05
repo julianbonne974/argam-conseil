@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**Argam Conseil** - Financial advisory website for hospital civil servants in La Réunion, focusing on retirement planning (PER - Plan Épargne Retraite).
+**Argam Conseils** - Financial advisory website for hospital civil servants in La Réunion, focusing on retirement planning (PER - Plan Épargne Retraite).
 
 **Target audience**: Hospital civil servants in La Réunion
 **Key message**: The 53% cost-of-living bonus (prime de vie chère) is not included in retirement calculations
@@ -92,7 +92,7 @@ lib/
 └── utils.ts            # cn() utility for Tailwind class merging
 ```
 
-## Brand Colors (Argam Conseil)
+## Brand Colors (Argam Conseils)
 
 Primary color palette defined in `app/globals.css`:
 
@@ -197,7 +197,7 @@ Two variants:
 Set in `app/layout.tsx`:
 ```typescript
 export const metadata: Metadata = {
-  title: 'Argam Conseil - Plan Épargne Retraite Fonctionnaires La Réunion',
+  title: 'Argam Conseils - Plan Épargne Retraite Fonctionnaires La Réunion',
   description: 'Compensez la perte de votre prime de vie chère de 53%...',
   keywords: 'PER, Plan Épargne Retraite, Fonctionnaires, La Réunion, COGOHR...',
   openGraph: { ... }
@@ -225,7 +225,7 @@ export const metadata: Metadata = {
 ### FAQ (5 Questions)
 1. Why isn't the cost-of-living bonus counted?
 2. What is a PER (Plan Épargne Retraite)?
-3. Why choose Argam Conseil?
+3. Why choose Argam Conseils?
 4. How much should I save per month?
 5. Is the COGOHR offer really free?
 
@@ -251,3 +251,4 @@ Before deployment:
 - [ ] Check Lighthouse scores (aim for 90+)
 - [ ] Verify a11y with screen reader
 - [ ] Test mobile burger menu animation
+- Pour toutes les modifications futures prends en compte que j'utilise un cms donc ne code pas en dur.

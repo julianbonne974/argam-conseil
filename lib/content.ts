@@ -335,3 +335,62 @@ export function getHoraires(): HorairesSettings {
     };
   }
 }
+
+// Interface pour le contenu de la page contact
+export interface ContactContent {
+  hero: {
+    label: string;
+    titre: {
+      light: string;
+      bold: string;
+    };
+    description: string;
+  };
+  formulaire: {
+    titre: string;
+    sousTitre: string;
+    boutonTexte: string;
+    mentionCogohr: {
+      titre: string;
+      description: string;
+    };
+  };
+  bordeaux: {
+    nom: string;
+    adresse: string;
+    telephone: string;
+    email: string;
+  };
+  reunion: {
+    nom: string;
+    adresse: string;
+    telephone: string;
+    email: string;
+  };
+  horaires: {
+    jours: string;
+    heures: string;
+    ferme: string;
+  };
+  calendly: {
+    url: string;
+    texte: string;
+    sousTexte: string;
+  };
+  legal: {
+    orias: string;
+    membre: string;
+    mediateur: string;
+  };
+  rgpd: {
+    titre: string;
+    description: string;
+  };
+}
+
+/**
+ * Récupère le contenu de la page contact
+ */
+export function getContactContent(): ContactContent | null {
+  return getPageContent('contact') as ContactContent | null;
+}

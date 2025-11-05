@@ -79,7 +79,7 @@ export default function Home() {
 
               {/* Sous-titre */}
               <p className="text-lg text-gray-600 leading-relaxed font-light max-w-xl">
-                Argam Conseil accompagne les particuliers et les dirigeants dans l'optimisation globale de leur patrimoine professionnel et personnel à La Réunion et Bordeaux.
+                Argam Conseils accompagne les particuliers et les dirigeants dans l'optimisation globale de leur patrimoine professionnel et personnel à La Réunion et Bordeaux.
               </p>
 
               {/* CTA */}
@@ -147,7 +147,7 @@ export default function Home() {
 
               <div className="space-y-4 text-[#524c5d]/70 font-light leading-relaxed">
                 <p>
-                  Argam Conseil vous accompagne dans une démarche complète d'optimisation de votre patrimoine. Notre expertise intègre les dimensions stratégiques, fiscales, sociales, financières et juridiques pour vous offrir un conseil personnalisé et optimal.
+                  Argam Conseils vous accompagne dans une démarche complète d'optimisation de votre patrimoine. Notre expertise intègre les dimensions stratégiques, fiscales, sociales, financières et juridiques pour vous offrir un conseil personnalisé et optimal.
                 </p>
                 <p>
                   Que vous soyez particulier, fonctionnaire hospitalier, ou dirigeant d'entreprise, nous construisons avec vous des solutions sur-mesure adaptées à vos objectifs et contraintes spécifiques.
@@ -336,7 +336,7 @@ export default function Home() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl lg:text-4xl text-[#524c5d] font-light">
-              Argam Conseil en Chiffres
+              Argam Conseils en Chiffres
             </h2>
           </div>
 
@@ -394,7 +394,7 @@ export default function Home() {
               <MapPin className="h-10 w-10 text-[#b4925e]" strokeWidth={1.5} />
               <div className="space-y-4">
                 <h3 className="text-xl font-semibold text-[#524c5d]">
-                  Bordeaux - Siège Social
+                  Bordeaux
                 </h3>
                 <div className="space-y-2 text-sm text-[#524c5d]/70 font-light">
                   <p>52 allées de Tourny<br />33000 Bordeaux</p>

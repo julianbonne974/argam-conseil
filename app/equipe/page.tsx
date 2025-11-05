@@ -4,7 +4,7 @@ import { HeaderWrapper } from '@/components/HeaderWrapper'
 import { FooterWrapper } from '@/components/FooterWrapper'
 
 export const metadata = {
-  title: 'Notre Équipe - Argam Conseil',
+  title: 'Notre Équipe - Argam Conseils',
   description: 'Découvrez notre équipe d\'experts en gestion de patrimoine et protection sociale à Bordeaux et La Réunion.',
 }
 

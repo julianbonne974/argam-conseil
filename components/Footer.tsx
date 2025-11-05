@@ -14,7 +14,7 @@ export function Footer() {
               <Link href="/">
                 <Image
                   src="/logo-argam.png"
-                  alt="Argam Conseil"
+                  alt="Argam Conseils"
                   width={180}
                   height={54}
                   className="h-10 w-auto brightness-0 invert opacity-90"
@@ -147,7 +147,7 @@ export function Footer() {
         <div className="container mx-auto px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-xs text-white/50 font-light">
-              © 2025 Argam Conseil - Tous droits réservés
+              © 2025 Argam Conseils - Tous droits réservés
             </p>
             <div className="flex flex-wrap items-center gap-4 text-xs text-white/50">
               <Link

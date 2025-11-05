@@ -2,10 +2,24 @@ import { Phone, Mail, MapPin, Clock, Calendar, ArrowRight } from 'lucide-react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { ContactFormModern } from '@/components/ContactFormModern';
-import { getHoraires } from '@/lib/content';
+import { getHoraires, getContactContent } from '@/lib/content';
 
 export default function ContactPage() {
   const horaires = getHoraires();
+  const contactData = getContactContent();
+
+  // Fonction pour parser le markdown simple (gras uniquement)
+  const parseMarkdown = (text: string) => {
+    if (!text) return null;
+    const parts = text.split(/(\*\*.*?\*\*)/g);
+    return parts.map((part, index) => {
+      if (part.startsWith('**') && part.endsWith('**')) {
+        return <span key={index} className="font-semibold">{part.slice(2, -2)}</span>;
+      }
+      return part;
+    });
+  };
+
   return (
     <main className="min-h-screen bg-white">
       <Header />
@@ -15,16 +29,17 @@ export default function ContactPage() {
         <div className="container mx-auto px-8 max-w-6xl">
           <div className="text-center space-y-6">
             <p className="text-[11px] uppercase tracking-[0.3em] text-[#524c5d]/50 font-medium">
-              Contact
+              {contactData?.hero.label || 'Contact'}
             </p>
             <h1 className="text-5xl lg:text-6xl text-[#524c5d] leading-[1.1]">
-              <span className="font-light">Contactez</span> <span className="font-bold">-nous</span>
+              <span className="font-light">{contactData?.hero.titre.light || 'Contactez'}</span> <span className="font-bold">{contactData?.hero.titre.bold || '-nous'}</span>
             </h1>
             <div className="w-16 h-[1px] bg-[#b4925e] mx-auto mt-6" />
-            <p className="text-base text-[#524c5d]/60 max-w-2xl mx-auto leading-relaxed font-light pt-4">
-              Une question ? Notre équipe se tient à votre disposition !<br />
-              Remplissez ce formulaire. Un de nos conseillers vous recontactera sous 48 heures pour échanger sur votre projet.
-            </p>
+            {contactData?.hero.description && (
+              <p className="text-base text-[#524c5d]/60 max-w-2xl mx-auto leading-relaxed font-light pt-4">
+                {contactData.hero.description}
+              </p>
+            )}
           </div>
         </div>
       </section>
@@ -37,15 +52,19 @@ export default function ContactPage() {
             <div>
               <div className="space-y-6 mb-10">
                 <h2 className="text-3xl text-[#524c5d] font-light">
-                  Demander une <span className="font-semibold">Étude Gratuite</span>
+                  {parseMarkdown(contactData?.formulaire.titre || '**Une question ?** Notre équipe se tient à votre disposition !')}
                 </h2>
                 <p className="text-sm text-[#524c5d]/60 font-light leading-relaxed max-w-xl">
-                  Remplissez ce formulaire. Un de nos experts vous recontactera sous {horaires.delaiReponse.delai} pour échanger sur votre projet patrimonial et votre situation retraite.
+                  {contactData?.formulaire.sousTitre || `Remplissez ce formulaire. Un de nos conseillers vous recontactera sous ${horaires.delaiReponse.delai} pour échanger sur votre projet.`}
                 </p>
               </div>
 
               {/* Formulaire Netlify */}
-              <ContactFormModern toastMessage={horaires.delaiReponse.messageToast} />
+              <ContactFormModern
+                toastMessage={horaires.delaiReponse.messageToast}
+                presentielText="Présentiel"
+                boutonTexte={contactData?.formulaire.boutonTexte || "Demander à être contacté"}
+              />
 
               {/* Encart COGOHR */}
               <div className="mt-8 p-6 border-[1px] border-[#b4925e]/30 bg-[#b4925e]/5">
@@ -53,10 +72,10 @@ export default function ContactPage() {
                   <div className="w-2 h-2 rounded-full bg-[#b4925e] mt-2" />
                   <div>
                     <p className="text-sm font-semibold text-[#524c5d] mb-2">
-                      Adhérent COGOHR ?
+                      {contactData?.formulaire.mentionCogohr.titre || 'Adhérent COGOHR ?'}
                     </p>
                     <p className="text-xs text-[#524c5d]/60 font-light leading-relaxed">
-                      Cochez la case correspondante dans le formulaire pour bénéficier de votre étude gratuite et de 0% de frais d'entrée sur votre Plan Épargne Retraite.
+                      {contactData?.formulaire.mentionCogohr.description || "Cochez la case correspondante dans le formulaire pour bénéficier de votre étude gratuite et de 0% de frais d'entrée sur votre Plan Épargne Retraite."}
                     </p>
                   </div>
                 </div>

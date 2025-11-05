@@ -1,6 +1,6 @@
-# Argam Conseil - Site Web
+# Argam Conseils - Site Web
 
-Site web pour Argam Conseil, expert en conseil patrimonial et Plan Épargne Retraite (PER) pour les fonctionnaires hospitaliers de La Réunion.
+Site web pour Argam Conseils, expert en conseil patrimonial et Plan Épargne Retraite (PER) pour les fonctionnaires hospitaliers de La Réunion.
 
 ## 🚀 Technologies
 
@@ -132,5 +132,5 @@ Le formulaire de contact utilise Netlify Forms :
 
 ## 📄 License
 
-© 2024 Argam Conseil. Tous droits réservés.
+© 2024 Argam Conseils. Tous droits réservés.
 ORIAS : 20194827 - SIRET : 800 527 824

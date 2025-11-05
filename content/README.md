@@ -117,4 +117,4 @@ Pour les services et autres éléments :
 
 Pour toute question sur la configuration Decap CMS :
 - Documentation : https://decapcms.org/docs/
-- Support Argam Conseil : contact@argamconseils.com
+- Support Argam Conseils : contact@argamconseils.com

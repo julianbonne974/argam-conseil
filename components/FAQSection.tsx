@@ -28,7 +28,7 @@ export function FAQSection() {
         "Le PER est un produit d'épargne à long terme qui vous permet de vous constituer un complément de revenu pour la retraite tout en bénéficiant d'avantages fiscaux. Vos versements sont déductibles de votre revenu imposable, ce qui réduit immédiatement vos impôts.",
     },
     {
-      question: "Pourquoi choisir Argam Conseil ?",
+      question: "Pourquoi choisir Argam Conseils ?",
       answer:
         "Nous sommes spécialisés dans l'accompagnement des fonctionnaires hospitaliers de La Réunion. Partenaire officiel du COGOHR, nous proposons une étude gratuite, 0% de frais d'entrée pour les adhérents, et un suivi personnalisé par des experts qui connaissent votre statut et vos enjeux.",
     },

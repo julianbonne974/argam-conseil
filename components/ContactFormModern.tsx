@@ -36,9 +36,15 @@ interface FormErrors {
 
 interface ContactFormProps {
   toastMessage?: string;
+  presentielText?: string;
+  boutonTexte?: string;
 }
 
-export function ContactFormModern({ toastMessage }: ContactFormProps = {}) {
+export function ContactFormModern({
+  toastMessage,
+  presentielText = "Présentiel - Trois-Bassins",
+  boutonTexte = "Demander mon étude gratuite"
+}: ContactFormProps = {}) {
   const { showSuccess, showError, showInfo, dismiss } = useFormToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
@@ -320,7 +326,7 @@ export function ContactFormModern({ toastMessage }: ContactFormProps = {}) {
               <div className="flex items-center space-x-2 border-[1px] border-border p-3 cursor-pointer">
                 <RadioGroupItem value="presentiel" id="presentiel" />
                 <Label htmlFor="presentiel" className="text-xs cursor-pointer flex-1">
-                  Présentiel - Trois-Bassins
+                  {presentielText}
                 </Label>
               </div>
             </RadioGroup>
@@ -356,14 +362,14 @@ export function ContactFormModern({ toastMessage }: ContactFormProps = {}) {
                 Envoi en cours...
               </>
             ) : (
-              'Demander mon étude gratuite'
+              boutonTexte
             )}
           </Button>
 
       {/* Privacy Notice */}
       <p className="text-[10px] text-muted-foreground text-center leading-relaxed">
         Vos données sont sécurisées et ne seront jamais partagées. En soumettant ce formulaire, vous
-        acceptez d'être recontacté par Argam Conseil.
+        acceptez d'être recontacté par Argam Conseils.
       </p>
     </form>
   );

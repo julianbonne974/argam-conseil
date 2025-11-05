@@ -162,7 +162,7 @@ export const COGOHRContactForm = ({ delai }: { delai: string }) => {
           htmlFor="acceptContact"
           className="text-sm text-gray-600 cursor-pointer"
         >
-          J'accepte d'être recontacté par Argam Conseil dans le cadre de ma demande
+          J'accepte d'être recontacté par Argam Conseils dans le cadre de ma demande
         </Label>
       </div>
 

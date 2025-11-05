@@ -110,7 +110,7 @@ export default function AccueilClient({ content }: AccueilClientProps) {
 
               {/* Sous-titre */}
               <p className="text-lg text-gray-600 leading-relaxed font-light max-w-xl">
-                {content.hero?.soustitre || 'Argam Conseil accompagne les particuliers et les dirigeants dans l\'optimisation globale de leur patrimoine professionnel et personnel à La Réunion et Bordeaux.'}
+                {content.hero?.soustitre || 'Argam Conseils accompagne les particuliers et les dirigeants dans l\'optimisation globale de leur patrimoine professionnel et personnel à La Réunion et Bordeaux.'}
               </p>
 
               {/* CTA */}
@@ -187,7 +187,7 @@ export default function AccueilClient({ content }: AccueilClientProps) {
 
               <div className="space-y-4 text-[#524c5d]/70 font-light leading-relaxed">
                 <p>
-                  {content.presentation?.paragraphe1 || 'Argam Conseil vous accompagne dans une démarche complète d\'optimisation de votre patrimoine. Notre expertise intègre les dimensions stratégiques, fiscales, sociales, financières et juridiques pour vous offrir un conseil personnalisé et optimal.'}
+                  {content.presentation?.paragraphe1 || 'Argam Conseils vous accompagne dans une démarche complète d\'optimisation de votre patrimoine. Notre expertise intègre les dimensions stratégiques, fiscales, sociales, financières et juridiques pour vous offrir un conseil personnalisé et optimal.'}
                 </p>
                 <p>
                   {content.presentation?.paragraphe2 || 'Que vous soyez particulier, fonctionnaire hospitalier, ou dirigeant d\'entreprise, nous construisons avec vous des solutions sur-mesure adaptées à vos objectifs et contraintes spécifiques.'}
@@ -327,7 +327,7 @@ export default function AccueilClient({ content }: AccueilClientProps) {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl lg:text-4xl text-[#524c5d] font-light">
-              Argam Conseil en Chiffres
+              Argam Conseils en Chiffres
             </h2>
           </motion.div>
 

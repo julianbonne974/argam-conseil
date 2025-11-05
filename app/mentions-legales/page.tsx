@@ -45,7 +45,7 @@ export default function MentionsLegalesPage() {
                   Éditeur du site
                 </h2>
                 <div className="text-sm text-[#524c5d]/70 font-light leading-relaxed space-y-2">
-                  <p><strong className="font-semibold text-[#524c5d]">Raison sociale :</strong> Argam Conseil</p>
+                  <p><strong className="font-semibold text-[#524c5d]">Raison sociale :</strong> Argam Conseils</p>
                   <p><strong className="font-semibold text-[#524c5d]">Forme juridique :</strong> [SARL/SAS]</p>
                   <p><strong className="font-semibold text-[#524c5d]">Capital social :</strong> [Montant] €</p>
                   <p><strong className="font-semibold text-[#524c5d]">Siège social :</strong> 52 allées de Tourny, 33000 Bordeaux</p>
@@ -105,10 +105,10 @@ export default function MentionsLegalesPage() {
                 </h2>
                 <div className="text-sm text-[#524c5d]/70 font-light leading-relaxed space-y-3">
                   <p>
-                    L'ensemble du contenu de ce site (textes, images, graphismes, logo, icônes, sons, logiciels, etc.) est la propriété exclusive d'Argam Conseil, à l'exception des marques, logos ou contenus appartenant à d'autres sociétés partenaires ou auteurs.
+                    L'ensemble du contenu de ce site (textes, images, graphismes, logo, icônes, sons, logiciels, etc.) est la propriété exclusive d'Argam Conseils, à l'exception des marques, logos ou contenus appartenant à d'autres sociétés partenaires ou auteurs.
                   </p>
                   <p>
-                    Toute reproduction, distribution, modification, adaptation, retransmission ou publication de ces différents éléments est strictement interdite sans l'accord exprès par écrit d'Argam Conseil.
+                    Toute reproduction, distribution, modification, adaptation, retransmission ou publication de ces différents éléments est strictement interdite sans l'accord exprès par écrit d'Argam Conseils.
                   </p>
                 </div>
               </div>
@@ -123,7 +123,7 @@ export default function MentionsLegalesPage() {
                     Les informations contenues sur ce site sont aussi précises que possible et le site est périodiquement remis à jour, mais peut toutefois contenir des inexactitudes, des omissions ou des lacunes.
                   </p>
                   <p>
-                    Argam Conseil ne pourra être tenu responsable des dommages directs ou indirects qui pourraient résulter de l'accès au site ou de l'utilisation de celui-ci.
+                    Argam Conseils ne pourra être tenu responsable des dommages directs ou indirects qui pourraient résulter de l'accès au site ou de l'utilisation de celui-ci.
                   </p>
                   <p>
                     Les informations fournies sur ce site le sont à titre indicatif et ne constituent en aucun cas un conseil en investissement personnalisé. Seule une étude patrimoniale complète permet d'établir des recommandations adaptées à votre situation.

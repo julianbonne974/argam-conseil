@@ -54,7 +54,7 @@ export default function PolitiqueConfidentialitePage() {
               </div>
               <div className="text-sm text-[#524c5d]/70 font-light leading-relaxed space-y-3">
                 <p>
-                  Argam Conseil s'engage à protéger la vie privée de ses clients et visiteurs. Cette politique de confidentialité décrit comment nous collectons, utilisons, partageons et protégeons vos données personnelles conformément au Règlement Général sur la Protection des Données (RGPD).
+                  Argam Conseils s'engage à protéger la vie privée de ses clients et visiteurs. Cette politique de confidentialité décrit comment nous collectons, utilisons, partageons et protégeons vos données personnelles conformément au Règlement Général sur la Protection des Données (RGPD).
                 </p>
                 <p>
                   En utilisant notre site web ou nos services, vous acceptez les pratiques décrites dans cette politique.
@@ -261,7 +261,7 @@ export default function PolitiqueConfidentialitePage() {
                 <p>Pour toute question concernant cette politique de confidentialité ou vos données personnelles :</p>
                 <p><strong className="font-semibold text-[#524c5d]">Email :</strong> <a href="mailto:contact@argamconseils.com" className="text-[#b4925e] hover:underline">contact@argamconseils.com</a></p>
                 <p><strong className="font-semibold text-[#524c5d]">Téléphone :</strong> 05 33 89 14 00</p>
-                <p><strong className="font-semibold text-[#524c5d]">Courrier :</strong> Argam Conseil - 52 allées de Tourny, 33000 Bordeaux</p>
+                <p><strong className="font-semibold text-[#524c5d]">Courrier :</strong> Argam Conseils - 52 allées de Tourny, 33000 Bordeaux</p>
               </div>
             </div>
 

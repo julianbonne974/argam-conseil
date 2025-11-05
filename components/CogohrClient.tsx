@@ -417,7 +417,7 @@ const COGOHRContactForm = () => {
           onCheckedChange={(checked) => setFormData({ ...formData, acceptContact: checked as boolean })}
         />
         <Label htmlFor="acceptContact" className="text-sm font-normal leading-relaxed cursor-pointer">
-          J'accepte d'être contacté par Argam Conseil dans le cadre de ma demande *
+          J'accepte d'être contacté par Argam Conseils dans le cadre de ma demande *
         </Label>
       </div>
 

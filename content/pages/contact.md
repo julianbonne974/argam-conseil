@@ -1,15 +1,56 @@
 ---
+# Section Hero
+hero:
+  label: "Contact"
+  titre:
+    light: "Contactez"
+    bold: "-nous"
+  description: ""  # Vide comme demandé - texte supprimé
+
+# Section Formulaire
+formulaire:
+  titre: "**Une question ?** Notre équipe se tient à votre disposition !"
+  sousTitre: "Remplissez ce formulaire. Un de nos conseillers vous recontactera sous 48 heures pour échanger sur votre projet."
+  boutonTexte: "Demander à être contacté"
+  mentionCogohr:
+    titre: "Adhérent COGOHR ?"
+    description: "Cochez la case correspondante dans le formulaire pour bénéficier de votre étude gratuite et de 0% de frais d'entrée sur votre Plan Épargne Retraite."
+
+# Coordonnées
 bordeaux:
-  adresse: "52 allées de Tourny\n33000 Bordeaux\nFrance"
+  nom: "Bordeaux"
+  adresse: "52 allées de Tourny\n33000 Bordeaux\nNouvelle-Aquitaine"
   telephone: "05 33 89 14 00"
   email: "contact@argamconseils.com"
 
 reunion:
-  adresse: "Trois-Bassins\n97426 La Réunion\nFrance"
+  nom: "La Réunion"
+  adresse: "Trois-Bassins\nSite COGOHR\nDépartement 974"
   telephone: ""
   email: ""
 
-horaires: "Du lundi au vendredi\n9h00 - 12h30 | 14h00 - 18h00"
+# Informations pratiques
+horaires:
+  jours: "Lundi - Vendredi"
+  heures: "11h00 - 19h00"
+  ferme: "Samedi - Dimanche"
+
+# Calendly
+calendly:
+  url: "https://calendly.com/argam-conseil"
+  texte: "Prendre rendez-vous"
+  sousTexte: "Réservez un créneau avec nos experts"
+
+# Informations légales
+legal:
+  orias: "20194827"
+  membre: "ANCACOFI-CIF"
+  mediateur: "AMF"
+
+# Protection des données
+rgpd:
+  titre: "Protection des données :"
+  description: "Vos données personnelles sont traitées de manière confidentielle et ne seront jamais transmises à des tiers. Elles sont uniquement utilisées dans le cadre de votre demande de contact et de conseil patrimonial. Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données."
 ---
 
 # Page Contact - Argam Conseil

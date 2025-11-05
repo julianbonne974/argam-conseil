@@ -58,7 +58,7 @@ processus:
       icone: "Shield"
 
 avantages:
-  titre: "Pourquoi choisir Argam Conseil ?"
+  titre: "Pourquoi choisir Argam Conseils ?"
   liste:
     - titre: "Expertise locale"
       description: "Connaissance approfondie des spécificités de La Réunion"

@@ -7,13 +7,13 @@ import { Toaster } from "sonner";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Argam Conseil - Plan Épargne Retraite Fonctionnaires La Réunion",
+  title: "Argam Conseils - Plan Épargne Retraite Fonctionnaires La Réunion",
   description:
     "Compensez la perte de votre prime de vie chère de 53% avec un Plan Épargne Retraite. Étude gratuite + 0% frais d'entrée pour adhérents COGOHR.",
   keywords:
     "PER, Plan Épargne Retraite, Fonctionnaires, La Réunion, COGOHR, Prime vie chère, Retraite fonctionnaire",
   openGraph: {
-    title: "Argam Conseil - Épargne Retraite Fonctionnaires",
+    title: "Argam Conseils - Épargne Retraite Fonctionnaires",
     description:
       "Votre prime de vie chère de 53% n'est pas prise en compte pour la retraite. Découvrez comment compenser cette perte.",
     type: "website",
