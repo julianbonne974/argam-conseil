@@ -572,7 +572,7 @@ export default function OffreCOGOHRPage() {
                           .replace(/\n\n/g, '</p><p class="mb-3">')
                           .replace(/^\*\*(.*?)\*\*/gm, '<strong>$1</strong>')
                           .replace(/^- (.*?)$/gm, '<li>$1</li>')
-                          .replace(/(<li>[\s\S]*<\/li>)/, '<ul class="list-disc pl-5 space-y-1">$1</ul>')
+                          .replace(/((<li>.*<\/li>\n?)+)/g, '<ul class="list-disc pl-5 space-y-1">$1</ul>')
                       }}
                       className="[&>p]:mb-3 [&>p:last-child]:mb-0 [&_strong]:font-medium [&>ul]:list-disc [&>ul]:pl-5 [&>ul]:space-y-1"
                     />
