@@ -1,8 +1,8 @@
-import { Phone, Mail, MapPin, Clock, Calendar, ArrowRight } from 'lucide-react';
-import { Header } from '@/components/Header';
-import { Footer } from '@/components/Footer';
-import { ContactFormModern } from '@/components/ContactFormModern';
-import { getHoraires, getContactContent } from '@/lib/content';
+import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { ContactFormModern } from "@/components/ContactFormModern";
+import { getHoraires, getContactContent } from "@/lib/content";
 
 export default function ContactPage() {
   const horaires = getHoraires();
@@ -13,8 +13,12 @@ export default function ContactPage() {
     if (!text) return null;
     const parts = text.split(/(\*\*.*?\*\*)/g);
     return parts.map((part, index) => {
-      if (part.startsWith('**') && part.endsWith('**')) {
-        return <span key={index} className="font-semibold">{part.slice(2, -2)}</span>;
+      if (part.startsWith("**") && part.endsWith("**")) {
+        return (
+          <span key={index} className="font-semibold">
+            {part.slice(2, -2)}
+          </span>
+        );
       }
       return part;
     });
@@ -29,10 +33,15 @@ export default function ContactPage() {
         <div className="container mx-auto px-8 max-w-6xl">
           <div className="text-center space-y-6">
             <p className="text-[11px] uppercase tracking-[0.3em] text-[#524c5d]/50 font-medium">
-              {contactData?.hero.label || 'Contact'}
+              {contactData?.hero.label || "Contact"}
             </p>
             <h1 className="text-5xl lg:text-6xl text-[#524c5d] leading-[1.1]">
-              <span className="font-light">{contactData?.hero.titre.light || 'Contactez'}</span> <span className="font-bold">{contactData?.hero.titre.bold || '-nous'}</span>
+              <span className="font-light">
+                {contactData?.hero.titre.light || "Contactez"}
+              </span>{" "}
+              <span className="font-bold">
+                {contactData?.hero.titre.bold || "-nous"}
+              </span>
             </h1>
             <div className="w-16 h-[1px] bg-[#b4925e] mx-auto mt-6" />
             {contactData?.hero.description && (
@@ -52,10 +61,14 @@ export default function ContactPage() {
             <div>
               <div className="space-y-6 mb-10">
                 <h2 className="text-3xl text-[#524c5d] font-light">
-                  {parseMarkdown(contactData?.formulaire.titre || '**Une question ?** Notre équipe se tient à votre disposition !')}
+                  {parseMarkdown(
+                    contactData?.formulaire.titre ||
+                      "**Une question ?** Notre équipe se tient à votre disposition !",
+                  )}
                 </h2>
                 <p className="text-sm text-[#524c5d]/60 font-light leading-relaxed max-w-xl">
-                  {contactData?.formulaire.sousTitre || `Remplissez ce formulaire. Un de nos conseillers vous recontactera sous ${horaires.delaiReponse.delai} pour échanger sur votre projet.`}
+                  {contactData?.formulaire.sousTitre ||
+                    `Remplissez ce formulaire. Un de nos conseillers vous recontactera sous ${horaires.delaiReponse.delai} pour échanger sur votre projet.`}
                 </p>
               </div>
 
@@ -63,7 +76,10 @@ export default function ContactPage() {
               <ContactFormModern
                 toastMessage={horaires.delaiReponse.messageToast}
                 presentielText="Présentiel"
-                boutonTexte={contactData?.formulaire.boutonTexte || "Demander à être contacté"}
+                boutonTexte={
+                  contactData?.formulaire.boutonTexte ||
+                  "Demander à être contacté"
+                }
               />
 
               {/* Encart COGOHR */}
@@ -72,10 +88,12 @@ export default function ContactPage() {
                   <div className="w-2 h-2 rounded-full bg-[#b4925e] mt-2" />
                   <div>
                     <p className="text-sm font-semibold text-[#524c5d] mb-2">
-                      {contactData?.formulaire.mentionCogohr.titre || 'Adhérent COGOHR ?'}
+                      {contactData?.formulaire.mentionCogohr.titre ||
+                        "Adhérent COGOHR ?"}
                     </p>
                     <p className="text-xs text-[#524c5d]/60 font-light leading-relaxed">
-                      {contactData?.formulaire.mentionCogohr.description || "Cochez la case correspondante dans le formulaire pour bénéficier de votre étude gratuite et de 0% de frais d'entrée sur votre Plan Épargne Retraite."}
+                      {contactData?.formulaire.mentionCogohr.description ||
+                        "Cochez la case correspondante dans le formulaire pour bénéficier de votre étude gratuite et de 0% de frais d'entrée sur votre Plan Épargne Retraite."}
                     </p>
                   </div>
                 </div>
@@ -84,27 +102,6 @@ export default function ContactPage() {
 
             {/* RIGHT COLUMN - Coordonnées & Infos */}
             <div className="space-y-8">
-              {/* Bouton Prendre Rendez-vous */}
-              <div className="pt-0">
-                <a
-                  href="https://calendly.com/argam-conseil"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group block"
-                >
-                  <button className="w-full relative px-8 py-5 bg-[#524c5d] border-[1px] border-[#524c5d] text-white text-sm uppercase tracking-[0.15em] font-medium transition-all duration-300 hover:bg-[#b4925e] hover:border-[#b4925e]">
-                    <span className="relative z-10 flex items-center justify-center gap-3">
-                      <Calendar className="h-4 w-4" />
-                      Prendre rendez-vous
-                      <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                    </span>
-                  </button>
-                </a>
-                <p className="text-xs text-[#524c5d]/50 text-center mt-3 font-light">
-                  Réservez un créneau avec nos experts
-                </p>
-              </div>
-
               {/* Contact Direct */}
               <div>
                 <h3 className="text-xl text-[#524c5d] font-semibold mb-6">
@@ -172,8 +169,10 @@ export default function ContactPage() {
                           Bordeaux
                         </p>
                         <p className="text-sm text-[#524c5d]/70 font-light leading-relaxed">
-                          52 allées de Tourny<br />
-                          33000 Bordeaux<br />
+                          52 allées de Tourny
+                          <br />
+                          33000 Bordeaux
+                          <br />
                           Nouvelle-Aquitaine
                         </p>
                       </div>
@@ -191,8 +190,10 @@ export default function ContactPage() {
                           La Réunion
                         </p>
                         <p className="text-sm text-[#524c5d]/70 font-light leading-relaxed">
-                          Trois-Bassins<br />
-                          Site COGOHR<br />
+                          Trois-Bassins
+                          <br />
+                          Site COGOHR
+                          <br />
                           Département 974
                         </p>
                       </div>
@@ -213,13 +214,21 @@ export default function ContactPage() {
                     </div>
                     <div className="flex-1 space-y-3">
                       <div className="flex justify-between items-center">
-                        <span className="text-sm text-[#524c5d]/70 font-light">{horaires.horaires.jours}</span>
-                        <span className="text-sm font-semibold text-[#524c5d]">{horaires.horaires.formatContact}</span>
+                        <span className="text-sm text-[#524c5d]/70 font-light">
+                          {horaires.horaires.jours}
+                        </span>
+                        <span className="text-sm font-semibold text-[#524c5d]">
+                          {horaires.horaires.formatContact}
+                        </span>
                       </div>
                       <div className="h-[1px] bg-[#524c5d]/10" />
                       <div className="flex justify-between items-center">
-                        <span className="text-sm text-[#524c5d]/70 font-light">Samedi - Dimanche</span>
-                        <span className="text-sm font-semibold text-[#524c5d]">Fermé</span>
+                        <span className="text-sm text-[#524c5d]/70 font-light">
+                          Samedi - Dimanche
+                        </span>
+                        <span className="text-sm font-semibold text-[#524c5d]">
+                          Fermé
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -247,7 +256,14 @@ export default function ContactPage() {
         <div className="container mx-auto px-8 max-w-5xl">
           <div className="text-center">
             <p className="text-xs text-[#524c5d]/60 font-light leading-relaxed">
-              <span className="font-semibold text-[#524c5d]">Protection des données :</span> Vos données personnelles sont traitées de manière confidentielle et ne seront jamais transmises à des tiers. Elles sont uniquement utilisées dans le cadre de votre demande de contact et de conseil patrimonial. Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données.
+              <span className="font-semibold text-[#524c5d]">
+                Protection des données :
+              </span>{" "}
+              Vos données personnelles sont traitées de manière confidentielle
+              et ne seront jamais transmises à des tiers. Elles sont uniquement
+              utilisées dans le cadre de votre demande de contact et de conseil
+              patrimonial. Conformément au RGPD, vous disposez d'un droit
+              d'accès, de rectification et de suppression de vos données.
             </p>
           </div>
         </div>

@@ -22,28 +22,56 @@ collections:
             name: "hero"
             widget: "object"
             fields:
-              - {label: "Surtitre", name: "surtitre", widget: "string", default: "Partenaire COGOHR"}
-              - {label: "Titre", name: "titre", widget: "string"}
-              - {label: "Sous-titre", name: "soustitre", widget: "text"}
-              - {label: "Texte Bouton", name: "texteBouton", widget: "string", default: "Demander une étude gratuite"}
+              - {
+                  label: "Surtitre",
+                  name: "surtitre",
+                  widget: "string",
+                  default: "Partenaire COGOHR",
+                }
+              - { label: "Titre", name: "titre", widget: "string" }
+              - { label: "Sous-titre", name: "soustitre", widget: "text" }
+              - {
+                  label: "Texte Bouton",
+                  name: "texteBouton",
+                  widget: "string",
+                  default: "Demander une étude gratuite",
+                }
 
           - label: "Section Services"
             name: "services"
             widget: "list"
             max: 3
             fields:
-              - {label: "Icône", name: "icone", widget: "select", options: ["Shield", "TrendingUp", "FileText", "Users", "Award", "Briefcase"]}
-              - {label: "Titre", name: "titre", widget: "string"}
-              - {label: "Description", name: "description", widget: "text"}
+              - {
+                  label: "Icône",
+                  name: "icone",
+                  widget: "select",
+                  options:
+                    [
+                      "Shield",
+                      "TrendingUp",
+                      "FileText",
+                      "Users",
+                      "Award",
+                      "Briefcase",
+                    ],
+                }
+              - { label: "Titre", name: "titre", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
 
           - label: "Chiffres Clés"
             name: "chiffres"
             widget: "list"
             max: 4
             fields:
-              - {label: "Valeur", name: "valeur", widget: "string"}
-              - {label: "Label", name: "label", widget: "string"}
-              - {label: "Description", name: "description", widget: "text", required: false}
+              - { label: "Valeur", name: "valeur", widget: "string" }
+              - { label: "Label", name: "label", widget: "string" }
+              - {
+                  label: "Description",
+                  name: "description",
+                  widget: "text",
+                  required: false,
+                }
 
       - label: "Page Offre COGOHR"
         name: "offre-cogohr"
@@ -53,63 +81,325 @@ collections:
             name: "hero"
             widget: "object"
             fields:
-              - {label: "Badge", name: "badge", widget: "string", default: "PARTENARIAT EXCLUSIF"}
-              - {label: "Titre", name: "titre", widget: "string"}
-              - {label: "Sous-titre", name: "soustitre", widget: "text"}
-              - {label: "Chiffre Principal", name: "chiffrePrincipal", widget: "string", default: "53%"}
-              - {label: "Label Chiffre", name: "labelChiffre", widget: "string", default: "PRIME DE VIE CHÈRE"}
+              - {
+                  label: "Badge",
+                  name: "badge",
+                  widget: "string",
+                  default: "PARTENARIAT EXCLUSIF",
+                }
+              - { label: "Titre", name: "titre", widget: "string" }
+              - { label: "Sous-titre", name: "soustitre", widget: "text" }
+              - {
+                  label: "Chiffre Principal",
+                  name: "chiffrePrincipal",
+                  widget: "string",
+                  default: "53%",
+                }
+              - {
+                  label: "Label Chiffre",
+                  name: "labelChiffre",
+                  widget: "string",
+                  default: "PRIME DE VIE CHÈRE",
+                }
 
           - label: "Problématique"
             name: "problematique"
             widget: "object"
             fields:
-              - {label: "Titre Section", name: "titre", widget: "string"}
-              - {label: "Revenu Actuel", name: "revenuActuel", widget: "string", default: "3 000€"}
-              - {label: "Pension Retraite", name: "pensionRetraite", widget: "string", default: "1 400€"}
-              - {label: "Perte", name: "perte", widget: "string", default: "-53%"}
-              - {label: "Texte Explicatif", name: "texte", widget: "text"}
+              - { label: "Titre Section", name: "titre", widget: "string" }
+              - {
+                  label: "Revenu Actuel",
+                  name: "revenuActuel",
+                  widget: "string",
+                  default: "3 000€",
+                }
+              - {
+                  label: "Pension Retraite",
+                  name: "pensionRetraite",
+                  widget: "string",
+                  default: "1 400€",
+                }
+              - {
+                  label: "Perte",
+                  name: "perte",
+                  widget: "string",
+                  default: "-53%",
+                }
+              - { label: "Texte Explicatif", name: "texte", widget: "text" }
 
           - label: "Avantages PER"
             name: "avantagesPer"
             widget: "list"
             max: 3
             fields:
-              - {label: "Titre", name: "titre", widget: "string"}
-              - {label: "Description", name: "description", widget: "text"}
+              - { label: "Titre", name: "titre", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
 
           - label: "Offre Exclusive"
             name: "offreExclusive"
             widget: "object"
             fields:
-              - {label: "Titre", name: "titre", widget: "string"}
+              - { label: "Titre", name: "titre", widget: "string" }
               - label: "Étude Gratuite"
                 name: "etudeGratuite"
                 widget: "object"
                 fields:
-                  - {label: "Titre", name: "titre", widget: "string"}
+                  - { label: "Titre", name: "titre", widget: "string" }
                   - label: "Points"
                     name: "points"
                     widget: "list"
-                    field: {label: "Point", name: "point", widget: "string"}
+                    field: { label: "Point", name: "point", widget: "string" }
               - label: "Zéro Frais"
                 name: "zeroFrais"
                 widget: "object"
                 fields:
-                  - {label: "Titre", name: "titre", widget: "string"}
+                  - { label: "Titre", name: "titre", widget: "string" }
                   - label: "Points"
                     name: "points"
                     widget: "list"
-                    field: {label: "Point", name: "point", widget: "string"}
+                    field: { label: "Point", name: "point", widget: "string" }
 
           - label: "Processus (3 étapes)"
             name: "processus"
             widget: "list"
             max: 3
             fields:
-              - {label: "Numéro", name: "numero", widget: "string"}
-              - {label: "Titre", name: "titre", widget: "string"}
-              - {label: "Description", name: "description", widget: "text"}
-              - {label: "Info Complémentaire", name: "info", widget: "string", required: false}
+              - { label: "Numéro", name: "numero", widget: "string" }
+              - { label: "Titre", name: "titre", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - {
+                  label: "Info Complémentaire",
+                  name: "info",
+                  widget: "string",
+                  required: false,
+                }
+
+          - label: "Section Contact / Rendez-vous"
+            name: "sectionContact"
+            widget: "object"
+            fields:
+              - {
+                  label: "Titre",
+                  name: "titre",
+                  widget: "string",
+                  default: "Prêt à Sécuriser Votre Retraite ?",
+                }
+              - { label: "Description", name: "description", widget: "text" }
+              - label: "Avantages (liste)"
+                name: "avantages"
+                widget: "list"
+                field: { label: "Avantage", name: "avantage", widget: "string" }
+              - {
+                  label: "Texte Partenaire",
+                  name: "textePartenaire",
+                  widget: "string",
+                  default: "Partenaire officiel COGOHR",
+                }
+              - label: "Coordonnées"
+                name: "coordonnees"
+                widget: "object"
+                fields:
+                  - { label: "Adresse", name: "adresse", widget: "string" }
+                  - label: "Horaires"
+                    name: "horaires"
+                    widget: "list"
+                    field:
+                      { label: "Horaire", name: "horaire", widget: "string" }
+                  - {
+                      label: "Note horaires",
+                      name: "noteHoraires",
+                      widget: "string",
+                      required: false,
+                      default: "Visio ou présentiel sur rendez-vous",
+                    }
+                  - { label: "Téléphone", name: "telephone", widget: "string" }
+                  - { label: "Email", name: "email", widget: "string" }
+              - label: "Booking"
+                name: "booking"
+                widget: "object"
+                fields:
+                  - { label: "URL", name: "url", widget: "string" }
+                  - {
+                      label: "Titre",
+                      name: "titre",
+                      widget: "string",
+                      default: "Réserver votre consultation",
+                    }
+                  - {
+                      label: "Sous-titre",
+                      name: "sousTitre",
+                      widget: "string",
+                      default: "Choisissez un créneau pour votre étude gratuite",
+                    }
+
+      - label: "Mentions Légales"
+        name: "mentions-legales"
+        file: "content/pages/mentions-legales.md"
+        fields:
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - {
+                  label: "Label",
+                  name: "label",
+                  widget: "string",
+                  default: "Informations Légales",
+                }
+              - {
+                  label: "Titre (partie 1)",
+                  name: "titrePart1",
+                  widget: "string",
+                  default: "Mentions",
+                }
+              - {
+                  label: "Titre (partie 2 - gras)",
+                  name: "titrePart2",
+                  widget: "string",
+                  default: "Légales",
+                }
+
+          - label: "Sections"
+            name: "sections"
+            widget: "list"
+            fields:
+              - { label: "Titre", name: "titre", widget: "string" }
+              - { label: "Contenu", name: "contenu", widget: "markdown" }
+
+          - {
+              label: "Date de mise à jour",
+              name: "dateMiseAJour",
+              widget: "string",
+              default: "Janvier 2025",
+            }
+
+      - label: "Politique de Confidentialité"
+        name: "politique-confidentialite"
+        file: "content/pages/politique-confidentialite.md"
+        fields:
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - {
+                  label: "Label",
+                  name: "label",
+                  widget: "string",
+                  default: "Protection des données",
+                }
+              - {
+                  label: "Titre (partie 1)",
+                  name: "titrePart1",
+                  widget: "string",
+                  default: "Politique de",
+                }
+              - {
+                  label: "Titre (partie 2 - gras)",
+                  name: "titrePart2",
+                  widget: "string",
+                  default: "Confidentialité",
+                }
+              - {
+                  label: "Description",
+                  name: "description",
+                  widget: "text",
+                  required: false,
+                }
+
+          - label: "Sections"
+            name: "sections"
+            widget: "list"
+            fields:
+              - { label: "Titre", name: "titre", widget: "string" }
+              - {
+                  label: "Icône",
+                  name: "icone",
+                  widget: "select",
+                  options:
+                    [
+                      "Shield",
+                      "Lock",
+                      "Eye",
+                      "Database",
+                      "UserCheck",
+                      "FileText",
+                    ],
+                  required: false,
+                }
+              - { label: "Contenu", name: "contenu", widget: "markdown" }
+
+          - label: "Contact"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Texte", name: "texte", widget: "text" }
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Téléphone", name: "telephone", widget: "string" }
+              - { label: "Adresse", name: "adresse", widget: "string" }
+
+          - {
+              label: "Date de mise à jour",
+              name: "dateMiseAJour",
+              widget: "string",
+              default: "Janvier 2025",
+            }
+          - {
+              label: "Notes de mise à jour",
+              name: "notesMiseAJour",
+              widget: "text",
+              required: false,
+            }
+
+      - label: "Conditions Générales d'Utilisation"
+        name: "cgu"
+        file: "content/pages/cgu.md"
+        fields:
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - {
+                  label: "Label",
+                  name: "label",
+                  widget: "string",
+                  default: "Conditions d'utilisation",
+                }
+              - {
+                  label: "Titre (partie 1)",
+                  name: "titrePart1",
+                  widget: "string",
+                  default: "Conditions Générales",
+                }
+              - {
+                  label: "Titre (partie 2 - gras)",
+                  name: "titrePart2",
+                  widget: "string",
+                  default: "d'Utilisation",
+                }
+
+          - label: "Sections"
+            name: "sections"
+            widget: "list"
+            fields:
+              - { label: "Titre", name: "titre", widget: "string" }
+              - { label: "Contenu", name: "contenu", widget: "markdown" }
+
+          - label: "Contact"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Texte", name: "texte", widget: "text" }
+              - { label: "Nom", name: "nom", widget: "string" }
+              - { label: "Adresse", name: "adresse", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Téléphone", name: "telephone", widget: "string" }
+
+          - {
+              label: "Date de mise à jour",
+              name: "dateMiseAJour",
+              widget: "string",
+              default: "Janvier 2025",
+            }
 
       - label: "Page Contact"
         name: "contact"
@@ -119,17 +409,27 @@ collections:
             name: "bordeaux"
             widget: "object"
             fields:
-              - {label: "Adresse", name: "adresse", widget: "text"}
-              - {label: "Téléphone", name: "telephone", widget: "string"}
-              - {label: "Email", name: "email", widget: "string"}
+              - { label: "Adresse", name: "adresse", widget: "text" }
+              - { label: "Téléphone", name: "telephone", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }
 
           - label: "Coordonnées La Réunion"
             name: "reunion"
             widget: "object"
             fields:
-              - {label: "Adresse", name: "adresse", widget: "text"}
-              - {label: "Téléphone", name: "telephone", widget: "string", required: false}
-              - {label: "Email", name: "email", widget: "string", required: false}
+              - { label: "Adresse", name: "adresse", widget: "text" }
+              - {
+                  label: "Téléphone",
+                  name: "telephone",
+                  widget: "string",
+                  required: false,
+                }
+              - {
+                  label: "Email",
+                  name: "email",
+                  widget: "string",
+                  required: false,
+                }
 
           - label: "Horaires"
             name: "horaires"
@@ -145,11 +445,17 @@ collections:
     editor:
       preview: false
     fields:
-      - {label: "Nom", name: "nom", widget: "string"}
-      - {label: "Poste", name: "poste", widget: "string"}
-      - {label: "Biographie", name: "bio", widget: "text"}
-      - {label: "Photo", name: "photo", widget: "image", required: false}
-      - {label: "Ordre", name: "ordre", widget: "number", default: 1, value_type: "int"}
+      - { label: "Nom", name: "nom", widget: "string" }
+      - { label: "Poste", name: "poste", widget: "string" }
+      - { label: "Biographie", name: "bio", widget: "text" }
+      - { label: "Photo", name: "photo", widget: "image", required: false }
+      - {
+          label: "Ordre",
+          name: "ordre",
+          widget: "number",
+          default: 1,
+          value_type: "int",
+        }
 
   # 3. COLLECTION SERVICES
   - name: "services"
@@ -161,19 +467,40 @@ collections:
     editor:
       preview: false
     fields:
-      - {label: "Titre", name: "titre", widget: "string"}
-      - {label: "Icône", name: "icone", widget: "select", options: ["Home", "TrendingUp", "Shield", "Users", "Briefcase", "FileText", "PieChart", "Award"]}
-      - {label: "Description", name: "description", widget: "text"}
+      - { label: "Titre", name: "titre", widget: "string" }
+      - {
+          label: "Icône",
+          name: "icone",
+          widget: "select",
+          options:
+            [
+              "Home",
+              "TrendingUp",
+              "Shield",
+              "Users",
+              "Briefcase",
+              "FileText",
+              "PieChart",
+              "Award",
+            ],
+        }
+      - { label: "Description", name: "description", widget: "text" }
       - label: "Sous-services"
         name: "sousServices"
         widget: "list"
         fields:
-          - {label: "Titre", name: "titre", widget: "string"}
+          - { label: "Titre", name: "titre", widget: "string" }
           - label: "Détails"
             name: "details"
             widget: "list"
-            field: {label: "Détail", name: "detail", widget: "string"}
-      - {label: "Ordre", name: "ordre", widget: "number", default: 1, value_type: "int"}
+            field: { label: "Détail", name: "detail", widget: "string" }
+      - {
+          label: "Ordre",
+          name: "ordre",
+          widget: "number",
+          default: 1,
+          value_type: "int",
+        }
 
   # 4. COLLECTION FAQ
   - name: "faq"
@@ -185,10 +512,22 @@ collections:
     editor:
       preview: false
     fields:
-      - {label: "Question", name: "question", widget: "string"}
-      - {label: "Réponse", name: "reponse", widget: "markdown"}
-      - {label: "Catégorie", name: "categorie", widget: "select", options: ["général", "COGOHR"], default: "général"}
-      - {label: "Ordre", name: "ordre", widget: "number", default: 1, value_type: "int"}
+      - { label: "Question", name: "question", widget: "string" }
+      - { label: "Réponse", name: "reponse", widget: "markdown" }
+      - {
+          label: "Catégorie",
+          name: "categorie",
+          widget: "select",
+          options: ["général", "COGOHR"],
+          default: "général",
+        }
+      - {
+          label: "Ordre",
+          name: "ordre",
+          widget: "number",
+          default: 1,
+          value_type: "int",
+        }
 
   # 5. COLLECTION SETTINGS
   - name: "settings"
@@ -202,40 +541,50 @@ collections:
             name: "navigation"
             widget: "list"
             fields:
-              - {label: "Label", name: "label", widget: "string"}
-              - {label: "URL", name: "url", widget: "string"}
-              - {label: "Badge", name: "badge", widget: "string", required: false}
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+              - {
+                  label: "Badge",
+                  name: "badge",
+                  widget: "string",
+                  required: false,
+                }
 
       - label: "Footer"
         name: "footer"
         file: "content/settings/footer.yml"
         fields:
-          - {label: "Tagline", name: "tagline", widget: "text"}
+          - { label: "Tagline", name: "tagline", widget: "text" }
           - label: "Bordeaux"
             name: "bordeaux"
             widget: "object"
             fields:
-              - {label: "Adresse", name: "adresse", widget: "text"}
-              - {label: "Téléphone", name: "telephone", widget: "string"}
-              - {label: "Email", name: "email", widget: "string"}
+              - { label: "Adresse", name: "adresse", widget: "text" }
+              - { label: "Téléphone", name: "telephone", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }
           - label: "La Réunion"
             name: "reunion"
             widget: "object"
             fields:
-              - {label: "Adresse", name: "adresse", widget: "text"}
+              - { label: "Adresse", name: "adresse", widget: "text" }
           - label: "Liens Légaux"
             name: "liensLegaux"
             widget: "list"
             fields:
-              - {label: "Label", name: "label", widget: "string"}
-              - {label: "URL", name: "url", widget: "string"}
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
           - label: "Réseaux Sociaux"
             name: "reseauxSociaux"
             widget: "list"
             required: false
             fields:
-              - {label: "Nom", name: "nom", widget: "select", options: ["LinkedIn", "Facebook", "Twitter", "Instagram"]}
-              - {label: "URL", name: "url", widget: "string"}
+              - {
+                  label: "Nom",
+                  name: "nom",
+                  widget: "select",
+                  options: ["LinkedIn", "Facebook", "Twitter", "Instagram"],
+                }
+              - { label: "URL", name: "url", widget: "string" }
 
       - label: "Horaires & Disponibilités"
         name: "horaires"
@@ -245,34 +594,114 @@ collections:
             name: "horaires"
             widget: "object"
             fields:
-              - {label: "Jours (général)", name: "jours", widget: "string", default: "Lundi - Vendredi"}
-              - {label: "Jours COGOHR", name: "joursCOGOHR", widget: "string", default: "Mercredi - Samedi"}
-              - {label: "Heure Ouverture", name: "ouverture", widget: "string", default: "11h00"}
-              - {label: "Heure Fermeture", name: "fermeture", widget: "string", default: "19h00"}
-              - {label: "Format Affichage", name: "format", widget: "string", default: "11h - 19h"}
-              - {label: "Format Contact", name: "formatContact", widget: "string", default: "11h00 - 19h00"}
+              - {
+                  label: "Jours (général)",
+                  name: "jours",
+                  widget: "string",
+                  default: "Lundi - Vendredi",
+                }
+              - {
+                  label: "Jours COGOHR",
+                  name: "joursCOGOHR",
+                  widget: "string",
+                  default: "Mercredi - Samedi",
+                }
+              - {
+                  label: "Heure Ouverture",
+                  name: "ouverture",
+                  widget: "string",
+                  default: "11h00",
+                }
+              - {
+                  label: "Heure Fermeture",
+                  name: "fermeture",
+                  widget: "string",
+                  default: "19h00",
+                }
+              - {
+                  label: "Format Affichage",
+                  name: "format",
+                  widget: "string",
+                  default: "11h - 19h",
+                }
+              - {
+                  label: "Format Contact",
+                  name: "formatContact",
+                  widget: "string",
+                  default: "11h00 - 19h00",
+                }
 
           - label: "Visioconférence"
             name: "visio"
             widget: "object"
             fields:
-              - {label: "Disponibilité", name: "disponibilite", widget: "string", default: "5j/7"}
-              - {label: "Disponibilité COGOHR", name: "disponibiliteCOGOHR", widget: "string", default: "4j/7"}
-              - {label: "Jours Complets", name: "joursComplets", widget: "string", default: "Lundi au Vendredi"}
-              - {label: "Note", name: "note", widget: "string", default: "sur rendez-vous"}
+              - {
+                  label: "Disponibilité",
+                  name: "disponibilite",
+                  widget: "string",
+                  default: "5j/7",
+                }
+              - {
+                  label: "Disponibilité COGOHR",
+                  name: "disponibiliteCOGOHR",
+                  widget: "string",
+                  default: "4j/7",
+                }
+              - {
+                  label: "Jours Complets",
+                  name: "joursComplets",
+                  widget: "string",
+                  default: "Lundi au Vendredi",
+                }
+              - {
+                  label: "Note",
+                  name: "note",
+                  widget: "string",
+                  default: "sur rendez-vous",
+                }
 
           - label: "Délai de Réponse"
             name: "delaiReponse"
             widget: "object"
             fields:
-              - {label: "Délai", name: "delai", widget: "string", default: "48h"}
-              - {label: "Précision", name: "precision", widget: "string", default: "48h ouvrées"}
-              - {label: "Message Toast", name: "messageToast", widget: "string", default: "Nous vous recontacterons sous 48h. Vérifiez vos emails."}
-              - {label: "CTA", name: "cta", widget: "string", default: "Réponse sous 48h"}
+              - {
+                  label: "Délai",
+                  name: "delai",
+                  widget: "string",
+                  default: "48h",
+                }
+              - {
+                  label: "Précision",
+                  name: "precision",
+                  widget: "string",
+                  default: "48h ouvrées",
+                }
+              - {
+                  label: "Message Toast",
+                  name: "messageToast",
+                  widget: "string",
+                  default: "Nous vous recontacterons sous 48h. Vérifiez vos emails.",
+                }
+              - {
+                  label: "CTA",
+                  name: "cta",
+                  widget: "string",
+                  default: "Réponse sous 48h",
+                }
 
           - label: "Processus"
             name: "processus"
             widget: "object"
             fields:
-              - {label: "Durée Étude", name: "dureeEtude", widget: "string", default: "45mn"}
-              - {label: "Format Durée", name: "formatDuree", widget: "string", default: "Durée : 45mn"}
+              - {
+                  label: "Durée Étude",
+                  name: "dureeEtude",
+                  widget: "string",
+                  default: "45mn",
+                }
+              - {
+                  label: "Format Durée",
+                  name: "formatDuree",
+                  widget: "string",
+                  default: "Durée : 45mn",
+                }

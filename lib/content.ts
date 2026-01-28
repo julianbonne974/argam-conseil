@@ -1,10 +1,10 @@
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
-import yaml from 'js-yaml';
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+import yaml from "js-yaml";
 
 // Chemin vers le dossier content
-const contentDirectory = path.join(process.cwd(), 'content');
+const contentDirectory = path.join(process.cwd(), "content");
 
 // ==========================================
 // TYPES TYPESCRIPT
@@ -20,7 +20,7 @@ export interface TeamMember {
   bio: string;
   photo: string;
   ordre: number;
-  type: 'direction' | 'conseiller' | 'assistant';
+  type: "direction" | "conseiller" | "assistant";
 }
 
 export interface Service {
@@ -38,7 +38,7 @@ export interface Service {
 export interface FAQ {
   question: string;
   reponse: string;
-  categorie?: 'général' | 'COGOHR';
+  categorie?: "général" | "COGOHR";
   ordre: number;
 }
 
@@ -78,10 +78,10 @@ export interface FooterSettings {
  * Lit le contenu d'une page
  */
 export function getPageContent(slug: string): PageContent {
-  const fullPath = path.join(contentDirectory, 'pages', `${slug}.md`);
+  const fullPath = path.join(contentDirectory, "pages", `${slug}.md`);
 
   try {
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
+    const fileContents = fs.readFileSync(fullPath, "utf8");
     const { data } = matter(fileContents);
     return data;
   } catch (error) {
@@ -94,32 +94,32 @@ export function getPageContent(slug: string): PageContent {
  * Récupère tous les membres de l'équipe triés par ordre
  */
 export function getAllTeamMembers(): TeamMember[] {
-  const teamDirectory = path.join(contentDirectory, 'equipe');
+  const teamDirectory = path.join(contentDirectory, "equipe");
 
   try {
     const fileNames = fs.readdirSync(teamDirectory);
 
     const members = fileNames
-      .filter(fileName => fileName.endsWith('.md'))
-      .map(fileName => {
+      .filter((fileName) => fileName.endsWith(".md"))
+      .map((fileName) => {
         const fullPath = path.join(teamDirectory, fileName);
-        const fileContents = fs.readFileSync(fullPath, 'utf8');
+        const fileContents = fs.readFileSync(fullPath, "utf8");
         const { data } = matter(fileContents);
 
         return {
-          nom: data.nom || '',
-          poste: data.poste || '',
-          bio: data.bio || '',
-          photo: data.photo || '',
+          nom: data.nom || "",
+          poste: data.poste || "",
+          bio: data.bio || "",
+          photo: data.photo || "",
           ordre: data.ordre || 999,
-          type: data.type || 'conseiller',
+          type: data.type || "conseiller",
         } as TeamMember;
       })
       .sort((a, b) => a.ordre - b.ordre);
 
     return members;
   } catch (error) {
-    console.error('Erreur lecture équipe:', error);
+    console.error("Erreur lecture équipe:", error);
     return [];
   }
 }
@@ -128,19 +128,19 @@ export function getAllTeamMembers(): TeamMember[] {
  * Récupère un membre de l'équipe par son slug
  */
 export function getTeamMember(slug: string): TeamMember | null {
-  const fullPath = path.join(contentDirectory, 'equipe', `${slug}.md`);
+  const fullPath = path.join(contentDirectory, "equipe", `${slug}.md`);
 
   try {
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
+    const fileContents = fs.readFileSync(fullPath, "utf8");
     const { data } = matter(fileContents);
 
     return {
-      nom: data.nom || '',
-      poste: data.poste || '',
-      bio: data.bio || '',
-      photo: data.photo || '',
+      nom: data.nom || "",
+      poste: data.poste || "",
+      bio: data.bio || "",
+      photo: data.photo || "",
       ordre: data.ordre || 999,
-      type: data.type || 'conseiller',
+      type: data.type || "conseiller",
     } as TeamMember;
   } catch (error) {
     console.error(`Erreur lecture membre ${slug}:`, error);
@@ -152,22 +152,22 @@ export function getTeamMember(slug: string): TeamMember | null {
  * Récupère tous les services triés par ordre
  */
 export function getAllServices(): Service[] {
-  const servicesDirectory = path.join(contentDirectory, 'services');
+  const servicesDirectory = path.join(contentDirectory, "services");
 
   try {
     const fileNames = fs.readdirSync(servicesDirectory);
 
     const services = fileNames
-      .filter(fileName => fileName.endsWith('.md'))
-      .map(fileName => {
+      .filter((fileName) => fileName.endsWith(".md"))
+      .map((fileName) => {
         const fullPath = path.join(servicesDirectory, fileName);
-        const fileContents = fs.readFileSync(fullPath, 'utf8');
+        const fileContents = fs.readFileSync(fullPath, "utf8");
         const { data } = matter(fileContents);
 
         return {
-          titre: data.titre || '',
-          icone: data.icone || 'FileText',
-          description: data.description || '',
+          titre: data.titre || "",
+          icone: data.icone || "FileText",
+          description: data.description || "",
           sousServices: data.sousServices || [],
           ordre: data.ordre || 999,
           categorie: data.categorie || undefined,
@@ -177,7 +177,7 @@ export function getAllServices(): Service[] {
 
     return services;
   } catch (error) {
-    console.error('Erreur lecture services:', error);
+    console.error("Erreur lecture services:", error);
     return [];
   }
 }
@@ -185,31 +185,31 @@ export function getAllServices(): Service[] {
 /**
  * Récupère les FAQ par catégorie
  */
-export function getFAQByCategory(category: 'général' | 'COGOHR'): FAQ[] {
+export function getFAQByCategory(category: "général" | "COGOHR"): FAQ[] {
   const allFAQ = getAllFAQ();
-  return allFAQ.filter(faq => faq.categorie === category);
+  return allFAQ.filter((faq) => faq.categorie === category);
 }
 
 /**
  * Récupère toutes les questions FAQ triées par ordre
  */
 export function getAllFAQ(): FAQ[] {
-  const faqDirectory = path.join(contentDirectory, 'faq');
+  const faqDirectory = path.join(contentDirectory, "faq");
 
   try {
     const fileNames = fs.readdirSync(faqDirectory);
 
     const faqs = fileNames
-      .filter(fileName => fileName.endsWith('.md'))
-      .map(fileName => {
+      .filter((fileName) => fileName.endsWith(".md"))
+      .map((fileName) => {
         const fullPath = path.join(faqDirectory, fileName);
-        const fileContents = fs.readFileSync(fullPath, 'utf8');
+        const fileContents = fs.readFileSync(fullPath, "utf8");
         const { data } = matter(fileContents);
 
         return {
-          question: data.question || '',
-          reponse: data.reponse || '',
-          categorie: data.categorie || 'général',
+          question: data.question || "",
+          reponse: data.reponse || "",
+          categorie: data.categorie || "général",
           ordre: data.ordre || 999,
         } as FAQ;
       })
@@ -217,7 +217,7 @@ export function getAllFAQ(): FAQ[] {
 
     return faqs;
   } catch (error) {
-    console.error('Erreur lecture FAQ:', error);
+    console.error("Erreur lecture FAQ:", error);
     return [];
   }
 }
@@ -225,11 +225,13 @@ export function getAllFAQ(): FAQ[] {
 /**
  * Récupère les paramètres du header ou footer
  */
-export function getSettings(type: 'header' | 'footer'): HeaderSettings | FooterSettings | null {
-  const fullPath = path.join(contentDirectory, 'settings', `${type}.yml`);
+export function getSettings(
+  type: "header" | "footer",
+): HeaderSettings | FooterSettings | null {
+  const fullPath = path.join(contentDirectory, "settings", `${type}.yml`);
 
   try {
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
+    const fileContents = fs.readFileSync(fullPath, "utf8");
     const data = yaml.load(fileContents);
     return data as any;
   } catch (error) {
@@ -242,7 +244,7 @@ export function getSettings(type: 'header' | 'footer'): HeaderSettings | FooterS
  * Récupère les paramètres du header
  */
 export function getHeaderSettings(): HeaderSettings {
-  const settings = getSettings('header');
+  const settings = getSettings("header");
   if (!settings) {
     return { navigation: [] };
   }
@@ -253,12 +255,12 @@ export function getHeaderSettings(): HeaderSettings {
  * Récupère les paramètres du footer
  */
 export function getFooterSettings(): FooterSettings {
-  const settings = getSettings('footer');
+  const settings = getSettings("footer");
   if (!settings) {
     return {
-      tagline: '',
-      bordeaux: { adresse: '', telephone: '', email: '' },
-      reunion: { adresse: '' },
+      tagline: "",
+      bordeaux: { adresse: "", telephone: "", email: "" },
+      reunion: { adresse: "" },
       liensLegaux: [],
       reseauxSociaux: [],
     };
@@ -269,43 +271,43 @@ export function getFooterSettings(): FooterSettings {
 // Type pour les horaires et disponibilités
 export interface HorairesSettings {
   horaires: {
-    jours: string
-    joursCOGOHR: string
-    ouverture: string
-    fermeture: string
-    format: string
-    formatContact: string
-  }
+    jours: string;
+    joursCOGOHR: string;
+    ouverture: string;
+    fermeture: string;
+    format: string;
+    formatContact: string;
+  };
   visio: {
-    disponibilite: string
-    disponibiliteCOGOHR: string
-    joursComplets: string
-    note: string
-  }
+    disponibilite: string;
+    disponibiliteCOGOHR: string;
+    joursComplets: string;
+    note: string;
+  };
   delaiReponse: {
-    delai: string
-    precision: string
-    messageToast: string
-    cta: string
-  }
+    delai: string;
+    precision: string;
+    messageToast: string;
+    cta: string;
+  };
   processus: {
-    dureeEtude: string
-    formatDuree: string
-  }
+    dureeEtude: string;
+    formatDuree: string;
+  };
 }
 
 /**
  * Récupère les paramètres horaires et disponibilités
  */
 export function getHoraires(): HorairesSettings {
-  const fullPath = path.join(contentDirectory, 'settings', 'horaires.yml');
+  const fullPath = path.join(contentDirectory, "settings", "horaires.yml");
 
   try {
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
+    const fileContents = fs.readFileSync(fullPath, "utf8");
     const data = yaml.load(fileContents) as HorairesSettings;
     return data;
   } catch (error) {
-    console.error('Erreur lecture horaires:', error);
+    console.error("Erreur lecture horaires:", error);
     // Valeurs par défaut si le fichier n'existe pas
     return {
       horaires: {
@@ -314,24 +316,24 @@ export function getHoraires(): HorairesSettings {
         ouverture: "11h00",
         fermeture: "19h00",
         format: "11h - 19h",
-        formatContact: "11h00 - 19h00"
+        formatContact: "11h00 - 19h00",
       },
       visio: {
         disponibilite: "5j/7",
         disponibiliteCOGOHR: "4j/7",
         joursComplets: "Lundi au Vendredi",
-        note: "sur rendez-vous"
+        note: "sur rendez-vous",
       },
       delaiReponse: {
         delai: "48h",
         precision: "48h ouvrées",
         messageToast: "Nous vous recontacterons sous 48h. Vérifiez vos emails.",
-        cta: "Réponse sous 48h"
+        cta: "Réponse sous 48h",
       },
       processus: {
         dureeEtude: "45mn",
-        formatDuree: "Durée : 45mn"
-      }
+        formatDuree: "Durée : 45mn",
+      },
     };
   }
 }
@@ -392,5 +394,127 @@ export interface ContactContent {
  * Récupère le contenu de la page contact
  */
 export function getContactContent(): ContactContent | null {
-  return getPageContent('contact') as ContactContent | null;
+  return getPageContent("contact") as ContactContent | null;
+}
+
+// ==========================================
+// PAGE OFFRE COGOHR
+// ==========================================
+
+export interface OffreCOGOHRSectionContact {
+  titre: string;
+  description: string;
+  avantages: string[];
+  textePartenaire: string;
+  coordonnees: {
+    adresse: string;
+    horaires: string[];
+    noteHoraires?: string;
+    telephone: string;
+    email: string;
+  };
+  booking: {
+    url: string;
+    titre: string;
+    sousTitre: string;
+  };
+}
+
+export interface OffreCOGOHRContent {
+  hero: any;
+  problematique: any;
+  avantagesPer: any;
+  offreExclusive: any;
+  processus: any;
+  comparaison: any;
+  sectionContact: OffreCOGOHRSectionContact;
+  cta: any;
+  statistiques: any;
+}
+
+/**
+ * Récupère le contenu de la page offre COGOHR
+ */
+export function getOffreCOGOHR(): OffreCOGOHRContent {
+  const data = getPageContent("offre-cogohr");
+  return data as OffreCOGOHRContent;
+}
+
+// ==========================================
+// PAGES LÉGALES
+// ==========================================
+
+export interface LegalSection {
+  titre: string;
+  icone?: string;
+  contenu: string;
+}
+
+export interface MentionsLegalesContent {
+  hero: {
+    label: string;
+    titrePart1: string;
+    titrePart2: string;
+  };
+  sections: LegalSection[];
+  dateMiseAJour: string;
+}
+
+export interface PolitiqueConfidentialiteContent {
+  hero: {
+    label: string;
+    titrePart1: string;
+    titrePart2: string;
+    description?: string;
+  };
+  sections: LegalSection[];
+  contact: {
+    texte: string;
+    email: string;
+    telephone: string;
+    adresse: string;
+  };
+  dateMiseAJour: string;
+  notesMiseAJour?: string;
+}
+
+export interface CGUContent {
+  hero: {
+    label: string;
+    titrePart1: string;
+    titrePart2: string;
+  };
+  sections: LegalSection[];
+  contact: {
+    texte: string;
+    nom: string;
+    adresse: string;
+    email: string;
+    telephone: string;
+  };
+  dateMiseAJour: string;
+}
+
+/**
+ * Récupère le contenu de la page mentions légales
+ */
+export function getMentionsLegales(): MentionsLegalesContent {
+  const data = getPageContent("mentions-legales");
+  return data as MentionsLegalesContent;
+}
+
+/**
+ * Récupère le contenu de la page politique de confidentialité
+ */
+export function getPolitiqueConfidentialite(): PolitiqueConfidentialiteContent {
+  const data = getPageContent("politique-confidentialite");
+  return data as PolitiqueConfidentialiteContent;
+}
+
+/**
+ * Récupère le contenu de la page CGU
+ */
+export function getCGU(): CGUContent {
+  const data = getPageContent("cgu");
+  return data as CGUContent;
 }

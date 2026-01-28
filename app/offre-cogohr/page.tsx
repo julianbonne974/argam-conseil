@@ -1,5 +1,5 @@
-import { Header } from '@/components/Header';
-import { Footer } from '@/components/Footer';
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import {
   TrendingDown,
   TrendingUp,
@@ -14,19 +14,19 @@ import {
   Phone,
   Mail,
   Star,
-  AlertCircle
-} from 'lucide-react';
-import Link from 'next/link';
-import Image from 'next/image';
+  AlertCircle,
+} from "lucide-react";
+
+import Image from "next/image";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from '@/components/ui/accordion';
-import { Button } from '@/components/ui/button';
-import { getHoraires, getFAQByCategory } from '@/lib/content';
-import { COGOHRContactForm } from './OffreCOGOHRClient';
+} from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
+import { getHoraires, getFAQByCategory, getOffreCOGOHR } from "@/lib/content";
+import { BookingEmbed } from "@/components/BookingEmbed";
 
 // Section Graphique Comparatif Horizontal - Version 2.1 (Timeline Avant/Après)
 const RetirementComparisonChart = () => {
@@ -35,9 +35,7 @@ const RetirementComparisonChart = () => {
       {/* Cards comparatives */}
       <div className="grid md:grid-cols-2 gap-6 lg:gap-8 mb-12">
         {/* CARD 1 - SANS PER */}
-        <div
-          className="relative border-2 border-red-200 bg-white p-6 md:p-8 rounded-sm shadow-md"
-        >
+        <div className="relative border-2 border-red-200 bg-white p-6 md:p-8 rounded-sm shadow-md">
           {/* Badge situation actuelle */}
           <span className="text-xs uppercase tracking-wider text-red-600 bg-red-50 px-3 py-1 inline-block mb-4 font-medium">
             SITUATION ACTUELLE
@@ -50,7 +48,6 @@ const RetirementComparisonChart = () => {
 
           {/* Timeline horizontale : Activité → Retraite */}
           <div className="grid grid-cols-2 gap-0 mt-6">
-
             {/* COLONNE GAUCHE - EN ACTIVITÉ */}
             <div className="border-r-2 border-dashed border-gray-300 pr-3 md:pr-4">
               <p className="text-xs uppercase font-semibold text-gray-600 mb-4 text-center">
@@ -58,8 +55,13 @@ const RetirementComparisonChart = () => {
               </p>
               <div className="h-48 md:h-64 bg-gray-200 border-2 border-gray-400 rounded-l-sm flex items-center justify-center">
                 <p className="text-center font-medium text-gray-700 px-2">
-                  Salaire<br/>actuel<br/>
-                  <span className="text-xl md:text-2xl font-bold block mt-2">100%</span>
+                  Salaire
+                  <br />
+                  actuel
+                  <br />
+                  <span className="text-xl md:text-2xl font-bold block mt-2">
+                    100%
+                  </span>
                 </p>
               </div>
             </div>
@@ -74,7 +76,9 @@ const RetirementComparisonChart = () => {
                 <div className="flex-1 bg-blue-200 border-l-4 border-blue-500 flex items-center justify-center px-2 md:px-3 rounded-tr-sm">
                   <div className="text-center">
                     <p className="text-xs md:text-sm text-blue-900 leading-tight">
-                      Pension régime<br/>par répartition
+                      Pension régime
+                      <br />
+                      par répartition
                     </p>
                   </div>
                 </div>
@@ -84,14 +88,17 @@ const RetirementComparisonChart = () => {
                   <TrendingDown className="text-red-600 w-5 h-5 md:w-6 md:h-6 flex-shrink-0" />
                   <div className="text-center">
                     <p className="text-xs md:text-sm font-medium text-red-700 leading-tight">
-                      Perte de<br/>revenus
+                      Perte de
+                      <br />
+                      revenus
                     </p>
-                    <p className="text-base md:text-lg font-bold text-red-600 mt-1">jusqu'à 53%</p>
+                    <p className="text-base md:text-lg font-bold text-red-600 mt-1">
+                      jusqu'à 53%
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
-
           </div>
 
           {/* Label timeline */}
@@ -102,13 +109,9 @@ const RetirementComparisonChart = () => {
         </div>
 
         {/* CARD 2 - AVEC PER */}
-        <div
-          className="relative border-3 border-[#b4925e] bg-gradient-to-br from-[#b4925e]/5 to-white p-6 md:p-8 rounded-sm shadow-lg"
-        >
+        <div className="relative border-3 border-[#b4925e] bg-gradient-to-br from-[#b4925e]/5 to-white p-6 md:p-8 rounded-sm shadow-lg">
           {/* Badge RECOMMANDÉ */}
-          <div
-            className="absolute -top-4 right-8 bg-[#b4925e] text-white px-4 md:px-6 py-2 text-xs uppercase tracking-widest font-bold shadow-lg flex items-center gap-2"
-          >
+          <div className="absolute -top-4 right-8 bg-[#b4925e] text-white px-4 md:px-6 py-2 text-xs uppercase tracking-widest font-bold shadow-lg flex items-center gap-2">
             <Award className="w-3 h-3" />
             RECOMMANDÉ
           </div>
@@ -125,7 +128,6 @@ const RetirementComparisonChart = () => {
 
           {/* Timeline horizontale : Activité → Retraite */}
           <div className="grid grid-cols-2 gap-0 mt-6">
-
             {/* COLONNE GAUCHE - EN ACTIVITÉ */}
             <div className="border-r-2 border-dashed border-[#b4925e]/30 pr-3 md:pr-4">
               <p className="text-xs uppercase font-semibold text-gray-600 mb-4 text-center">
@@ -133,8 +135,13 @@ const RetirementComparisonChart = () => {
               </p>
               <div className="h-48 md:h-64 bg-gray-200 border-2 border-gray-400 rounded-l-sm flex items-center justify-center">
                 <p className="text-center font-medium text-gray-700 px-2">
-                  Salaire<br/>actuel<br/>
-                  <span className="text-xl md:text-2xl font-bold block mt-2">100%</span>
+                  Salaire
+                  <br />
+                  actuel
+                  <br />
+                  <span className="text-xl md:text-2xl font-bold block mt-2">
+                    100%
+                  </span>
                 </p>
               </div>
             </div>
@@ -152,7 +159,9 @@ const RetirementComparisonChart = () => {
                 >
                   <div className="text-center">
                     <p className="text-xs md:text-sm text-blue-900 leading-tight">
-                      Pension régime<br/>par répartition
+                      Pension régime
+                      <br />
+                      par répartition
                     </p>
                   </div>
                 </div>
@@ -165,9 +174,13 @@ const RetirementComparisonChart = () => {
                   <Shield className="text-white w-5 h-5 md:w-7 md:h-7 flex-shrink-0" />
                   <div className="text-center">
                     <p className="text-xs md:text-sm font-semibold text-white leading-tight">
-                      Plan Épargne<br/>Retraite
+                      Plan Épargne
+                      <br />
+                      Retraite
                     </p>
-                    <p className="text-lg md:text-xl font-bold text-white mt-1">jusqu'à 30%</p>
+                    <p className="text-lg md:text-xl font-bold text-white mt-1">
+                      jusqu'à 30%
+                    </p>
                   </div>
                 </div>
 
@@ -184,7 +197,6 @@ const RetirementComparisonChart = () => {
                 </div>
               </div>
             </div>
-
           </div>
 
           {/* Label timeline */}
@@ -196,9 +208,7 @@ const RetirementComparisonChart = () => {
       </div>
 
       {/* Zone de comparaison en bas */}
-      <div
-        className="bg-[#524c5d] text-white p-6 md:p-8 rounded-sm grid md:grid-cols-2 gap-6 md:gap-8"
-      >
+      <div className="bg-[#524c5d] text-white p-6 md:p-8 rounded-sm grid md:grid-cols-2 gap-6 md:gap-8">
         {/* Colonne gauche - Impact */}
         <div className="flex gap-4">
           <AlertCircle className="text-red-300 w-8 h-8 md:w-10 md:h-10 flex-shrink-0" />
@@ -207,7 +217,8 @@ const RetirementComparisonChart = () => {
               Impact sur votre pouvoir d'achat
             </h4>
             <p className="text-sm md:text-base text-white/90 leading-relaxed">
-              Le PER vous permet de reconstituer jusqu'à 30% de vos revenus actuels.
+              Le PER vous permet de reconstituer jusqu'à 30% de vos revenus
+              actuels.
             </p>
           </div>
         </div>
@@ -220,7 +231,9 @@ const RetirementComparisonChart = () => {
               Solution avec le PER
             </h4>
             <p className="text-sm md:text-base text-white/90 leading-relaxed">
-              Grâce à un complément de revenus personnalisé, vous sécurisez votre niveau de vie et compensez la perte de votre prime de vie chère.
+              Grâce à un complément de revenus personnalisé, vous sécurisez
+              votre niveau de vie et compensez la perte de votre prime de vie
+              chère.
             </p>
           </div>
         </div>
@@ -229,10 +242,11 @@ const RetirementComparisonChart = () => {
   );
 };
 
-
 export default function OffreCOGOHRPage() {
   const horaires = getHoraires();
-  const cogohrFAQ = getFAQByCategory('COGOHR');
+  const cogohrFAQ = getFAQByCategory("COGOHR");
+  const offreCOGOHR = getOffreCOGOHR();
+  const sectionContact = offreCOGOHR.sectionContact;
 
   return (
     <main className="min-h-screen bg-white">
@@ -243,9 +257,7 @@ export default function OffreCOGOHRPage() {
         <div className="container mx-auto px-4 md:px-8 max-w-7xl">
           <div className="grid lg:grid-cols-[55%_45%] gap-12 items-center">
             {/* COLONNE GAUCHE - CONTENU TEXTE */}
-            <div
-              className="space-y-8"
-            >
+            <div className="space-y-8">
               {/* Badge */}
               <div className="inline-block bg-[#b4925e]/10 text-[#b4925e] px-4 py-2 text-xs uppercase tracking-widest font-semibold">
                 Offre Exclusive Adhérents COGOHR
@@ -253,22 +265,33 @@ export default function OffreCOGOHRPage() {
 
               {/* Titre */}
               <h1 className="text-5xl lg:text-6xl font-light text-[#524c5d] leading-tight">
-                Fonctionnaires Hospitaliers<br />à La Réunion
+                Fonctionnaires Hospitaliers
+                <br />à La Réunion
               </h1>
 
               {/* Sous-titre accrocheur */}
               <h2 className="text-2xl lg:text-3xl font-medium text-[#b4925e] mt-6">
-                Votre prime de vie chère de 53%<br />ne compte pas pour votre retraite
+                Votre prime de vie chère de 53%
+                <br />
+                ne compte pas pour votre retraite
               </h2>
 
               {/* Paragraphe explicatif */}
               <p className="text-lg text-gray-600 font-light leading-relaxed">
-                Votre pension de retraite est calculée uniquement sur votre traitement indiciaire. La prime de vie chère, bien qu'elle constitue une part importante de votre rémunération, n'est pas prise en compte pour le calcul de vos droits. Cela peut donc entraîner une baisse significative de vos revenus une fois à la retraite.
+                Votre pension de retraite est calculée uniquement sur votre
+                traitement indiciaire. La prime de vie chère, bien qu'elle
+                constitue une part importante de votre rémunération, n'est pas
+                prise en compte pour le calcul de vos droits. Cela peut donc
+                entraîner une baisse significative de vos revenus une fois à la
+                retraite.
               </p>
 
               {/* Stat choc */}
               <div className="border-l-4 border-[#b4925e] bg-[#b4925e]/5 p-6 flex items-start gap-4">
-                <TrendingDown className="text-[#b4925e] w-8 h-8 flex-shrink-0" strokeWidth={1.5} />
+                <TrendingDown
+                  className="text-[#b4925e] w-8 h-8 flex-shrink-0"
+                  strokeWidth={1.5}
+                />
                 <p className="text-xl font-medium text-[#524c5d]">
                   Jusqu'à -53% de revenus à la retraite sans solution adaptée
                 </p>
@@ -276,23 +299,24 @@ export default function OffreCOGOHRPage() {
 
               {/* CTA */}
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <Link href="#contact">
+                <a href="#contact">
                   <Button className="bg-[#b4925e] hover:bg-[#b4925e]/90 text-white px-10 py-6 text-base">
                     Demander une étude gratuite
                   </Button>
-                </Link>
-                <Link href="#solution">
-                  <Button variant="outline" className="border-[#524c5d] text-[#524c5d] hover:bg-[#524c5d]/5 px-10 py-6 text-base">
+                </a>
+                <a href="#solution">
+                  <Button
+                    variant="outline"
+                    className="border-[#524c5d] text-[#524c5d] hover:bg-[#524c5d]/5 px-10 py-6 text-base"
+                  >
                     Découvrir le PER
                   </Button>
-                </Link>
+                </a>
               </div>
             </div>
 
             {/* COLONNE DROITE - VISUEL */}
-            <div
-              className="relative h-[500px] lg:h-[600px] border border-[#524c5d]/20 overflow-hidden shadow-xl"
-            >
+            <div className="relative h-[500px] lg:h-[600px] border border-[#524c5d]/20 overflow-hidden shadow-xl">
               <Image
                 src="/images/cogohr-site.jpg"
                 alt="Site COGOHR Trois-Bassins - Résidence en bord de mer pour les hospitaliers de La Réunion"
@@ -318,7 +342,8 @@ export default function OffreCOGOHRPage() {
             </h2>
             <div className="w-20 h-1 bg-[#b4925e] mx-auto mt-6" />
             <p className="text-lg text-gray-600 font-light max-w-3xl mx-auto mt-6">
-              Voici l'impact concret de la non-prise en compte de votre prime de vie chère sur le calcul de vos droits à la retraite.
+              Voici l'impact concret de la non-prise en compte de votre prime de
+              vie chère sur le calcul de vos droits à la retraite.
             </p>
           </div>
 
@@ -335,10 +360,12 @@ export default function OffreCOGOHRPage() {
           {/* Titre */}
           <div className="text-center mb-16">
             <h2 className="text-4xl font-light text-[#524c5d] mb-6">
-              Le Plan d'Épargne Retraite :<br />Votre Solution
+              Le Plan d'Épargne Retraite :<br />
+              Votre Solution
             </h2>
             <p className="text-lg text-gray-600 font-light max-w-3xl mx-auto">
-              Une réponse adaptée, flexible et fiscalement avantageuse pour compenser la perte liée à votre prime de vie chère.
+              Une réponse adaptée, flexible et fiscalement avantageuse pour
+              compenser la perte liée à votre prime de vie chère.
             </p>
           </div>
 
@@ -346,34 +373,51 @@ export default function OffreCOGOHRPage() {
           <div className="grid md:grid-cols-3 gap-8">
             {/* Card 1: Complément Garanti */}
             <div className="bg-white border border-[#524c5d]/20 p-10 hover:border-[#b4925e] hover:shadow-xl hover:scale-105 transition-all duration-300">
-              <Shield className="w-16 h-16 text-[#b4925e] mb-6" strokeWidth={1.5} />
+              <Shield
+                className="w-16 h-16 text-[#b4925e] mb-6"
+                strokeWidth={1.5}
+              />
               <h3 className="text-xl font-semibold text-[#524c5d] mb-4">
                 Complément de revenus
               </h3>
               <p className="text-sm text-gray-600 font-light leading-relaxed">
-                Constituez un capital qui vous permettra de compenser en grande partie la non-prise en compte de votre prime de vie chère dans le calcul de vos droits. Sécurisez votre niveau de vie à la retraite avec des revenus complémentaires stables.
+                Constituez un capital qui vous permettra de compenser en grande
+                partie la non-prise en compte de votre prime de vie chère dans
+                le calcul de vos droits. Sécurisez votre niveau de vie à la
+                retraite avec des revenus complémentaires stables.
               </p>
             </div>
 
             {/* Card 2: Avantages Fiscaux */}
             <div className="bg-white border border-[#524c5d]/20 p-10 hover:border-[#b4925e] hover:shadow-xl hover:scale-105 transition-all duration-300">
-              <TrendingUp className="w-16 h-16 text-[#b4925e] mb-6" strokeWidth={1.5} />
+              <TrendingUp
+                className="w-16 h-16 text-[#b4925e] mb-6"
+                strokeWidth={1.5}
+              />
               <h3 className="text-xl font-semibold text-[#524c5d] mb-4">
                 Avantages Fiscaux Immédiats
               </h3>
               <p className="text-sm text-gray-600 font-light leading-relaxed">
-                Les versements sur votre PER sont déductibles de votre revenu imposable. Réduisez votre impôt dès aujourd'hui tout en préparant demain. Optimisez votre fiscalité pendant votre carrière.
+                Les versements sur votre PER sont déductibles de votre revenu
+                imposable. Réduisez votre impôt dès aujourd'hui tout en
+                préparant demain. Optimisez votre fiscalité pendant votre
+                carrière.
               </p>
             </div>
 
             {/* Card 3: Flexibilité */}
             <div className="bg-white border border-[#524c5d]/20 p-10 hover:border-[#b4925e] hover:shadow-xl hover:scale-105 transition-all duration-300">
-              <Settings className="w-16 h-16 text-[#b4925e] mb-6" strokeWidth={1.5} />
+              <Settings
+                className="w-16 h-16 text-[#b4925e] mb-6"
+                strokeWidth={1.5}
+              />
               <h3 className="text-xl font-semibold text-[#524c5d] mb-4">
                 Flexibilité Totale
               </h3>
               <p className="text-sm text-gray-600 font-light leading-relaxed">
-                Versements libres ou programmés selon vos capacités. À la retraite, choisissez votre mode de sortie : capital, rente viagère, ou un mix des deux. Le PER s'adapte à votre situation.
+                Versements libres ou programmés selon vos capacités. À la
+                retraite, choisissez votre mode de sortie : capital, rente
+                viagère, ou un mix des deux. Le PER s'adapte à votre situation.
               </p>
             </div>
           </div>
@@ -392,7 +436,8 @@ export default function OffreCOGOHRPage() {
               Votre Accompagnement Privilégié
             </h2>
             <p className="text-lg font-light opacity-90 max-w-2xl mx-auto">
-              En tant que adhérent du COGOHR, bénéficiez d'avantages exclusifs pour la mise en place de votre Plan d'Épargne Retraite.
+              En tant que adhérent du COGOHR, bénéficiez d'avantages exclusifs
+              pour la mise en place de votre Plan d'Épargne Retraite.
             </p>
           </div>
 
@@ -400,52 +445,74 @@ export default function OffreCOGOHRPage() {
           <div className="grid md:grid-cols-2 gap-8">
             {/* Card 1: Étude Gratuite */}
             <div className="bg-white/10 border border-white/20 backdrop-blur-sm p-10">
-              <Gift className="w-20 h-20 text-[#b4925e] mb-6" strokeWidth={1.5} />
+              <Gift
+                className="w-20 h-20 text-[#b4925e] mb-6"
+                strokeWidth={1.5}
+              />
               <h3 className="text-2xl font-semibold mb-6">
                 Étude Personnalisée Gratuite
               </h3>
               <ul className="space-y-4">
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="w-5 h-5 text-[#b4925e] flex-shrink-0 mt-0.5" />
-                  <span className="text-sm font-light">Analyse complète de votre situation patrimoniale</span>
+                  <span className="text-sm font-light">
+                    Analyse complète de votre situation patrimoniale
+                  </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="w-5 h-5 text-[#b4925e] flex-shrink-0 mt-0.5" />
-                  <span className="text-sm font-light">Simulation personnalisée de votre PER</span>
+                  <span className="text-sm font-light">
+                    Simulation personnalisée de votre PER
+                  </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="w-5 h-5 text-[#b4925e] flex-shrink-0 mt-0.5" />
-                  <span className="text-sm font-light">Plan d'épargne adapté à vos objectifs et contraintes</span>
+                  <span className="text-sm font-light">
+                    Plan d'épargne adapté à vos objectifs et contraintes
+                  </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="w-5 h-5 text-[#b4925e] flex-shrink-0 mt-0.5" />
-                  <span className="text-sm font-light">Sans engagement de votre part</span>
+                  <span className="text-sm font-light">
+                    Sans engagement de votre part
+                  </span>
                 </li>
               </ul>
             </div>
 
             {/* Card 2: 0% Frais */}
             <div className="bg-white/10 border-2 border-[#b4925e] backdrop-blur-sm p-10">
-              <Award className="w-20 h-20 text-[#b4925e] mb-6" strokeWidth={1.5} />
+              <Award
+                className="w-20 h-20 text-[#b4925e] mb-6"
+                strokeWidth={1.5}
+              />
               <h3 className="text-2xl font-semibold mb-6">
                 0% de Frais d'Entrée
               </h3>
               <ul className="space-y-4">
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="w-5 h-5 text-[#b4925e] flex-shrink-0 mt-0.5" />
-                  <span className="text-sm font-light">Exonération totale des frais d'entrée (jusqu'à 3%)</span>
+                  <span className="text-sm font-light">
+                    Exonération totale des frais d'entrée (jusqu'à 3%)
+                  </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="w-5 h-5 text-[#b4925e] flex-shrink-0 mt-0.5" />
-                  <span className="text-sm font-light">Optimisation maximale de votre capital dès le départ</span>
+                  <span className="text-sm font-light">
+                    Optimisation maximale de votre capital dès le départ
+                  </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="w-5 h-5 text-[#b4925e] flex-shrink-0 mt-0.5" />
-                  <span className="text-sm font-light">Économie pouvant atteindre plusieurs milliers d'euros</span>
+                  <span className="text-sm font-light">
+                    Économie pouvant atteindre plusieurs milliers d'euros
+                  </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="w-5 h-5 text-[#b4925e] flex-shrink-0 mt-0.5" />
-                  <span className="text-sm font-light">Offre réservée exclusivement aux adhérents COGOHR</span>
+                  <span className="text-sm font-light">
+                    Offre réservée exclusivement aux adhérents COGOHR
+                  </span>
                 </li>
               </ul>
             </div>
@@ -453,11 +520,11 @@ export default function OffreCOGOHRPage() {
 
           {/* CTA */}
           <div className="text-center mt-16">
-            <Link href="#contact">
+            <a href="#contact">
               <Button className="bg-[#b4925e] hover:bg-[#b4925e]/90 text-white px-16 py-6 text-lg">
                 Profiter de l'offre maintenant
               </Button>
-            </Link>
+            </a>
           </div>
         </div>
       </section>
@@ -486,14 +553,19 @@ export default function OffreCOGOHRPage() {
                 Prise de Rendez-vous
               </h3>
               <p className="text-sm text-gray-600 font-light leading-relaxed">
-                Réservez votre créneau en visioconférence ou en présentiel sur le site du COGOHR à Trois-Bassins.
+                Réservez votre créneau en visioconférence ou en présentiel sur
+                le site du COGOHR à Trois-Bassins.
               </p>
               <div className="space-y-2 pt-4">
                 <div className="flex items-center justify-center gap-2 text-sm text-[#b4925e]">
                   <Calendar className="w-4 h-4" />
-                  <span>{horaires.horaires.format} • {horaires.horaires.joursCOGOHR}</span>
+                  <span>
+                    {horaires.horaires.format} • {horaires.horaires.joursCOGOHR}
+                  </span>
                 </div>
-                <p className="text-xs text-gray-600">Visioconférence {horaires.visio.disponibiliteCOGOHR}</p>
+                <p className="text-xs text-gray-600">
+                  Visioconférence {horaires.visio.disponibiliteCOGOHR}
+                </p>
               </div>
             </div>
 
@@ -508,12 +580,16 @@ export default function OffreCOGOHRPage() {
                 Étude Personnalisée Gratuite
               </h3>
               <p className="text-sm text-gray-600 font-light leading-relaxed">
-                Diagnostic complet de votre situation : revenus actuels, projets, objectifs de retraite. Simulation précise de votre PER sur-mesure avec calcul des avantages fiscaux.
+                Diagnostic complet de votre situation : revenus actuels,
+                projets, objectifs de retraite. Simulation précise de votre PER
+                sur-mesure avec calcul des avantages fiscaux.
               </p>
               <div className="space-y-2 pt-4">
                 <div className="flex items-center justify-center gap-2 text-sm text-[#524c5d]">
                   <FileText className="w-4 h-4" />
-                  <span>Sans engagement • {horaires.processus.formatDuree}</span>
+                  <span>
+                    Sans engagement • {horaires.processus.formatDuree}
+                  </span>
                 </div>
               </div>
             </div>
@@ -529,7 +605,9 @@ export default function OffreCOGOHRPage() {
                 Mise en Place & Suivi
               </h3>
               <p className="text-sm text-gray-600 font-light leading-relaxed">
-                Ouverture de votre PER avec 0% de frais d'entrée. Accompagnement continu pour optimiser votre stratégie retraite et ajuster vos versements selon votre situation.
+                Ouverture de votre PER avec 0% de frais d'entrée. Accompagnement
+                continu pour optimiser votre stratégie retraite et ajuster vos
+                versements selon votre situation.
               </p>
               <div className="space-y-2 pt-4">
                 <div className="flex items-center justify-center gap-2 text-sm text-[#b4925e]">
@@ -570,9 +648,12 @@ export default function OffreCOGOHRPage() {
                       dangerouslySetInnerHTML={{
                         __html: faq.reponse
                           .replace(/\n\n/g, '</p><p class="mb-3">')
-                          .replace(/^\*\*(.*?)\*\*/gm, '<strong>$1</strong>')
-                          .replace(/^- (.*?)$/gm, '<li>$1</li>')
-                          .replace(/((<li>.*<\/li>\n?)+)/g, '<ul class="list-disc pl-5 space-y-1">$1</ul>')
+                          .replace(/^\*\*(.*?)\*\*/gm, "<strong>$1</strong>")
+                          .replace(/^- (.*?)$/gm, "<li>$1</li>")
+                          .replace(
+                            /((<li>.*<\/li>\n?)+)/g,
+                            '<ul class="list-disc pl-5 space-y-1">$1</ul>',
+                          ),
                       }}
                       className="[&>p]:mb-3 [&>p:last-child]:mb-0 [&_strong]:font-medium [&>ul]:list-disc [&>ul]:pl-5 [&>ul]:space-y-1"
                     />
@@ -585,84 +666,87 @@ export default function OffreCOGOHRPage() {
       </section>
 
       {/* SECTION 8: CTA FINAL + FORMULAIRE */}
-      <section id="contact" className="py-24 bg-gradient-to-br from-gray-50 to-white">
+      <section
+        id="contact"
+        className="py-24 bg-gradient-to-br from-gray-50 to-white"
+      >
         <div className="container mx-auto px-4 md:px-8 max-w-5xl">
           <div className="grid lg:grid-cols-[40%_60%] gap-12">
             {/* COLONNE GAUCHE - INFOS */}
             <div className="space-y-8">
               <div>
                 <h2 className="text-3xl font-light text-[#524c5d] mb-6">
-                  Prêt à Sécuriser<br />Votre Retraite ?
+                  {sectionContact.titre}
                 </h2>
                 <p className="text-gray-600 font-light leading-relaxed">
-                  Ne laissez pas la perte de votre prime de vie chère impacter votre niveau de vie à la retraite. Demandez votre étude gratuite dès maintenant.
+                  {sectionContact.description}
                 </p>
               </div>
 
               {/* Liste avantages */}
               <ul className="space-y-3">
-                <li className="flex items-center gap-3 text-sm text-gray-700">
-                  <CheckCircle2 className="w-5 h-5 text-[#b4925e] flex-shrink-0" />
-                  <span>{horaires.delaiReponse.cta}</span>
-                </li>
-                <li className="flex items-center gap-3 text-sm text-gray-700">
-                  <CheckCircle2 className="w-5 h-5 text-[#b4925e] flex-shrink-0" />
-                  <span>100% Confidentiel</span>
-                </li>
-                <li className="flex items-center gap-3 text-sm text-gray-700">
-                  <CheckCircle2 className="w-5 h-5 text-[#b4925e] flex-shrink-0" />
-                  <span>Sans engagement</span>
-                </li>
+                {sectionContact.avantages.map((avantage, index) => (
+                  <li
+                    key={index}
+                    className="flex items-center gap-3 text-sm text-gray-700"
+                  >
+                    <CheckCircle2 className="w-5 h-5 text-[#b4925e] flex-shrink-0" />
+                    <span>{avantage}</span>
+                  </li>
+                ))}
               </ul>
 
               {/* Logo COGOHR placeholder */}
               <div className="bg-[#524c5d]/10 p-8 border border-[#524c5d]/20">
                 <p className="text-sm text-gray-600 text-center">
-                  Partenaire officiel COGOHR
+                  {sectionContact.textePartenaire}
                 </p>
-                {/* TODO: Ajouter logo COGOHR ici */}
               </div>
 
               {/* Coordonnées */}
               <div className="space-y-4 pt-4">
-                <h3 className="text-lg font-semibold text-[#524c5d]">Nous Contacter</h3>
+                <h3 className="text-lg font-semibold text-[#524c5d]">
+                  Nous Contacter
+                </h3>
                 <div className="space-y-3 text-sm text-gray-600">
                   <div className="flex items-start gap-3">
                     <MapPin className="w-4 h-4 text-[#b4925e] flex-shrink-0 mt-1" />
-                    <span>Site COGOHR - Trois-Bassins, La Réunion</span>
+                    <span>{sectionContact.coordonnees.adresse}</span>
                   </div>
                   <div className="flex items-start gap-3">
                     <Calendar className="w-4 h-4 text-[#b4925e] flex-shrink-0 mt-1" />
                     <div>
-                      <p>{horaires.horaires.joursCOGOHR} : {horaires.horaires.format}</p>
-                      <p className="text-xs text-gray-500">Visio disponible {horaires.visio.disponibilite} sur rendez-vous</p>
+                      {sectionContact.coordonnees.horaires.map(
+                        (horaire, index) => (
+                          <p key={index}>{horaire}</p>
+                        ),
+                      )}
+                      {sectionContact.coordonnees.noteHoraires && (
+                        <p className="text-xs text-gray-500 mt-1">
+                          {sectionContact.coordonnees.noteHoraires}
+                        </p>
+                      )}
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <Phone className="w-4 h-4 text-[#b4925e] flex-shrink-0 mt-1" />
-                    <span>05 33 89 14 00</span>
+                    <span>{sectionContact.coordonnees.telephone}</span>
                   </div>
                   <div className="flex items-start gap-3">
                     <Mail className="w-4 h-4 text-[#b4925e] flex-shrink-0 mt-1" />
-                    <span>contact@argamconseils.com</span>
+                    <span>{sectionContact.coordonnees.email}</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* COLONNE DROITE - FORMULAIRE */}
-            <div className="bg-white border-2 border-[#524c5d]/20 p-10 shadow-lg">
-              {/* Bandeau titre */}
-              <div className="mb-8 pb-6 border-b border-[#524c5d]/10">
-                <h2 className="text-2xl font-light text-[#524c5d] mb-3">
-                  Demander une Étude Gratuite
-                </h2>
-                <p className="text-sm text-gray-600 font-light leading-relaxed">
-                  Remplissez ce formulaire. Un de nos experts vous recontactera sous {horaires.delaiReponse.delai} pour échanger sur votre projet patrimonial et votre situation retraite.
-                </p>
-              </div>
-
-              <COGOHRContactForm delai={horaires.delaiReponse.delai} />
+            {/* COLONNE DROITE - BOOKING MICROSOFT */}
+            <div className="bg-white border-2 border-[#524c5d]/20 p-8 shadow-lg">
+              <BookingEmbed
+                embedUrl={sectionContact.booking.url}
+                titre={sectionContact.booking.titre}
+                sousTitre={sectionContact.booking.sousTitre}
+              />
             </div>
           </div>
         </div>

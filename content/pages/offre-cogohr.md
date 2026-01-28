@@ -88,6 +88,27 @@ comparaison:
       complement: "Complément de revenus à la retraite"
       impact: "Le PER vous permet de reconstituer jusqu'à 30% de vos revenus actuels"
 
+sectionContact:
+  titre: "Prêt à Sécuriser Votre Retraite ?"
+  description: "Ne laissez pas la perte de votre prime de vie chère impacter votre niveau de vie à la retraite. Demandez votre étude gratuite dès maintenant."
+  avantages:
+    - "Réservation en ligne immédiate"
+    - "100% Confidentiel"
+    - "Sans engagement"
+  textePartenaire: "Partenaire officiel COGOHR"
+  coordonnees:
+    adresse: "Site COGOHR - Trois-Bassins, La Réunion"
+    horaires:
+      - "Mercredi : 13h00 - 18h00"
+      - "Vendredi : 09h00 - 13h00"
+    noteHoraires: "Visio ou présentiel sur rendez-vous"
+    telephone: "05 33 89 14 00"
+    email: "contact@argamconseils.com"
+  booking:
+    url: "https://outlook.office.com/book/ARGAMCONSEILS1@ARGAMCONSEILS.COM/"
+    titre: "Réserver votre consultation"
+    sousTitre: "Choisissez un créneau pour votre étude gratuite"
+
 cta:
   principal:
     titre: "Prendre rendez-vous"
