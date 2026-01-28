@@ -103,7 +103,7 @@ sectionContact:
       - "Vendredi : 09h00 - 13h00"
     noteHoraires: "Visio ou présentiel sur rendez-vous"
     telephone: "05 33 89 14 00"
-    email: "contact@argamconseils.com"
+    email: "contact-reunion@argamconseils.com"
   booking:
     url: "https://outlook.office.com/book/ARGAMCONSEILS1@ARGAMCONSEILS.COM/"
     titre: "Réserver votre consultation"

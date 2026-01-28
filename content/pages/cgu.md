@@ -124,7 +124,7 @@ contact:
   texte: "Pour toute question concernant ces Conditions Générales d'Utilisation :"
   nom: "Argam Conseils"
   adresse: "52 allées de Tourny, 33000 Bordeaux"
-  email: "contact@argamconseils.com"
+  email: "contact-reunion@argamconseils.com"
   telephone: "05 33 89 14 00"
 
 dateMiseAJour: "Janvier 2025"

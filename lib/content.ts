@@ -518,3 +518,167 @@ export function getCGU(): CGUContent {
   const data = getPageContent("cgu");
   return data as CGUContent;
 }
+
+// ==========================================
+// LABELS DU FORMULAIRE
+// ==========================================
+
+export interface FormOption {
+  value: string;
+  label: string;
+}
+
+export interface FormLabelsSettings {
+  labels: {
+    nom: string;
+    email: string;
+    telephone: string;
+    fonction: string;
+    message: string;
+    typeRendezVous: string;
+  };
+  placeholders: {
+    telephone: string;
+    fonction: string;
+    message: string;
+  };
+  validation: {
+    nomRequired: string;
+    nomMinLength: string;
+    emailRequired: string;
+    emailInvalid: string;
+    phoneRequired: string;
+    phoneInvalid: string;
+    fonctionRequired: string;
+  };
+  cogohr: {
+    label: string;
+    description: string;
+  };
+  typeRendezVous: {
+    visio: string;
+    presentiel: string;
+  };
+  fonctions: FormOption[];
+  hopitaux: FormOption[];
+  bouton: {
+    texte: string;
+    texteEnvoi: string;
+  };
+  toasts: {
+    success: {
+      titre: string;
+      description: string;
+    };
+    error: {
+      titre: string;
+      description: string;
+    };
+    inProgress: {
+      titre: string;
+      description: string;
+    };
+  };
+  rgpd: {
+    texte: string;
+  };
+  legal: {
+    orias: string;
+    membre: string;
+    mediateur: string;
+  };
+}
+
+/**
+ * Récupère les labels du formulaire
+ */
+export function getFormLabels(): FormLabelsSettings {
+  const fullPath = path.join(contentDirectory, "settings", "form-labels.yml");
+
+  try {
+    const fileContents = fs.readFileSync(fullPath, "utf8");
+    const data = yaml.load(fileContents) as FormLabelsSettings;
+    return data;
+  } catch (error) {
+    console.error("Erreur lecture form-labels:", error);
+    // Valeurs par défaut
+    return {
+      labels: {
+        nom: "Nom",
+        email: "Email",
+        telephone: "Téléphone",
+        fonction: "Fonction",
+        message: "Message (optionnel)",
+        typeRendezVous: "Type de rendez-vous",
+      },
+      placeholders: {
+        telephone: "06 XX XX XX XX",
+        fonction: "Sélectionnez votre fonction",
+        message: "Précisez vos questions ou votre situation...",
+      },
+      validation: {
+        nomRequired: "Le nom est requis",
+        nomMinLength: "Le nom doit contenir au moins 2 caractères",
+        emailRequired: "L'email est requis",
+        emailInvalid: "Format d'email invalide",
+        phoneRequired: "Le téléphone est requis",
+        phoneInvalid:
+          "Format de téléphone invalide (ex: 06 XX XX XX XX ou +262...)",
+        fonctionRequired: "Veuillez sélectionner votre fonction",
+      },
+      cogohr: {
+        label: "Je suis adhérent du COGOHR",
+        description:
+          "Les adhérents COGOHR bénéficient d'une étude gratuite + 0% de frais d'entrée",
+      },
+      typeRendezVous: {
+        visio: "Visioconférence",
+        presentiel: "Présentiel - Trois-Bassins",
+      },
+      fonctions: [
+        { value: "infirmier", label: "Infirmier(ère)" },
+        { value: "aide-soignant", label: "Aide-soignant(e)" },
+        { value: "medecin", label: "Médecin" },
+        { value: "cadre-sante", label: "Cadre de santé" },
+        { value: "technicien", label: "Technicien(ne)" },
+        { value: "administratif", label: "Personnel administratif" },
+        { value: "autre", label: "Autre" },
+      ],
+      hopitaux: [
+        { value: "chu-reunion", label: "CHU La Réunion" },
+        { value: "saint-pierre", label: "Hôpital Saint-Pierre" },
+        { value: "saint-denis", label: "Hôpital Saint-Denis" },
+        { value: "autre", label: "Autre" },
+      ],
+      bouton: {
+        texte: "Demander mon étude gratuite",
+        texteEnvoi: "Envoi en cours...",
+      },
+      toasts: {
+        success: {
+          titre: "Message envoyé !",
+          description:
+            "Nous vous recontacterons sous 48h. Vérifiez vos emails.",
+        },
+        error: {
+          titre: "Erreur d'envoi",
+          description:
+            "Une erreur est survenue. Contactez-nous au 05 33 89 14 00",
+        },
+        inProgress: {
+          titre: "Envoi en cours...",
+          description: "Veuillez patienter quelques instants",
+        },
+      },
+      rgpd: {
+        texte:
+          "Vos données sont sécurisées et ne seront jamais partagées. En soumettant ce formulaire, vous acceptez d'être recontacté par Argam Conseils.",
+      },
+      legal: {
+        orias: "20194827",
+        membre: "ANCACOFI-CIF",
+        mediateur: "AMF",
+      },
+    };
+  }
+}

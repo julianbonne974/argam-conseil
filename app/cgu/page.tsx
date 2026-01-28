@@ -1,5 +1,5 @@
 import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
+import { FooterWrapper } from "@/components/FooterWrapper";
 import { getCGU } from "@/lib/content";
 import LegalPageClient from "@/components/LegalPageClient";
 
@@ -19,7 +19,7 @@ export default function CGUPage() {
         dateMiseAJour={data.dateMiseAJour}
       />
 
-      <Footer />
+      <FooterWrapper />
     </main>
   );
 }

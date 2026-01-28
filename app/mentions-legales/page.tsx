@@ -1,5 +1,5 @@
 import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
+import { FooterWrapper } from "@/components/FooterWrapper";
 import { getMentionsLegales } from "@/lib/content";
 import LegalPageClient from "@/components/LegalPageClient";
 
@@ -18,7 +18,7 @@ export default function MentionsLegalesPage() {
         dateMiseAJour={data.dateMiseAJour}
       />
 
-      <Footer />
+      <FooterWrapper />
     </main>
   );
 }

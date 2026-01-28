@@ -1,5 +1,5 @@
 import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
+import { FooterWrapper } from "@/components/FooterWrapper";
 import { getPolitiqueConfidentialite } from "@/lib/content";
 import LegalPageClient from "@/components/LegalPageClient";
 
@@ -21,7 +21,7 @@ export default function PolitiqueConfidentialitePage() {
         notesMiseAJour={data.notesMiseAJour}
       />
 
-      <Footer />
+      <FooterWrapper />
     </main>
   );
 }

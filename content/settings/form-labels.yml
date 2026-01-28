@@ -1,0 +1,92 @@
+# Labels et textes du formulaire de contact
+# Géré via Decap CMS
+
+# Labels des champs
+labels:
+  nom: "Nom"
+  email: "Email"
+  telephone: "Téléphone"
+  fonction: "Fonction"
+  message: "Message (optionnel)"
+  typeRendezVous: "Type de rendez-vous"
+
+# Placeholders
+placeholders:
+  telephone: "06 XX XX XX XX"
+  fonction: "Sélectionnez votre fonction"
+  message: "Précisez vos questions ou votre situation..."
+
+# Messages de validation
+validation:
+  nomRequired: "Le nom est requis"
+  nomMinLength: "Le nom doit contenir au moins 2 caractères"
+  emailRequired: "L'email est requis"
+  emailInvalid: "Format d'email invalide"
+  phoneRequired: "Le téléphone est requis"
+  phoneInvalid: "Format de téléphone invalide (ex: 06 XX XX XX XX ou +262...)"
+  fonctionRequired: "Veuillez sélectionner votre fonction"
+
+# Checkbox COGOHR
+cogohr:
+  label: "Je suis adhérent du COGOHR"
+  description: "Les adhérents COGOHR bénéficient d'une étude gratuite + 0% de frais d'entrée"
+
+# Options du type de rendez-vous
+typeRendezVous:
+  visio: "Visioconférence"
+  presentiel: "Présentiel - Trois-Bassins"
+
+# Options de fonction
+fonctions:
+  - value: "infirmier"
+    label: "Infirmier(ère)"
+  - value: "aide-soignant"
+    label: "Aide-soignant(e)"
+  - value: "medecin"
+    label: "Médecin"
+  - value: "cadre-sante"
+    label: "Cadre de santé"
+  - value: "technicien"
+    label: "Technicien(ne)"
+  - value: "administratif"
+    label: "Personnel administratif"
+  - value: "autre"
+    label: "Autre"
+
+# Options d'hôpital (pour la page COGOHR)
+hopitaux:
+  - value: "chu-reunion"
+    label: "CHU La Réunion"
+  - value: "saint-pierre"
+    label: "Hôpital Saint-Pierre"
+  - value: "saint-denis"
+    label: "Hôpital Saint-Denis"
+  - value: "autre"
+    label: "Autre"
+
+# Bouton de soumission
+bouton:
+  texte: "Demander mon étude gratuite"
+  texteEnvoi: "Envoi en cours..."
+
+# Messages toast
+toasts:
+  success:
+    titre: "Message envoyé !"
+    description: "Nous vous recontacterons sous 48h. Vérifiez vos emails."
+  error:
+    titre: "Erreur d'envoi"
+    description: "Une erreur est survenue. Contactez-nous au 05 33 89 14 00 ou par email à contact-reunion@argamconseils.com"
+  inProgress:
+    titre: "Envoi en cours..."
+    description: "Veuillez patienter quelques instants"
+
+# Mention RGPD
+rgpd:
+  texte: "Vos données sont sécurisées et ne seront jamais partagées. En soumettant ce formulaire, vous acceptez d'être recontacté par Argam Conseils."
+
+# Informations légales (affichées dans le footer et page contact)
+legal:
+  orias: "20194827"
+  membre: "ANCACOFI-CIF"
+  mediateur: "AMF"

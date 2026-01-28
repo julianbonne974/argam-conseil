@@ -1,8 +1,20 @@
-'use client';
+"use client";
 
-import { ArrowRight, PieChart, Shield, Briefcase, CheckCircle2, MapPin, TrendingUp, Award, Users, Home, FileText } from 'lucide-react';
-import Link from 'next/link';
-import { motion } from 'framer-motion';
+import {
+  ArrowRight,
+  PieChart,
+  Shield,
+  Briefcase,
+  CheckCircle2,
+  MapPin,
+  TrendingUp,
+  Award,
+  Users,
+  Home,
+  FileText,
+} from "lucide-react";
+import Link from "next/link";
+import { motion } from "framer-motion";
 
 // Component for dynamic icons
 interface DynamicIconProps {
@@ -10,21 +22,24 @@ interface DynamicIconProps {
   className?: string;
 }
 
-function DynamicIcon({ iconName, className = "w-12 h-12 text-[#b4925e]" }: DynamicIconProps) {
+function DynamicIcon({
+  iconName,
+  className = "w-12 h-12 text-[#b4925e]",
+}: DynamicIconProps) {
   switch (iconName) {
-    case 'PieChart':
+    case "PieChart":
       return <PieChart className={className} strokeWidth={1.5} />;
-    case 'Shield':
+    case "Shield":
       return <Shield className={className} strokeWidth={1.5} />;
-    case 'Briefcase':
+    case "Briefcase":
       return <Briefcase className={className} strokeWidth={1.5} />;
-    case 'TrendingUp':
+    case "TrendingUp":
       return <TrendingUp className={className} strokeWidth={1.5} />;
-    case 'Award':
+    case "Award":
       return <Award className={className} strokeWidth={1.5} />;
-    case 'Users':
+    case "Users":
       return <Users className={className} strokeWidth={1.5} />;
-    case 'Home':
+    case "Home":
       return <Home className={className} strokeWidth={1.5} />;
     default:
       return <FileText className={className} strokeWidth={1.5} />;
@@ -35,27 +50,27 @@ function DynamicIcon({ iconName, className = "w-12 h-12 text-[#b4925e]" }: Dynam
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6 }
+  transition: { duration: 0.6 },
 };
 
 const fadeIn = {
   initial: { opacity: 0 },
   animate: { opacity: 1 },
-  transition: { duration: 0.6 }
+  transition: { duration: 0.6 },
 };
 
 const slideInFromTop = {
   initial: { opacity: 0, y: -20 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6 }
+  transition: { duration: 0.6 },
 };
 
 const staggerContainer = {
   animate: {
     transition: {
-      staggerChildren: 0.1
-    }
-  }
+      staggerChildren: 0.1,
+    },
+  },
 };
 
 interface AccueilClientProps {
@@ -66,7 +81,10 @@ export default function AccueilClient({ content }: AccueilClientProps) {
   return (
     <main className="min-h-screen bg-white">
       {/* SECTION 1: HERO - Layout 60/40 */}
-      <section id="accueil" className="relative pt-32 pb-20 overflow-hidden bg-white">
+      <section
+        id="accueil"
+        className="relative pt-32 pb-20 overflow-hidden bg-white"
+      >
         {/* Geometric Background Elements */}
         <motion.div
           className="absolute inset-0 pointer-events-none"
@@ -98,19 +116,21 @@ export default function AccueilClient({ content }: AccueilClientProps) {
               {/* Badge */}
               <div className="space-y-1">
                 <p className="text-[11px] uppercase tracking-[0.3em] text-muted-foreground font-medium">
-                  {content.hero?.surtitre || 'CONSEIL PATRIMONIAL'}
+                  {content.hero?.surtitre || "CONSEIL PATRIMONIAL"}
                 </p>
                 <div className="w-12 h-[1px] bg-[#b4925e] mt-4" />
               </div>
 
               {/* Titre Principal */}
               <h1 className="text-5xl lg:text-6xl text-[#524c5d] leading-[1.1] tracking-tight font-light">
-                {content.hero?.titre || 'Votre patrimoine mérite une expertise dédiée'}
+                {content.hero?.titre ||
+                  "Votre patrimoine mérite une expertise dédiée"}
               </h1>
 
               {/* Sous-titre */}
               <p className="text-lg text-gray-600 leading-relaxed font-light max-w-xl">
-                {content.hero?.soustitre || 'Argam Conseils accompagne les particuliers et les dirigeants dans l\'optimisation globale de leur patrimoine professionnel et personnel à La Réunion et Bordeaux.'}
+                {content.hero?.soustitre ||
+                  "Argam Conseils accompagne les particuliers et les dirigeants dans l'optimisation globale de leur patrimoine professionnel et personnel à La Réunion et Bordeaux."}
               </p>
 
               {/* CTA */}
@@ -121,12 +141,17 @@ export default function AccueilClient({ content }: AccueilClientProps) {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    {content.hero?.texteBouton || 'Prendre rendez-vous'}
+                    {content.hero?.texteBouton || "Prendre rendez-vous"}
                   </motion.button>
                 </Link>
 
-                <Link href="/services" className="group flex items-center gap-2 text-sm text-[#524c5d] hover:text-[#b4925e] transition-colors">
-                  <span className="uppercase tracking-wider font-medium">Découvrir nos services</span>
+                <Link
+                  href="/services"
+                  className="group flex items-center gap-2 text-sm text-[#524c5d] hover:text-[#b4925e] transition-colors"
+                >
+                  <span className="uppercase tracking-wider font-medium">
+                    Découvrir nos services
+                  </span>
                   <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
@@ -154,8 +179,24 @@ export default function AccueilClient({ content }: AccueilClientProps) {
                 {/* Lignes */}
                 <div className="absolute inset-0">
                   <svg className="w-full h-full" viewBox="0 0 400 500">
-                    <line x1="50" y1="450" x2="350" y2="50" stroke="#524c5d" strokeWidth="1" opacity="0.1" />
-                    <line x1="100" y1="50" x2="300" y2="450" stroke="#b4925e" strokeWidth="1" opacity="0.1" />
+                    <line
+                      x1="50"
+                      y1="450"
+                      x2="350"
+                      y2="50"
+                      stroke="#524c5d"
+                      strokeWidth="1"
+                      opacity="0.1"
+                    />
+                    <line
+                      x1="100"
+                      y1="50"
+                      x2="300"
+                      y2="450"
+                      stroke="#b4925e"
+                      strokeWidth="1"
+                      opacity="0.1"
+                    />
                   </svg>
                 </div>
               </div>
@@ -178,38 +219,43 @@ export default function AccueilClient({ content }: AccueilClientProps) {
             <div className="space-y-8">
               <div>
                 <p className="text-xs uppercase tracking-widest text-[#b4925e] font-medium mb-4">
-                  {content.presentation?.surtitre || 'À PROPOS'}
+                  {content.presentation?.surtitre || "À PROPOS"}
                 </p>
                 <h2 className="text-3xl lg:text-4xl font-light text-[#524c5d] leading-tight">
-                  {content.presentation?.titre || 'Une approche globale de votre patrimoine'}
+                  {content.presentation?.titre ||
+                    "Une approche globale de votre patrimoine"}
                 </h2>
               </div>
 
               <div className="space-y-4 text-[#524c5d]/70 font-light leading-relaxed">
                 <p>
-                  {content.presentation?.paragraphe1 || 'Argam Conseils vous accompagne dans une démarche complète d\'optimisation de votre patrimoine. Notre expertise intègre les dimensions stratégiques, fiscales, sociales, financières et juridiques pour vous offrir un conseil personnalisé et optimal.'}
+                  {content.presentation?.paragraphe1 ||
+                    "Argam Conseils vous accompagne dans une démarche complète d'optimisation de votre patrimoine. Notre expertise intègre les dimensions stratégiques, fiscales, sociales, financières et juridiques pour vous offrir un conseil personnalisé et optimal."}
                 </p>
                 <p>
-                  {content.presentation?.paragraphe2 || 'Que vous soyez particulier, fonctionnaire hospitalier, ou dirigeant d\'entreprise, nous construisons avec vous des solutions sur-mesure adaptées à vos objectifs et contraintes spécifiques.'}
+                  {content.presentation?.paragraphe2 ||
+                    "Que vous soyez particulier, fonctionnaire hospitalier, ou dirigeant d'entreprise, nous construisons avec vous des solutions sur-mesure adaptées à vos objectifs et contraintes spécifiques."}
                 </p>
               </div>
             </div>
 
             {/* Colonne droite */}
             <div className="space-y-4">
-              {content.presentation?.points?.map((point: string, index: number) => (
-                <motion.div
-                  key={index}
-                  className="flex items-start gap-3"
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  <CheckCircle2 className="h-5 w-5 text-[#b4925e] flex-shrink-0 mt-0.5" />
-                  <span className="text-[#524c5d] font-light">{point}</span>
-                </motion.div>
-              ))}
+              {content.presentation?.points?.map(
+                (point: string, index: number) => (
+                  <motion.div
+                    key={index}
+                    className="flex items-start gap-3"
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                  >
+                    <CheckCircle2 className="h-5 w-5 text-[#b4925e] flex-shrink-0 mt-0.5" />
+                    <span className="text-[#524c5d] font-light">{point}</span>
+                  </motion.div>
+                ),
+              )}
             </div>
           </motion.div>
         </div>
@@ -259,7 +305,10 @@ export default function AccueilClient({ content }: AccueilClientProps) {
                       <li key={i}>• {detail}</li>
                     ))}
                   </ul>
-                  <Link href="/services" className="inline-flex items-center gap-2 text-sm text-[#b4925e] hover:gap-3 transition-all">
+                  <Link
+                    href="/services"
+                    className="inline-flex items-center gap-2 text-sm text-[#b4925e] hover:gap-3 transition-all"
+                  >
                     En savoir plus <ArrowRight className="h-4 w-4" />
                   </Link>
                 </div>
@@ -281,7 +330,7 @@ export default function AccueilClient({ content }: AccueilClientProps) {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl lg:text-4xl text-[#524c5d] font-light mb-6">
-              {content.approche?.titre || 'Notre Approche'}
+              {content.approche?.titre || "Notre Approche"}
             </h2>
             <div className="w-16 h-1 bg-[#b4925e] mx-auto" />
           </motion.div>
@@ -295,10 +344,18 @@ export default function AccueilClient({ content }: AccueilClientProps) {
             viewport={{ once: true, amount: 0.2 }}
           >
             {content.approche?.etapes?.map((etape: any, index: number) => (
-              <motion.div key={index} variants={fadeInUp} className="text-center space-y-6">
+              <motion.div
+                key={index}
+                variants={fadeInUp}
+                className="text-center space-y-6"
+              >
                 <div className="flex justify-center">
-                  <div className={`w-20 h-20 ${etape.numero === '03' ? 'bg-[#b4925e]' : ''} border-4 border-[#b4925e] flex items-center justify-center`}>
-                    <span className={`text-3xl font-light ${etape.numero === '03' ? 'text-white' : 'text-[#524c5d]'}`}>
+                  <div
+                    className={`w-20 h-20 ${etape.numero === "03" ? "bg-[#b4925e]" : ""} border-4 border-[#b4925e] flex items-center justify-center`}
+                  >
+                    <span
+                      className={`text-3xl font-light ${etape.numero === "03" ? "text-white" : "text-[#524c5d]"}`}
+                    >
                       {etape.numero}
                     </span>
                   </div>
@@ -344,10 +401,13 @@ export default function AccueilClient({ content }: AccueilClientProps) {
                 key={index}
                 variants={fadeInUp}
                 className={`relative flex flex-col items-center justify-center py-12 px-6 ${
-                  index === 0 ? 'border-r border-b lg:border-b-0 border-[#524c5d]/10' :
-                  index === 1 ? 'border-b lg:border-b-0 lg:border-r border-[#524c5d]/10' :
-                  index === 2 ? 'border-r border-[#524c5d]/10' :
-                  ''
+                  index === 0
+                    ? "border-r border-b lg:border-b-0 border-[#524c5d]/10"
+                    : index === 1
+                      ? "border-b lg:border-b-0 lg:border-r border-[#524c5d]/10"
+                      : index === 2
+                        ? "border-r border-[#524c5d]/10"
+                        : ""
                 }`}
               >
                 <div className="text-center space-y-4">
@@ -359,7 +419,9 @@ export default function AccueilClient({ content }: AccueilClientProps) {
                     {chiffre.label}
                   </p>
                   {chiffre.description && (
-                    <p className="text-xs text-gray-500">{chiffre.description}</p>
+                    <p className="text-xs text-gray-500">
+                      {chiffre.description}
+                    </p>
                   )}
                 </div>
               </motion.div>
@@ -401,19 +463,27 @@ export default function AccueilClient({ content }: AccueilClientProps) {
               <MapPin className="h-10 w-10 text-[#b4925e]" strokeWidth={1.5} />
               <div className="space-y-4">
                 <h3 className="text-xl font-semibold text-[#524c5d]">
-                  {content.implantations?.bordeaux?.titre || 'Bordeaux - Siège Social'}
+                  {content.implantations?.bordeaux?.titre ||
+                    "Bordeaux - Siège Social"}
                 </h3>
                 <div className="space-y-2 text-sm text-[#524c5d]/70 font-light">
-                  <p style={{ whiteSpace: 'pre-line' }}>
-                    {content.implantations?.bordeaux?.adresse || '52 allées de Tourny\n33000 Bordeaux'}
+                  <p style={{ whiteSpace: "pre-line" }}>
+                    {content.implantations?.bordeaux?.adresse ||
+                      "52 allées de Tourny\n33000 Bordeaux"}
                   </p>
                   <p className="pt-2">
-                    <span className="font-medium text-[#524c5d]">Téléphone :</span><br />
-                    {content.implantations?.bordeaux?.telephone || '05 33 89 14 00'}
+                    <span className="font-medium text-[#524c5d]">
+                      Téléphone :
+                    </span>
+                    <br />
+                    {content.implantations?.bordeaux?.telephone ||
+                      "05 33 89 14 00"}
                   </p>
                   <p>
-                    <span className="font-medium text-[#524c5d]">Email :</span><br />
-                    {content.implantations?.bordeaux?.email || 'contact@argamconseils.com'}
+                    <span className="font-medium text-[#524c5d]">Email :</span>
+                    <br />
+                    {content.implantations?.bordeaux?.email ||
+                      "contact-reunion@argamconseils.com"}
                   </p>
                 </div>
               </div>
@@ -427,14 +497,17 @@ export default function AccueilClient({ content }: AccueilClientProps) {
               <MapPin className="h-10 w-10 text-[#b4925e]" strokeWidth={1.5} />
               <div className="space-y-4">
                 <h3 className="text-xl font-semibold text-[#524c5d]">
-                  {content.implantations?.reunion?.titre || 'La Réunion - Trois-Bassins'}
+                  {content.implantations?.reunion?.titre ||
+                    "La Réunion - Trois-Bassins"}
                 </h3>
                 <div className="space-y-2 text-sm text-[#524c5d]/70 font-light">
-                  <p style={{ whiteSpace: 'pre-line' }}>
-                    {content.implantations?.reunion?.adresse || 'Site du COGOHR\nTrois-Bassins'}
+                  <p style={{ whiteSpace: "pre-line" }}>
+                    {content.implantations?.reunion?.adresse ||
+                      "Site du COGOHR\nTrois-Bassins"}
                   </p>
                   <p className="pt-2">
-                    {content.implantations?.reunion?.texte || 'Rendez-vous en présentiel ou en visioconférence'}
+                    {content.implantations?.reunion?.texte ||
+                      "Rendez-vous en présentiel ou en visioconférence"}
                   </p>
                 </div>
               </div>
@@ -454,10 +527,11 @@ export default function AccueilClient({ content }: AccueilClientProps) {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl lg:text-4xl text-[#524c5d] font-light">
-              {content.cta?.titre || 'Prêt à optimiser votre patrimoine ?'}
+              {content.cta?.titre || "Prêt à optimiser votre patrimoine ?"}
             </h2>
             <p className="text-base text-[#524c5d]/70 font-light leading-relaxed max-w-2xl mx-auto">
-              {content.cta?.texte || 'Bénéficiez d\'un premier entretien gratuit et sans engagement pour analyser votre situation et définir vos objectifs.'}
+              {content.cta?.texte ||
+                "Bénéficiez d'un premier entretien gratuit et sans engagement pour analyser votre situation et définir vos objectifs."}
             </p>
             <div className="pt-4">
               <Link href="/contact">
@@ -466,12 +540,13 @@ export default function AccueilClient({ content }: AccueilClientProps) {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  {content.cta?.texteBouton || 'Prendre rendez-vous'}
+                  {content.cta?.texteBouton || "Prendre rendez-vous"}
                 </motion.button>
               </Link>
             </div>
             <p className="text-xs text-[#524c5d]/60 font-light">
-              {content.cta?.soustitre || 'Réponse sous 48h • Confidentiel • Sans engagement'}
+              {content.cta?.soustitre ||
+                "Réponse sous 48h • Confidentiel • Sans engagement"}
             </p>
           </motion.div>
         </div>

@@ -231,7 +231,7 @@ export const metadata: Metadata = {
 
 ### Contact Information
 - Phone: 05 33 89 14 00
-- Email: contact@argamconseils.com
+- Email: contact-reunion@argamconseils.com
 - Locations: Bordeaux (HQ) + Trois-Bassins, La Réunion
 - ORIAS: 20194827
 - SIRET: 800 527 824

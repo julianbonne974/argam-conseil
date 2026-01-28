@@ -705,3 +705,265 @@ collections:
                   widget: "string",
                   default: "Durée : 45mn",
                 }
+
+      - label: "Labels du Formulaire"
+        name: "form-labels"
+        file: "content/settings/form-labels.yml"
+        fields:
+          - label: "Labels des champs"
+            name: "labels"
+            widget: "object"
+            fields:
+              - { label: "Nom", name: "nom", widget: "string", default: "Nom" }
+              - {
+                  label: "Email",
+                  name: "email",
+                  widget: "string",
+                  default: "Email",
+                }
+              - {
+                  label: "Téléphone",
+                  name: "telephone",
+                  widget: "string",
+                  default: "Téléphone",
+                }
+              - {
+                  label: "Fonction",
+                  name: "fonction",
+                  widget: "string",
+                  default: "Fonction",
+                }
+              - {
+                  label: "Message",
+                  name: "message",
+                  widget: "string",
+                  default: "Message (optionnel)",
+                }
+              - {
+                  label: "Type de rendez-vous",
+                  name: "typeRendezVous",
+                  widget: "string",
+                  default: "Type de rendez-vous",
+                }
+
+          - label: "Placeholders"
+            name: "placeholders"
+            widget: "object"
+            fields:
+              - {
+                  label: "Téléphone",
+                  name: "telephone",
+                  widget: "string",
+                  default: "06 XX XX XX XX",
+                }
+              - {
+                  label: "Fonction",
+                  name: "fonction",
+                  widget: "string",
+                  default: "Sélectionnez votre fonction",
+                }
+              - {
+                  label: "Message",
+                  name: "message",
+                  widget: "string",
+                  default: "Précisez vos questions ou votre situation...",
+                }
+
+          - label: "Messages de validation"
+            name: "validation"
+            widget: "object"
+            fields:
+              - {
+                  label: "Nom requis",
+                  name: "nomRequired",
+                  widget: "string",
+                  default: "Le nom est requis",
+                }
+              - {
+                  label: "Nom trop court",
+                  name: "nomMinLength",
+                  widget: "string",
+                  default: "Le nom doit contenir au moins 2 caractères",
+                }
+              - {
+                  label: "Email requis",
+                  name: "emailRequired",
+                  widget: "string",
+                  default: "L'email est requis",
+                }
+              - {
+                  label: "Email invalide",
+                  name: "emailInvalid",
+                  widget: "string",
+                  default: "Format d'email invalide",
+                }
+              - {
+                  label: "Téléphone requis",
+                  name: "phoneRequired",
+                  widget: "string",
+                  default: "Le téléphone est requis",
+                }
+              - {
+                  label: "Téléphone invalide",
+                  name: "phoneInvalid",
+                  widget: "string",
+                  default: "Format de téléphone invalide (ex: 06 XX XX XX XX ou +262...)",
+                }
+              - {
+                  label: "Fonction requise",
+                  name: "fonctionRequired",
+                  widget: "string",
+                  default: "Veuillez sélectionner votre fonction",
+                }
+
+          - label: "Checkbox COGOHR"
+            name: "cogohr"
+            widget: "object"
+            fields:
+              - {
+                  label: "Label",
+                  name: "label",
+                  widget: "string",
+                  default: "Je suis adhérent du COGOHR",
+                }
+              - {
+                  label: "Description",
+                  name: "description",
+                  widget: "string",
+                  default: "Les adhérents COGOHR bénéficient d'une étude gratuite + 0% de frais d'entrée",
+                }
+
+          - label: "Types de rendez-vous"
+            name: "typeRendezVous"
+            widget: "object"
+            fields:
+              - {
+                  label: "Visio",
+                  name: "visio",
+                  widget: "string",
+                  default: "Visioconférence",
+                }
+              - {
+                  label: "Présentiel",
+                  name: "presentiel",
+                  widget: "string",
+                  default: "Présentiel - Trois-Bassins",
+                }
+
+          - label: "Options de fonction"
+            name: "fonctions"
+            widget: "list"
+            fields:
+              - { label: "Valeur", name: "value", widget: "string" }
+              - { label: "Label", name: "label", widget: "string" }
+
+          - label: "Options d'hôpital"
+            name: "hopitaux"
+            widget: "list"
+            fields:
+              - { label: "Valeur", name: "value", widget: "string" }
+              - { label: "Label", name: "label", widget: "string" }
+
+          - label: "Bouton de soumission"
+            name: "bouton"
+            widget: "object"
+            fields:
+              - {
+                  label: "Texte",
+                  name: "texte",
+                  widget: "string",
+                  default: "Demander mon étude gratuite",
+                }
+              - {
+                  label: "Texte envoi",
+                  name: "texteEnvoi",
+                  widget: "string",
+                  default: "Envoi en cours...",
+                }
+
+          - label: "Messages Toast"
+            name: "toasts"
+            widget: "object"
+            fields:
+              - label: "Succès"
+                name: "success"
+                widget: "object"
+                fields:
+                  - {
+                      label: "Titre",
+                      name: "titre",
+                      widget: "string",
+                      default: "Message envoyé !",
+                    }
+                  - {
+                      label: "Description",
+                      name: "description",
+                      widget: "string",
+                      default: "Nous vous recontacterons sous 48h. Vérifiez vos emails.",
+                    }
+              - label: "Erreur"
+                name: "error"
+                widget: "object"
+                fields:
+                  - {
+                      label: "Titre",
+                      name: "titre",
+                      widget: "string",
+                      default: "Erreur d'envoi",
+                    }
+                  - {
+                      label: "Description",
+                      name: "description",
+                      widget: "string",
+                      default: "Une erreur est survenue. Contactez-nous au 05 33 89 14 00",
+                    }
+              - label: "En cours"
+                name: "inProgress"
+                widget: "object"
+                fields:
+                  - {
+                      label: "Titre",
+                      name: "titre",
+                      widget: "string",
+                      default: "Envoi en cours...",
+                    }
+                  - {
+                      label: "Description",
+                      name: "description",
+                      widget: "string",
+                      default: "Veuillez patienter quelques instants",
+                    }
+
+          - label: "Mention RGPD"
+            name: "rgpd"
+            widget: "object"
+            fields:
+              - {
+                  label: "Texte",
+                  name: "texte",
+                  widget: "text",
+                  default: "Vos données sont sécurisées et ne seront jamais partagées. En soumettant ce formulaire, vous acceptez d'être recontacté par Argam Conseils.",
+                }
+
+          - label: "Informations légales"
+            name: "legal"
+            widget: "object"
+            fields:
+              - {
+                  label: "ORIAS",
+                  name: "orias",
+                  widget: "string",
+                  default: "20194827",
+                }
+              - {
+                  label: "Membre",
+                  name: "membre",
+                  widget: "string",
+                  default: "ANCACOFI-CIF",
+                }
+              - {
+                  label: "Médiateur",
+                  name: "mediateur",
+                  widget: "string",
+                  default: "AMF",
+                }

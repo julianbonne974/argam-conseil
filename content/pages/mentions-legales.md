@@ -14,7 +14,7 @@ sections:
       **RCS Bordeaux :** 900 597 824
       **TVA intracommunautaire :** FR07900597824
       **Téléphone :** 05 33 89 14 00
-      **Email :** contact@argamconseils.com
+      **Email :** contact-reunion@argamconseils.com
 
   - titre: "Directeur de publication"
     contenu: |

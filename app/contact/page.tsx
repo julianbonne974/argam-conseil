@@ -1,12 +1,13 @@
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
+import { FooterWrapper } from "@/components/FooterWrapper";
 import { ContactFormModern } from "@/components/ContactFormModern";
-import { getHoraires, getContactContent } from "@/lib/content";
+import { getHoraires, getContactContent, getFormLabels } from "@/lib/content";
 
 export default function ContactPage() {
   const horaires = getHoraires();
   const contactData = getContactContent();
+  const formLabels = getFormLabels();
 
   // Fonction pour parser le markdown simple (gras uniquement)
   const parseMarkdown = (text: string) => {
@@ -24,6 +25,40 @@ export default function ContactPage() {
     });
   };
 
+  // Données de contact avec fallbacks
+  const bordeaux = contactData?.bordeaux || {
+    nom: "Bordeaux",
+    adresse: "52 allées de Tourny\n33000 Bordeaux\nNouvelle-Aquitaine",
+    telephone: "05 33 89 14 00",
+    email: "contact-reunion@argamconseils.com",
+  };
+
+  const reunion = contactData?.reunion || {
+    nom: "La Réunion",
+    adresse: "Trois-Bassins\nSite COGOHR\nDépartement 974",
+    telephone: "",
+    email: "",
+  };
+
+  const legal = contactData?.legal ||
+    formLabels.legal || {
+      orias: "20194827",
+      membre: "ANCACOFI-CIF",
+      mediateur: "AMF",
+    };
+
+  const rgpd = contactData?.rgpd || {
+    titre: "Protection des données :",
+    description:
+      "Vos données personnelles sont traitées de manière confidentielle et ne seront jamais transmises à des tiers. Elles sont uniquement utilisées dans le cadre de votre demande de contact et de conseil patrimonial. Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données.",
+  };
+
+  const contactHoraires = contactData?.horaires || {
+    jours: horaires.horaires.jours,
+    heures: horaires.horaires.formatContact,
+    ferme: "Samedi - Dimanche",
+  };
+
   return (
     <main className="min-h-screen bg-white">
       <Header />
@@ -33,18 +68,18 @@ export default function ContactPage() {
         <div className="container mx-auto px-8 max-w-6xl">
           <div className="text-center space-y-6">
             <p className="text-[11px] uppercase tracking-[0.3em] text-[#524c5d]/50 font-medium">
-              {contactData?.hero.label || "Contact"}
+              {contactData?.hero?.label || "Contact"}
             </p>
             <h1 className="text-5xl lg:text-6xl text-[#524c5d] leading-[1.1]">
               <span className="font-light">
-                {contactData?.hero.titre.light || "Contactez"}
+                {contactData?.hero?.titre?.light || "Contactez"}
               </span>{" "}
               <span className="font-bold">
-                {contactData?.hero.titre.bold || "-nous"}
+                {contactData?.hero?.titre?.bold || "-nous"}
               </span>
             </h1>
             <div className="w-16 h-[1px] bg-[#b4925e] mx-auto mt-6" />
-            {contactData?.hero.description && (
+            {contactData?.hero?.description && (
               <p className="text-base text-[#524c5d]/60 max-w-2xl mx-auto leading-relaxed font-light pt-4">
                 {contactData.hero.description}
               </p>
@@ -62,22 +97,27 @@ export default function ContactPage() {
               <div className="space-y-6 mb-10">
                 <h2 className="text-3xl text-[#524c5d] font-light">
                   {parseMarkdown(
-                    contactData?.formulaire.titre ||
+                    contactData?.formulaire?.titre ||
                       "**Une question ?** Notre équipe se tient à votre disposition !",
                   )}
                 </h2>
                 <p className="text-sm text-[#524c5d]/60 font-light leading-relaxed max-w-xl">
-                  {contactData?.formulaire.sousTitre ||
+                  {contactData?.formulaire?.sousTitre ||
                     `Remplissez ce formulaire. Un de nos conseillers vous recontactera sous ${horaires.delaiReponse.delai} pour échanger sur votre projet.`}
                 </p>
               </div>
 
-              {/* Formulaire Netlify */}
+              {/* Formulaire Netlify avec labels CMS */}
               <ContactFormModern
+                formLabels={formLabels}
                 toastMessage={horaires.delaiReponse.messageToast}
-                presentielText="Présentiel"
+                presentielText={
+                  formLabels.typeRendezVous?.presentiel ||
+                  "Présentiel - Trois-Bassins"
+                }
                 boutonTexte={
-                  contactData?.formulaire.boutonTexte ||
+                  contactData?.formulaire?.boutonTexte ||
+                  formLabels.bouton?.texte ||
                   "Demander à être contacté"
                 }
               />
@@ -88,11 +128,11 @@ export default function ContactPage() {
                   <div className="w-2 h-2 rounded-full bg-[#b4925e] mt-2" />
                   <div>
                     <p className="text-sm font-semibold text-[#524c5d] mb-2">
-                      {contactData?.formulaire.mentionCogohr.titre ||
+                      {contactData?.formulaire?.mentionCogohr?.titre ||
                         "Adhérent COGOHR ?"}
                     </p>
                     <p className="text-xs text-[#524c5d]/60 font-light leading-relaxed">
-                      {contactData?.formulaire.mentionCogohr.description ||
+                      {contactData?.formulaire?.mentionCogohr?.description ||
                         "Cochez la case correspondante dans le formulaire pour bénéficier de votre étude gratuite et de 0% de frais d'entrée sur votre Plan Épargne Retraite."}
                     </p>
                   </div>
@@ -110,7 +150,7 @@ export default function ContactPage() {
                 <div className="space-y-4">
                   {/* Téléphone */}
                   <a
-                    href="tel:0533891400"
+                    href={`tel:${bordeaux.telephone.replace(/\s/g, "")}`}
                     className="group flex items-start gap-4 p-5 border-[1px] border-[#524c5d]/20 bg-white transition-all duration-300 hover:border-[#b4925e]"
                   >
                     <div className="p-3 border-[1px] border-[#524c5d]/15 bg-[#524c5d]/5 group-hover:border-[#b4925e]/30 group-hover:bg-[#b4925e]/5 transition-colors">
@@ -121,17 +161,17 @@ export default function ContactPage() {
                         Téléphone
                       </p>
                       <p className="text-lg font-semibold text-[#524c5d] mb-1">
-                        05 33 89 14 00
+                        {bordeaux.telephone}
                       </p>
                       <p className="text-xs text-[#524c5d]/60 font-light">
-                        Du lundi au vendredi
+                        {contactHoraires.jours}
                       </p>
                     </div>
                   </a>
 
                   {/* Email */}
                   <a
-                    href="mailto:contact@argamconseils.com"
+                    href={`mailto:${bordeaux.email}`}
                     className="group flex items-start gap-4 p-5 border-[1px] border-[#524c5d]/20 bg-white transition-all duration-300 hover:border-[#b4925e]"
                   >
                     <div className="p-3 border-[1px] border-[#524c5d]/15 bg-[#524c5d]/5 group-hover:border-[#b4925e]/30 group-hover:bg-[#b4925e]/5 transition-colors">
@@ -142,7 +182,7 @@ export default function ContactPage() {
                         Email
                       </p>
                       <p className="text-sm font-semibold text-[#524c5d] mb-1 break-all">
-                        contact@argamconseils.com
+                        {bordeaux.email}
                       </p>
                       <p className="text-xs text-[#524c5d]/60 font-light">
                         Réponse sous {horaires.delaiReponse.precision}
@@ -166,14 +206,10 @@ export default function ContactPage() {
                       </div>
                       <div className="flex-1">
                         <p className="text-base font-semibold text-[#524c5d] mb-2">
-                          Bordeaux
+                          {bordeaux.nom}
                         </p>
-                        <p className="text-sm text-[#524c5d]/70 font-light leading-relaxed">
-                          52 allées de Tourny
-                          <br />
-                          33000 Bordeaux
-                          <br />
-                          Nouvelle-Aquitaine
+                        <p className="text-sm text-[#524c5d]/70 font-light leading-relaxed whitespace-pre-line">
+                          {bordeaux.adresse}
                         </p>
                       </div>
                     </div>
@@ -187,14 +223,10 @@ export default function ContactPage() {
                       </div>
                       <div className="flex-1">
                         <p className="text-base font-semibold text-[#524c5d] mb-2">
-                          La Réunion
+                          {reunion.nom}
                         </p>
-                        <p className="text-sm text-[#524c5d]/70 font-light leading-relaxed">
-                          Trois-Bassins
-                          <br />
-                          Site COGOHR
-                          <br />
-                          Département 974
+                        <p className="text-sm text-[#524c5d]/70 font-light leading-relaxed whitespace-pre-line">
+                          {reunion.adresse}
                         </p>
                       </div>
                     </div>
@@ -205,7 +237,7 @@ export default function ContactPage() {
               {/* Horaires d'ouverture */}
               <div>
                 <h3 className="text-xl text-[#524c5d] font-semibold mb-6">
-                  Horaires d'Ouverture
+                  Horaires d&apos;Ouverture
                 </h3>
                 <div className="p-5 border-[1px] border-[#524c5d]/20 bg-white">
                   <div className="flex items-start gap-4">
@@ -215,16 +247,16 @@ export default function ContactPage() {
                     <div className="flex-1 space-y-3">
                       <div className="flex justify-between items-center">
                         <span className="text-sm text-[#524c5d]/70 font-light">
-                          {horaires.horaires.jours}
+                          {contactHoraires.jours}
                         </span>
                         <span className="text-sm font-semibold text-[#524c5d]">
-                          {horaires.horaires.formatContact}
+                          {contactHoraires.heures}
                         </span>
                       </div>
                       <div className="h-[1px] bg-[#524c5d]/10" />
                       <div className="flex justify-between items-center">
                         <span className="text-sm text-[#524c5d]/70 font-light">
-                          Samedi - Dimanche
+                          {contactHoraires.ferme}
                         </span>
                         <span className="text-sm font-semibold text-[#524c5d]">
                           Fermé
@@ -241,9 +273,9 @@ export default function ContactPage() {
                   Informations Légales
                 </p>
                 <div className="space-y-2 text-xs text-[#524c5d]/60 font-light">
-                  <p>ORIAS : 20194827</p>
-                  <p>Membre ANCACOFI-CIF</p>
-                  <p>Médiateur : AMF</p>
+                  <p>ORIAS : {legal.orias}</p>
+                  <p>Membre {legal.membre}</p>
+                  <p>Médiateur : {legal.mediateur}</p>
                 </div>
               </div>
             </div>
@@ -256,20 +288,14 @@ export default function ContactPage() {
         <div className="container mx-auto px-8 max-w-5xl">
           <div className="text-center">
             <p className="text-xs text-[#524c5d]/60 font-light leading-relaxed">
-              <span className="font-semibold text-[#524c5d]">
-                Protection des données :
-              </span>{" "}
-              Vos données personnelles sont traitées de manière confidentielle
-              et ne seront jamais transmises à des tiers. Elles sont uniquement
-              utilisées dans le cadre de votre demande de contact et de conseil
-              patrimonial. Conformément au RGPD, vous disposez d'un droit
-              d'accès, de rectification et de suppression de vos données.
+              <span className="font-semibold text-[#524c5d]">{rgpd.titre}</span>{" "}
+              {rgpd.description}
             </p>
           </div>
         </div>
       </section>
 
-      <Footer />
+      <FooterWrapper />
     </main>
   );
 }

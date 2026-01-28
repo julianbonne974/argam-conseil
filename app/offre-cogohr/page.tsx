@@ -1,5 +1,5 @@
 import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
+import { FooterWrapper } from "@/components/FooterWrapper";
 import {
   TrendingDown,
   TrendingUp,
@@ -752,7 +752,7 @@ export default function OffreCOGOHRPage() {
         </div>
       </section>
 
-      <Footer />
+      <FooterWrapper />
     </main>
   );
 }

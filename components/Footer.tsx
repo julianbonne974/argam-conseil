@@ -1,8 +1,60 @@
-import { Phone, Mail, MapPin } from 'lucide-react';
-import Link from 'next/link';
-import Image from 'next/image';
+"use client";
 
-export function Footer() {
+import { Phone, Mail, MapPin } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
+import type { FooterSettings, FormLabelsSettings } from "@/lib/content";
+
+interface FooterProps {
+  settings?: FooterSettings;
+  formLabels?: FormLabelsSettings;
+}
+
+// Valeurs par défaut pour le fallback
+const defaultSettings: FooterSettings = {
+  tagline: "Conseil en gestion de patrimoine et expert en protection sociale.",
+  bordeaux: {
+    adresse: "52 allées de Tourny, 33000 Bordeaux",
+    telephone: "05 33 89 14 00",
+    email: "contact-reunion@argamconseils.com",
+  },
+  reunion: {
+    adresse: "Trois-Bassins, 97426 La Réunion",
+  },
+  liensLegaux: [
+    { label: "Mentions légales", url: "/mentions-legales" },
+    {
+      label: "Politique de confidentialité",
+      url: "/politique-confidentialite",
+    },
+    { label: "CGU", url: "/cgu" },
+  ],
+  reseauxSociaux: [],
+};
+
+const defaultFormLabels = {
+  legal: {
+    orias: "20194827",
+    membre: "ANCACOFI-CIF",
+    mediateur: "AMF",
+  },
+};
+
+export function Footer({ settings, formLabels }: FooterProps = {}) {
+  // Utiliser les settings passés en props ou les valeurs par défaut
+  const footerSettings = settings || defaultSettings;
+  const legal = formLabels?.legal || defaultFormLabels.legal;
+
+  const tagline = footerSettings.tagline;
+  const telephone =
+    footerSettings.bordeaux?.telephone || defaultSettings.bordeaux.telephone;
+  const email =
+    footerSettings.bordeaux?.email || defaultSettings.bordeaux.email;
+  const liensLegaux =
+    footerSettings.liensLegaux?.length > 0
+      ? footerSettings.liensLegaux
+      : defaultSettings.liensLegaux;
+
   return (
     <footer className="bg-[#524c5d] text-white">
       {/* Main Footer Content */}
@@ -22,14 +74,16 @@ export function Footer() {
               </Link>
             </div>
             <p className="text-sm text-white/70 font-light leading-relaxed max-w-sm">
-              Conseil en gestion de patrimoine et expert en protection sociale.
+              {tagline}
             </p>
             <div className="pt-4">
               <p className="text-xs uppercase tracking-wider text-white/50 font-medium mb-3">
                 Partenaire Officiel
               </p>
               <div className="flex items-center gap-3 px-4 py-2 border-[1px] border-white/20 bg-white/5 inline-block">
-                <span className="text-xs text-white/80 font-medium">COGOHR</span>
+                <span className="text-xs text-white/80 font-medium">
+                  COGOHR
+                </span>
               </div>
             </div>
           </div>
@@ -104,19 +158,19 @@ export function Footer() {
                 <li className="flex items-start gap-3">
                   <Phone className="h-4 w-4 text-[#b4925e] flex-shrink-0 mt-0.5" />
                   <a
-                    href="tel:0533891400"
+                    href={`tel:${telephone.replace(/\s/g, "")}`}
                     className="text-sm text-white/70 hover:text-[#b4925e] transition-colors font-light"
                   >
-                    05 33 89 14 00
+                    {telephone}
                   </a>
                 </li>
                 <li className="flex items-start gap-3">
                   <Mail className="h-4 w-4 text-[#b4925e] flex-shrink-0 mt-0.5" />
                   <a
-                    href="mailto:contact@argamconseils.com"
+                    href={`mailto:${email}`}
                     className="text-sm text-white/70 hover:text-[#b4925e] transition-colors font-light break-all"
                   >
-                    contact@argamconseils.com
+                    {email}
                   </a>
                 </li>
                 <li className="flex items-start gap-3">
@@ -133,9 +187,9 @@ export function Footer() {
                 Certifications
               </h3>
               <div className="space-y-1 text-xs text-white/50 font-light">
-                <p>ORIAS : 20194827</p>
-                <p>Membre ANCACOFI-CIF</p>
-                <p>Médiateur : AMF</p>
+                <p>ORIAS : {legal.orias}</p>
+                <p>Membre {legal.membre}</p>
+                <p>Médiateur : {legal.mediateur}</p>
               </div>
             </div>
           </div>
@@ -147,26 +201,21 @@ export function Footer() {
         <div className="container mx-auto px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-xs text-white/50 font-light">
-              © 2025 Argam Conseils - Tous droits réservés
+              © {new Date().getFullYear()} Argam Conseils - Tous droits
+              réservés
             </p>
             <div className="flex flex-wrap items-center gap-4 text-xs text-white/50">
-              <Link
-                href="/mentions-legales"
-                className="hover:text-[#b4925e] transition-colors font-light"
-              >
-                Mentions légales
-              </Link>
-              <span className="text-white/30">•</span>
-              <Link
-                href="/politique-confidentialite"
-                className="hover:text-[#b4925e] transition-colors font-light"
-              >
-                Politique de confidentialité
-              </Link>
-              <span className="text-white/30">•</span>
-              <Link href="/cgu" className="hover:text-[#b4925e] transition-colors font-light">
-                CGU
-              </Link>
+              {liensLegaux.map((lien, index) => (
+                <span key={lien.url} className="flex items-center gap-4">
+                  {index > 0 && <span className="text-white/30">•</span>}
+                  <Link
+                    href={lien.url}
+                    className="hover:text-[#b4925e] transition-colors font-light"
+                  >
+                    {lien.label}
+                  </Link>
+                </span>
+              ))}
             </div>
           </div>
         </div>

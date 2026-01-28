@@ -1,55 +1,56 @@
 ---
-rgpd:
-  titre: "Protection des données :"
-  description: Vos données personnelles sont traitées de manière confidentielle et
-    ne seront jamais transmises à des tiers. Elles sont uniquement utilisées
-    dans le cadre de votre demande de contact et de conseil patrimonial.
-    Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et
-    de suppression de vos données.
-horaires:
-  jours: Lundi - Vendredi
-  heures: 11h00 - 19h00
-  ferme: Samedi - Dimanche
+# Section Hero
+hero:
+  label: "Contact"
+  titre:
+    light: "Contactez"
+    bold: "-nous"
+  description: ""
+
+# Section Formulaire
 formulaire:
   titre: "**Une question ?** Notre équipe se tient à votre disposition !"
-  sousTitre: Remplissez ce formulaire. Un de nos conseillers vous recontactera
-    sous 48 heures pour échanger sur votre projet.
-  boutonTexte: Demander à être contacté
+  sousTitre: "Remplissez ce formulaire. Un de nos conseillers vous recontactera sous 48 heures pour échanger sur votre projet."
+  boutonTexte: "Demander à être contacté"
   mentionCogohr:
-    titre: Adhérent COGOHR ?
-    description: Cochez la case correspondante dans le formulaire pour bénéficier de
-      votre étude gratuite et de 0% de frais d'entrée sur votre Plan Épargne
-      Retraite.
-legal:
-  orias: "20194827"
-  membre: ANCACOFI-CIF
-  mediateur: AMF
-calendly:
-  url: https://calendly.com/argam-conseil
-  texte: Prendre rendez-vous
-  sousTexte: Réservez un créneau avec nos experts
-hero:
-  label: Contact
-  titre:
-    light: Contactez
-    bold: -nous
-  description: ""
+    titre: "Adhérent COGOHR ?"
+    description: "Cochez la case correspondante dans le formulaire pour bénéficier de votre étude gratuite et de 0% de frais d'entrée sur votre Plan Épargne Retraite."
+
+# Coordonnées
 bordeaux:
-  nom: Bordeaux
-  adresse: |-
-    52 allées de Tourny
-    33000 Bordeaux
-    Nouvelle-Aquitaine
-  telephone: 05 33 89 14 00
-  email: contact-reunion@argamconseils.com
+  nom: "Bordeaux"
+  adresse: "52 allées de Tourny\n33000 Bordeaux\nNouvelle-Aquitaine"
+  telephone: "05 33 89 14 00"
+  email: "contact-reunion@argamconseils.com"
+
 reunion:
-  nom: La Réunion
-  adresse: |-
-    Trois-Bassins
-    Site COGOHR
-    Département 974
+  nom: "La Réunion"
+  adresse: "Trois-Bassins\nSite COGOHR\nDépartement 974"
   telephone: ""
   email: ""
+
+# Informations pratiques
+horaires:
+  jours: "Lundi - Vendredi"
+  heures: "11h00 - 19h00"
+  ferme: "Samedi - Dimanche"
+
+# Calendly
+calendly:
+  url: "https://calendly.com/argam-conseil"
+  texte: "Prendre rendez-vous"
+  sousTexte: "Réservez un créneau avec nos experts"
+
+# Informations légales
+legal:
+  orias: "20194827"
+  membre: "ANCACOFI-CIF"
+  mediateur: "AMF"
+
+# Protection des données
+rgpd:
+  titre: "Protection des données :"
+  description: "Vos données personnelles sont traitées de manière confidentielle et ne seront jamais transmises à des tiers. Elles sont uniquement utilisées dans le cadre de votre demande de contact et de conseil patrimonial. Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données."
 ---
 
 # Page Contact - Argam Conseil

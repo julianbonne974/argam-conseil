@@ -91,7 +91,7 @@ sections:
       - **Droit d'opposition :** Vous opposer au traitement de vos données
       - **Droit de retrait du consentement :** À tout moment
 
-      Pour exercer ces droits, contactez-nous par email à contact@argamconseils.com ou par courrier à notre siège social.
+      Pour exercer ces droits, contactez-nous par email à contact-reunion@argamconseils.com ou par courrier à notre siège social.
 
       Vous disposez également du droit de déposer une réclamation auprès de la CNIL ([www.cnil.fr](https://www.cnil.fr)).
 
@@ -108,7 +108,7 @@ sections:
 
 contact:
   texte: "Pour toute question concernant cette politique de confidentialité ou vos données personnelles :"
-  email: "contact@argamconseils.com"
+  email: "contact-reunion@argamconseils.com"
   telephone: "05 33 89 14 00"
   adresse: "Argam Conseils - 52 allées de Tourny, 33000 Bordeaux"
 
